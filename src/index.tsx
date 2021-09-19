@@ -1,12 +1,24 @@
+import { ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import LanguageProvider from './context/language';
+import UserProvider from './context/user';
+import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import { getCustomisedTheme } from './theme/theme';
+
+const theme = getCustomisedTheme();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <LanguageProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,18 @@
+@import '../../assets/scss/variables';
+
+.button {
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.button--rounded {
+  img {
+    border-radius: 50%;
+  }
+}
+
+.popper {
+  z-index: 9999;
+}

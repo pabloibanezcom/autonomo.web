@@ -1,0 +1,28 @@
+@import '../../../../assets/scss/variables';
+
+.topbar {
+  background-color: $topbar-bgcolor !important;
+  color: $topbar-color !important;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.leftContent {
+  flex-grow: 1;
+}
+
+.rightContent {
+  display: flex;
+
+  > div {
+    margin-left: 8px;
+  }
+}
+
+.menuButton {
+  margin-right: 16px;
+}
+
+.userIconImg {
+  border: 2px solid $secondary-bgcolor;
+}

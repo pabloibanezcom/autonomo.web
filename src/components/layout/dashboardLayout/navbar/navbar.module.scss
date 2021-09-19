@@ -1,0 +1,70 @@
+@import '../../../../assets/scss/variables';
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  width: $navbar-width;
+  height: 100vh;
+  background-color: $navbar-bgcolor-primary;
+  color: $navbar-color-primary; 
+  -webkit-transition: width $transition-time ease-in-out;
+  -moz-transition: width $transition-time ease-in-out;
+  -o-transition: width $transition-time ease-in-out;
+  transition: width $transition-time ease-in-out;
+}
+
+.navbar--collapsed {
+  width: $navbar-width-collapsed;
+}
+
+.navBarElement {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 18px;
+  padding-right: 18px;
+  width: 100%;
+}
+
+.topSection {
+  height: $topbar-height;
+  background-color: $navbar-bgcolor-secondary;
+  color: $navbar-color-secondary
+}
+
+.title {
+  margin-left: 18px !important;
+}
+
+.bottomSection {
+  width: 100%;
+  height: 48px;
+  background-color: $navbar-bgcolor-secondary;
+  color: $navbar-color-secondary;
+}
+
+.mainSection {
+  flex-grow: 1;
+  padding-top: 16px;
+}
+
+.arrowBottomButton {
+  height: 100%;
+  color: $navbar-color-secondary !important;
+}
+
+.menuItemButton {
+  padding: 12px 0 !important;
+  text-transform: none !important;
+}
+
+.menuItemButtonContent {
+  color: $navbar-color-primary;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.icon {
+  opacity: 0.5;
+}

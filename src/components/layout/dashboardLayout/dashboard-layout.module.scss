@@ -1,0 +1,19 @@
+@import '../../../assets/scss/variables';
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+}
+
+.rightContent {
+  flex-grow: 1;
+}
+
+.containerWrapper {
+  min-height: calc(100vh - #{$topbar-height});
+  background-color: $container-bgcolor;
+}
+
+.container {
+  padding-top: $container-padding-top;
+}
