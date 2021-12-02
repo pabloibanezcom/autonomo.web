@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { Theme } from '@material-ui/core';
-import { createTheme } from '@material-ui/core/styles';
+import { Theme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 import SegoeUIWoff2 from '../assets/fonts/segoe-ui.woff2';
 
 const segoeUi = {
@@ -35,13 +35,13 @@ export const getCustomisedTheme = (): Theme => {
         fontSize: '13px',
         letterSpacing: 'normal'
       }
-    },
-    overrides: {
-      MuiCssBaseline: {
-        '@global': {
-          '@font-face': [segoeUi]
-        }
-      }
     }
+    // overrides: {
+    //   MuiCssBaseline: {
+    //     '@global': {
+    //       '@font-face': [segoeUi]
+    //     }
+    //   }
+    // }
   });
 };

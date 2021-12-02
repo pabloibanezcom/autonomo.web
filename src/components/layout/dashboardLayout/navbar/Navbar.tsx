@@ -1,8 +1,8 @@
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './navbar.module.scss';

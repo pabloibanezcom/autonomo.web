@@ -1,7 +1,7 @@
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Divider from '@material-ui/core/Divider';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Divider from '@mui/material/Divider';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styles from './pageHeader.module.scss';

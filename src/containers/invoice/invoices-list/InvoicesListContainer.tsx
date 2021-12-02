@@ -1,8 +1,8 @@
 import { Invoice } from '@autonomo/common';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DataTable from '../../../components/dataTable/DataTable';
