@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "serve": "serve -s build",
     "test": "node scripts/test.js",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --quiet --fix"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.17.0",
-    "@autonomo/common": "0.0.1",
+    "@autonomo/common": "^1.0.0",
     "@babel/core": "7.12.3",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -29,7 +30,7 @@
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.0",
     "babel-loader": "8.1.0",

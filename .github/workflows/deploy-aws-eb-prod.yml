@@ -1,0 +1,29 @@
+name: Prod - Deploy to AWS
+on: workflow_dispatch
+
+jobs:
+  deploy_prod:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Create env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: autonomo.web
+          environment_name: autonomo-web-prod
+          version_label: autonomo-web-prod-${{ github.sha }}
+          region: eu-west-1
+          deployment_package: deploy.zip
