@@ -8,9 +8,9 @@ import { getAuthToken, removeAuthToken, setAuthToken } from '../http/authToken';
 
 const configureAuth0Client = (): Auth0Client => {
   const auth0Config: Auth0ClientOptions = {
-    domain: 'pabloiveron.eu.auth0.com',
-    client_id: 'wYDowi6VclQR3DaNLIrypxYtkI8WMVB1',
-    audience: 'autonomo'
+    domain: process.env.REACT_APP_AUTH0_DOMAIN!,
+    client_id: process.env.REACT_APP_AUTH0_CLIENT_ID!,
+    audience: process.env.REACT_APP_AUTH0_AUDIENCE!
   };
   return new Auth0Client(auth0Config);
 };
