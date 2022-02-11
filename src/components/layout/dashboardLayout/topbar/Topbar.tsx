@@ -1,15 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { User } from '@autonomo/common';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { UserContext } from '../../../../context/user';
+import { getBusiness } from '../../../../store/business/businessSlice';
+import { getUser, selectUser } from '../../../../store/user/userSlice';
 import LanguageSelector from '../../../languageSelector/LanguageSelector';
 import MenuButton from '../../../menuButton/MenuButton';
 import styles from './top-bar.module.scss';
 
 const Topbar = () => {
-  const { user, login, logout } = useContext(UserContext);
+  const user: User = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const { login, logout } = useContext(UserContext);
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user?.defaultBusiness) {
+      dispatch(getBusiness({ id: user.defaultBusiness.toString() }));
+    }
+  }, [dispatch, user]);
+
   const notLoggedInMenu = [
     {
       content: 'Login',
@@ -42,11 +59,13 @@ const Topbar = () => {
             menuItems={user ? loggedInMenu : notLoggedInMenu}
           >
             {user ? (
-              <img
-                src={user.picture}
-                alt={user.firstName}
-                className={styles.userIconImg}
-              />
+              <>
+                <img
+                  src={user.picture}
+                  alt={user.firstName}
+                  className={styles.userIconImg}
+                />
+              </>
             ) : (
               <AccountCircleIcon />
             )}

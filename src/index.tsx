@@ -1,11 +1,12 @@
 import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
-import LanguageProvider from './context/language';
 import UserProvider from './context/user';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import store from './store/store';
 import { getCustomisedTheme } from './theme/theme';
 
 const theme = getCustomisedTheme();
@@ -13,11 +14,11 @@ const theme = getCustomisedTheme();
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <LanguageProvider>
-        <UserProvider>
+      <UserProvider>
+        <Provider store={store}>
           <App />
-        </UserProvider>
-      </LanguageProvider>
+        </Provider>
+      </UserProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

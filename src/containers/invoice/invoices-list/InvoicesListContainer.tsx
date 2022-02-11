@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import DataTable from '../../../components/dataTable/DataTable';
 import PageHeader from '../../../components/pageHeader/PageHeader';
 import Panel from '../../../components/panel/Panel';
-import api from '../../../http';
 import invoicesTableConfig from './invoices.table.json';
 
 const breadcrumbs = [
@@ -25,14 +24,13 @@ const InvoicesListContainer = () => {
   const [invoices, setInvoices] = useState<Invoice[] | []>([]);
 
   useEffect(() => {
-    const fetchInvoices = async () => {
-      const invoicesRes = await api.invoice.getInvoices();
-      if (invoicesRes?.data) {
-        setInvoices(invoicesRes.data);
-      }
-    };
-
-    fetchInvoices();
+    // const fetchInvoices = async () => {
+    //   const invoicesRes = await api.invoice.getInvoices();
+    //   if (invoicesRes?.data) {
+    //     setInvoices(invoicesRes.data);
+    //   }
+    // };
+    // fetchInvoices();
   }, []);
 
   const toolBox = (

@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Auth0Client, Auth0ClientOptions } from '@auth0/auth0-spa-js';
-import { Auth0User } from '@autonomo/common';
+import { User } from '@autonomo/common';
 import React, { createContext, useEffect, useState } from 'react';
-import api from '../http';
 import { getAuthToken, removeAuthToken, setAuthToken } from '../http/authToken';
 
 const configureAuth0Client = (): Auth0Client => {
@@ -16,7 +15,7 @@ const configureAuth0Client = (): Auth0Client => {
 };
 
 type UserContextType = {
-  user: Auth0User | null;
+  user: User | null;
   login: () => Promise<void>;
   handleRedirectCallback: () => Promise<void>;
   logout: () => void;
@@ -66,12 +65,12 @@ const UserProvider = ({ children }: userProviderProps) => {
   };
 
   const getUser = async (): Promise<void> => {
-    api.user
-      .getUser()
-      .then((res) => setUser(res.data))
-      .catch(() => {
-        login();
-      });
+    // api.user
+    //   .getUser()
+    //   .then((res) => setUser(res.data))
+    //   .catch(() => {
+    //     login();
+    //   });
   };
 
   useEffect(() => {
@@ -86,7 +85,7 @@ const UserProvider = ({ children }: userProviderProps) => {
 
   useEffect(() => {
     if (isTokenLoaded) {
-      getUser();
+      // getUser();
     }
   }, [isTokenLoaded]);
 
