@@ -41,7 +41,14 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react/jsx-one-expression-per-line': 'off',
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state']
+      }
+    ]
   },
   settings: {
     'import/resolver': {

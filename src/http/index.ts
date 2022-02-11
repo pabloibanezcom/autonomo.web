@@ -1,12 +1,10 @@
-import { addInvoice, getInvoices } from './invoice/invoice';
-import { getUser } from './user/user';
-
-export default {
-  invoice: {
-    addInvoice,
-    getInvoices
-  },
-  user: {
-    getUser
-  }
-};
+export * from './business';
+export * from './category';
+export * from './company';
+export * from './invoice';
+export * from './nationalInsurancePayment';
+export * from './person';
+export * from './taxPayment';
+export * from './taxYear';
+export * from './user';
+export * from './yearReport';
