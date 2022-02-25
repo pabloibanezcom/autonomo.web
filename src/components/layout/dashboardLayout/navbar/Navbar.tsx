@@ -3,21 +3,16 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import { NavbarEl } from 'interfaces';
 import React, { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectPreferences, setNavbarCollapsed } from 'store';
+import { getIcon } from 'util/icon';
 import styles from './navbar.module.scss';
 
-interface NavbarMenuItem {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: any;
-  text: string;
-  href: string;
-}
-
 type NavbarProps = {
-  menuItems: NavbarMenuItem[];
+  menuItems: NavbarEl[];
 };
 
 const Navbar = ({ menuItems }: NavbarProps) => {
@@ -33,7 +28,8 @@ const Navbar = ({ menuItems }: NavbarProps) => {
     });
   };
 
-  const renderMenuItem = (menuItem: NavbarMenuItem) => {
+  const renderMenuItem = (menuItem: NavbarEl) => {
+    const Icon = getIcon(menuItem.icon);
     const renderItemButton = () => {
       return (
         <Button
@@ -48,7 +44,7 @@ const Navbar = ({ menuItems }: NavbarProps) => {
               styles.menuItemButtonContent
             ].join(' ')}
           >
-            <menuItem.icon className={styles.icon} />
+            <Icon className={styles.icon} />
             {!isCollapsed && (
               <span className={styles.title}>{menuItem.text}</span>
             )}

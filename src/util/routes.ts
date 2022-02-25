@@ -1,4 +1,4 @@
-import { BreadcrumbsEl, RouteDefinition } from 'interfaces';
+import { BreadcrumbsEl, NavbarEl, RouteDefinition } from 'interfaces';
 
 export const generateBreadcrumbs = (
   routes: RouteDefinition[]
@@ -39,4 +39,26 @@ export const getBreadcrumbById = (
   return breadcrumbs.find(
     (array) => array[array.length - 1]?.id === lastNodeId
   );
+};
+
+export const generateNavbarElements = (
+  routes: RouteDefinition[]
+): NavbarEl[] => {
+  const result: NavbarEl[] = [];
+  const checkIfRouteIsNavbarEl = (route: RouteDefinition) => {
+    if (route.navbar) {
+      result.push({
+        text: route.title,
+        href: route.path,
+        icon: route.navbar.icon,
+        order: route.navbar.order
+      });
+    }
+    if (route.children?.length) {
+      route.children.forEach((r) => checkIfRouteIsNavbarEl(r));
+    }
+  };
+
+  routes.forEach((r) => checkIfRouteIsNavbarEl(r));
+  return result.sort((a, b) => a.order - b.order);
 };

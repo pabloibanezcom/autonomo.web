@@ -20,6 +20,11 @@ const Topbar = () => {
       onClick: () => {}
     },
     {
+      content: 'My business',
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      onClick: () => {}
+    },
+    {
       content: 'Logout',
       onClick: () => navigate('/auth/login')
     }
