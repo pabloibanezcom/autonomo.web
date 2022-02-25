@@ -7,6 +7,10 @@ export default interface RouteDefinition {
   to?: string;
   useParentBreadcrumbs?: boolean;
   noBreadcrumbs?: boolean;
+  navbar?: {
+    icon: string;
+    order?: number;
+  };
   breadcrumbsRoute?: {
     path?: string;
     title?: string;

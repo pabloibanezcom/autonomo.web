@@ -34,7 +34,7 @@ const InvoiceDetailsPage = () => {
         title={`Invoice #${invoice?.number}`}
         breadcrumbs={breadcrumbs}
       />
-      <div>Invoice number: {invoice?.number}</div>;
+      <div>Invoice number: {invoice?.number}</div>
     </div>
   );
 };

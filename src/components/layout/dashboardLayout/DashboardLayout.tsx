@@ -1,40 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import DescriptionIcon from '@mui/icons-material/Description';
-import HomeIcon from '@mui/icons-material/Home';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import Container from '@mui/material/Container';
 import React from 'react';
+import { generateNavbarElements } from 'util/routes';
+import routeDefinitions from '../../../routes.json';
 import styles from './dashboard-layout.module.scss';
 import Navbar from './navbar/Navbar';
 import Topbar from './topbar/Topbar';
 
-type DashboardLayoutProps = {
+interface DashboardLayoutProps {
   children: any;
-};
+}
 
-const navbarMenuItems = [
-  {
-    icon: HomeIcon,
-    text: 'Home',
-    href: '/home'
-  },
-  {
-    icon: DescriptionIcon,
-    text: 'Invoices',
-    href: '/invoices'
-  },
-  {
-    icon: CreditCardIcon,
-    text: 'Expenses',
-    href: '/expenses'
-  },
-  {
-    icon: PeopleAltIcon,
-    text: 'Clients',
-    href: '/clients'
-  }
-];
+const navbarMenuItems = generateNavbarElements(routeDefinitions);
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (

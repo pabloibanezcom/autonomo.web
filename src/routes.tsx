@@ -1,58 +1,9 @@
-import LoginPage from 'components/auth/login/LoginPage';
-import RegisterPage from 'components/auth/register/RegisterPage';
-import HomePage from 'components/home/HomePage';
-import {
-  InvoiceAddPage,
-  InvoiceDetailsPage,
-  InvoicesListPage
-} from 'components/invoices';
-import RootPage from 'components/root/RootPage';
+import { getPageComponent } from 'components/pages';
 import { BreadcrumbsEl, Route, RouteDefinition } from 'interfaces';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { generateBreadcrumbs, getBreadcrumbById } from 'util/routes';
 import routeDefinitions from './routes.json';
-
-// const homeBreadcrumbs: BreadcrumbsEl[] = [
-//   {
-//     text: 'Home'
-//   }
-// ];
-
-// const breadcrumbs: BreadcrumbsEl[] = [
-//   {
-//     text: 'Home',
-//     href: '/'
-//   },
-//   {
-//     text: 'Invoices'
-//   }
-// ];
-
-const getPageComponent = (name: string) => {
-  if (name === 'RootPage') {
-    return RootPage;
-  }
-  if (name === 'HomePage') {
-    return HomePage;
-  }
-  if (name === 'InvoicesListPage') {
-    return InvoicesListPage;
-  }
-  if (name === 'InvoiceDetailsPage') {
-    return InvoiceDetailsPage;
-  }
-  if (name === 'InvoiceAddPage') {
-    return InvoiceAddPage;
-  }
-  if (name === 'LoginPage') {
-    return LoginPage;
-  }
-  if (name === 'RegisterPage') {
-    return RegisterPage;
-  }
-  return null;
-};
 
 const breadCrumbs: BreadcrumbsEl[][] = generateBreadcrumbs(routeDefinitions);
 

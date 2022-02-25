@@ -13,15 +13,23 @@
         "path": "home",
         "title": "Home",
         "element": "HomePage",
+        "navbar": {
+          "icon": "Home",
+          "order": 0
+        },
         "useParentBreadcrumbs": true
       },
       {
         "id": "invoices",
         "path": "invoices",
         "title": "Invoices",
+        "navbar": {
+          "icon": "Description",
+          "order": 1
+        },
         "children": [
           {
-            "id": "invoices",
+            "id": "invoicesList",
             "index": true,
             "title": "Invoices",
             "element": "InvoicesListPage"
@@ -37,6 +45,174 @@
             "path": ":id",
             "title": "Invoice #11111",
             "element": "InvoiceDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "expenses",
+        "path": "expenses",
+        "title": "Expenses",
+        "isNavbarEl": true,
+        "navbar": {
+          "icon": "CreditCard",
+          "order": 2
+        },
+        "children": [
+          {
+            "id": "expensesList",
+            "index": true,
+            "title": "Expenses",
+            "element": "ExpensesListPage"
+          },
+          {
+            "id": "expenseAdd",
+            "path": "new",
+            "title": "New Expense",
+            "element": "ExpenseAddPage"
+          },
+          {
+            "id": "expenseDetail",
+            "path": ":id",
+            "title": "Expense #3344",
+            "element": "ExpenseDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "companies",
+        "path": "companies",
+        "title": "Companies",
+        "isNavbarEl": true,
+        "navbar": {
+          "icon": "Business",
+          "order": 3
+        },
+        "children": [
+          {
+            "id": "companiesList",
+            "index": true,
+            "title": "Companies",
+            "element": "CompaniesListPage"
+          },
+          {
+            "id": "companyAdd",
+            "path": "new",
+            "title": "New Comapany",
+            "element": "CompanyAddPage"
+          },
+          {
+            "id": "companyDetail",
+            "path": ":id",
+            "title": "Company #3344",
+            "element": "CompanyDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "people",
+        "path": "people",
+        "title": "People",
+        "isNavbarEl": true,
+        "navbar": {
+          "icon": "PeopleAlt",
+          "order": 4
+        },
+        "children": [
+          {
+            "id": "peopleList",
+            "index": true,
+            "title": "People",
+            "element": "PeopleListPage"
+          },
+          {
+            "id": "personAdd",
+            "path": "new",
+            "title": "New Person",
+            "element": "PersonAddPage"
+          },
+          {
+            "id": "personDetail",
+            "path": ":id",
+            "title": "Person #3344",
+            "element": "PersonDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "taxPayments",
+        "path": "tax-payments",
+        "title": "Tax Payments",
+        "isNavbarEl": true,
+        "navbar": {
+          "icon": "Percent",
+          "order": 5
+        },
+        "children": [
+          {
+            "id": "taxPaymentsList",
+            "index": true,
+            "title": "Tax Payments",
+            "element": "TaxPaymentsListPage"
+          },
+          {
+            "id": "taxPaymentAdd",
+            "path": "new",
+            "title": "New Tax Payment",
+            "element": "TaxPaymentAddPage"
+          },
+          {
+            "id": "taxPaymentDetail",
+            "path": ":id",
+            "title": "Tax Payment #3344",
+            "element": "TaxPaymentDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "nationalInsurancePayments",
+        "path": "national-insurance-payments",
+        "title": "National Insurance",
+        "isNavbarEl": true,
+        "navbar": {
+          "icon": "AccountBalance",
+          "order": 6
+        },
+        "children": [
+          {
+            "id": "nationalInsurancePaymentsList",
+            "index": true,
+            "title": "National Insurance Payments",
+            "element": "NationalInsurancePaymentsListPage"
+          },
+          {
+            "id": "nationalInsurancePaymentAdd",
+            "path": "new",
+            "title": "New National Insurance Payment",
+            "element": "NationalInsurancePaymentAddPage"
+          },
+          {
+            "id": "nationalInsurancePaymentDetail",
+            "path": ":id",
+            "title": "National Insurance Payment #3344",
+            "element": "NationalInsurancePaymentDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "user",
+        "path": "",
+        "children": [
+          {
+            "id": "myProfile",
+            "path": "my-profile",
+            "title": "My Profile",
+            "element": "MyProfilePage"
+          },
+          {
+            "id": "myBusiness",
+            "path": "my-business",
+            "title": "My Business",
+            "element": "MyBusinessPage"
           }
         ]
       },
