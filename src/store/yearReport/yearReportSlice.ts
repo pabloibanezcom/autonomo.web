@@ -1,8 +1,8 @@
 import { RequestStatus, YearReport } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getYearReportRequest } from '../../http';
+import { getYearReportRequest } from 'http/yearReport';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface YearReportInitialState extends BaseInitialState {
   yearReport: YearReport;

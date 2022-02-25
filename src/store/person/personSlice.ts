@@ -11,9 +11,9 @@ import {
   getPersonRequest,
   searchPeopleRequest,
   updatePersonRequest
-} from '../../http';
+} from 'http/person';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface PersonInitialState extends BaseInitialState {
   searchResult: PersonSearchResult;

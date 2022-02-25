@@ -1,28 +1,36 @@
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import React, { Fragment, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectPreferences, setNavbarCollapsed } from 'store';
 import styles from './navbar.module.scss';
 
-type NavbarMenuItem = {
+interface NavbarMenuItem {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: any;
   text: string;
   href: string;
-};
+}
 
 type NavbarProps = {
   menuItems: NavbarMenuItem[];
 };
 
 const Navbar = ({ menuItems }: NavbarProps) => {
-  const [isCollapsed, setCollapsed] = useState(false);
+  const dispatch = useDispatch();
+  const [isCollapsed, setCollapsed] = useState(
+    useSelector(selectPreferences).navbarCollapsed
+  );
 
   const handleToggle = (): void => {
-    setCollapsed((prevCollapsed) => !prevCollapsed);
+    setCollapsed((prevCollapsed) => {
+      dispatch(setNavbarCollapsed(!prevCollapsed));
+      return !prevCollapsed;
+    });
   };
 
   const renderMenuItem = (menuItem: NavbarMenuItem) => {

@@ -11,9 +11,9 @@ import {
   getNationalInsurancePaymentRequest,
   searchNationalInsurancePaymentsRequest,
   updateNationalInsurancePaymentRequest
-} from '../../http';
+} from 'http/nationalInsurancePayment';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface NationalInsurancePaymentInitialState extends BaseInitialState {
   searchResult: NationalInsurancePaymentSearchResult;

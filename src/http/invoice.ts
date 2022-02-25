@@ -9,13 +9,20 @@ import { AxiosPromise } from 'axios';
 import axios from './axios';
 
 export const searchInvoicesRequest = (
+  businessId: string,
   searchFilter: InvoiceFilter
 ): AxiosPromise<InvoiceSearchResult> => {
-  return axios.post(Routes.SEARCH_INVOICES, searchFilter);
+  return axios.post(
+    insertParamsInRoute(Routes.SEARCH_INVOICES, { businessId }),
+    searchFilter
+  );
 };
 
-export const getInvoiceRequest = (id: string): AxiosPromise<Invoice> => {
-  return axios.get(insertParamsInRoute(Routes.GET_INVOICE, { id }));
+export const getInvoiceRequest = (
+  businessId: string,
+  id: string
+): AxiosPromise<Invoice> => {
+  return axios.get(insertParamsInRoute(Routes.GET_INVOICE, { businessId, id }));
 };
 
 export const addInvoiceRequest = (invoice: Invoice): AxiosPromise<Invoice> => {

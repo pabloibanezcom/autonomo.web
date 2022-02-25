@@ -1,38 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@autonomo/common';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import React, { useContext, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { UserContext } from '../../../../context/user';
-import { getBusiness } from '../../../../store/business/businessSlice';
-import { getUser, selectUser } from '../../../../store/user/userSlice';
-import LanguageSelector from '../../../languageSelector/LanguageSelector';
-import MenuButton from '../../../menuButton/MenuButton';
+import { LanguageSelector, MenuButton } from 'components/shared';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectUser } from 'store';
 import styles from './top-bar.module.scss';
 
 const Topbar = () => {
   const user: User = useSelector(selectUser);
-  const dispatch = useDispatch();
-  const { login, logout } = useContext(UserContext);
-
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (user?.defaultBusiness) {
-      dispatch(getBusiness({ id: user.defaultBusiness.toString() }));
-    }
-  }, [dispatch, user]);
-
-  const notLoggedInMenu = [
-    {
-      content: 'Login',
-      onClick: login
-    }
-  ];
+  const navigate = useNavigate();
 
   const loggedInMenu = [
     {
@@ -42,8 +21,7 @@ const Topbar = () => {
     },
     {
       content: 'Logout',
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick: logout
+      onClick: () => navigate('/auth/login')
     }
   ];
 
@@ -53,22 +31,12 @@ const Topbar = () => {
         <div className={styles.leftContent} />
         <div className={styles.rightContent}>
           <LanguageSelector />
-          <MenuButton
-            isIconButton
-            rounded
-            menuItems={user ? loggedInMenu : notLoggedInMenu}
-          >
-            {user ? (
-              <>
-                <img
-                  src={user.picture}
-                  alt={user.firstName}
-                  className={styles.userIconImg}
-                />
-              </>
-            ) : (
-              <AccountCircleIcon />
-            )}
+          <MenuButton isIconButton rounded menuItems={loggedInMenu}>
+            <img
+              src={user.picture}
+              alt={user.firstName}
+              className={styles.userIconImg}
+            />
           </MenuButton>
         </div>
       </Toolbar>

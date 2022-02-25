@@ -9,9 +9,9 @@ import {
   addBusinessRequest,
   getBusinessRequest,
   searchBusinessesRequest
-} from '../../http';
+} from 'http/business';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface BusinessInitialState extends BaseInitialState {
   searchResult: BusinessSearchResult;

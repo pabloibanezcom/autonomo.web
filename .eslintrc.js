@@ -37,11 +37,22 @@ module.exports = {
         tsx: 'never'
       }
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: false,
+        optionalDependencies: false,
+        peerDependencies: false,
+        packageDir: './'
+      }
+    ],
     'prettier/prettier': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/no-array-index-key': 'off',
     'no-use-before-define': 'off',
+    'no-underscore-dangle': 'off',
     'no-param-reassign': [
       'error',
       {
@@ -53,7 +64,15 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', 'src/']
+      },
+      alias: {
+        map: [
+          ['http/*', './src/http/*'],
+          ['store/*', './src/store/*']
+        ],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
       },
       typescript: {}
     }

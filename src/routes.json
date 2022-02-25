@@ -1,0 +1,69 @@
+[
+  {
+    "id": "root",
+    "path": "",
+    "element": "RootPage",
+    "breadcrumbsRoute": {
+      "path": "home",
+      "title": "Home"
+    },
+    "children": [
+      {
+        "id": "home",
+        "path": "home",
+        "title": "Home",
+        "element": "HomePage",
+        "useParentBreadcrumbs": true
+      },
+      {
+        "id": "invoices",
+        "path": "invoices",
+        "title": "Invoices",
+        "children": [
+          {
+            "id": "invoices",
+            "index": true,
+            "title": "Invoices",
+            "element": "InvoicesListPage"
+          },
+          {
+            "id": "invoiceAdd",
+            "path": "new",
+            "title": "New Invoice",
+            "element": "InvoiceAddPage"
+          },
+          {
+            "id": "invoicesDetail",
+            "path": ":id",
+            "title": "Invoice #11111",
+            "element": "InvoiceDetailsPage"
+          }
+        ]
+      },
+      {
+        "id": "rootEmpty",
+        "path": "/",
+        "to": "home"
+      }
+    ]
+  },
+  {
+    "path": "auth",
+    "children": [
+      {
+        "id": "login",
+        "path": "login",
+        "title": "Login",
+        "element": "LoginPage",
+        "noBreadcrumbs": true
+      },
+      {
+        "id": "register",
+        "path": "register",
+        "title": "Register",
+        "element": "RegisterPage",
+        "noBreadcrumbs": true
+      }
+    ]
+  }
+]

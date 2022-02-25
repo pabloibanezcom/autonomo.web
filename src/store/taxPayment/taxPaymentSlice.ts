@@ -11,9 +11,9 @@ import {
   getTaxPaymentRequest,
   searchTaxPaymentsRequest,
   updateTaxPaymentRequest
-} from '../../http';
+} from 'http/taxPayment';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface TaxPaymentInitialState extends BaseInitialState {
   searchResult: TaxPaymentSearchResult;
