@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { intlReducer } from 'react-intl-redux';
 import businessReducer from './business/businessSlice';
 import categoryReducer from './category/categorySlice';
 import companyReducer from './company/companySlice';
-import i18nReducer from './i18n/i18nSlice';
 import invoiceReducer from './invoice/invoiceSlice';
 import nationalInsurancePaymentReducer from './nationalInsurancePayment/nationalInsurancePaymentSlice';
 import personReducer from './person/personSlice';
+import preferencesReducer from './preferences/preferencesSlice';
 import taxPaymentReducer from './taxPayment/taxPaymentSlice';
 import taxYearReducer from './taxYear/taxYearSlice';
 import userReducer from './user/userSlice';
@@ -13,7 +14,8 @@ import yearReportReducer from './yearReport/yearReportSlice';
 
 const store = configureStore({
   reducer: {
-    i18n: i18nReducer,
+    intl: intlReducer,
+    preferences: preferencesReducer,
     business: businessReducer,
     category: categoryReducer,
     company: companyReducer,

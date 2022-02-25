@@ -1,30 +1,88 @@
+import LoginPage from 'components/auth/login/LoginPage';
+import RegisterPage from 'components/auth/register/RegisterPage';
+import HomePage from 'components/home/HomePage';
+import {
+  InvoiceAddPage,
+  InvoiceDetailsPage,
+  InvoicesListPage
+} from 'components/invoices';
+import RootPage from 'components/root/RootPage';
+import { BreadcrumbsEl, Route, RouteDefinition } from 'interfaces';
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import AuthContainer from './containers/auth/AuthContainer';
-import HomeContainer from './containers/home/HomeContainer';
-import AddInvoiceContainer from './containers/invoice/add-invoice/AddInvoiceContainer';
-import InvoicesListContainer from './containers/invoice/invoices-list/InvoicesListContainer';
-import RootContainer from './containers/root/RootContainer';
+import { Navigate } from 'react-router-dom';
+import { generateBreadcrumbs, getBreadcrumbById } from 'util/routes';
+import routeDefinitions from './routes.json';
 
-const ROOT_PATH = '/';
-const AUTH_PATH = '/auth';
-const HOME_PATH = '/home';
-const INVOICES_LIST_PATH = '/invoices';
-const INVOICES_NEW_PATH = '/invoices/new';
+// const homeBreadcrumbs: BreadcrumbsEl[] = [
+//   {
+//     text: 'Home'
+//   }
+// ];
 
-export const rootRoutes = () => (
-  <Switch>
-    <Route path={AUTH_PATH} component={AuthContainer} />
-    <Route path={ROOT_PATH} component={RootContainer} />
-    <Redirect to={ROOT_PATH} />
-  </Switch>
-);
+// const breadcrumbs: BreadcrumbsEl[] = [
+//   {
+//     text: 'Home',
+//     href: '/'
+//   },
+//   {
+//     text: 'Invoices'
+//   }
+// ];
 
-export const dashboardRoutes = () => (
-  <Switch>
-    <Route path={HOME_PATH} component={HomeContainer} />
-    <Route path={INVOICES_LIST_PATH} exact component={InvoicesListContainer} />
-    <Route path={INVOICES_NEW_PATH} exact component={AddInvoiceContainer} />
-    <Redirect to={HOME_PATH} />
-  </Switch>
-);
+const getPageComponent = (name: string) => {
+  if (name === 'RootPage') {
+    return RootPage;
+  }
+  if (name === 'HomePage') {
+    return HomePage;
+  }
+  if (name === 'InvoicesListPage') {
+    return InvoicesListPage;
+  }
+  if (name === 'InvoiceDetailsPage') {
+    return InvoiceDetailsPage;
+  }
+  if (name === 'InvoiceAddPage') {
+    return InvoiceAddPage;
+  }
+  if (name === 'LoginPage') {
+    return LoginPage;
+  }
+  if (name === 'RegisterPage') {
+    return RegisterPage;
+  }
+  return null;
+};
+
+const breadCrumbs: BreadcrumbsEl[][] = generateBreadcrumbs(routeDefinitions);
+
+const generateRoute = (route: RouteDefinition): Route => {
+  let ElComponent: JSX.Element;
+  if (route.to) {
+    ElComponent = <Navigate to={route.to} />;
+  } else if (route.element) {
+    const PageComponent = getPageComponent(route.element);
+    ElComponent = (
+      <PageComponent
+        title={route.title}
+        breadcrumbs={
+          !route.noBreadcrumbs
+            ? getBreadcrumbById(breadCrumbs, route.id)
+            : undefined
+        }
+      />
+    );
+  }
+  return {
+    path: route.path,
+    index: route.index,
+    element: ElComponent,
+    children: route.children?.map((children: RouteDefinition) =>
+      generateRoute(children)
+    )
+  };
+};
+
+const routes = routeDefinitions.map((route) => generateRoute(route));
+
+export default routes;

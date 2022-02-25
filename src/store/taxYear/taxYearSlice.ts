@@ -11,9 +11,9 @@ import {
   getTaxYearRequest,
   searchTaxYearsRequest,
   updateTaxYearRequest
-} from '../../http';
+} from 'http/taxYear';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface TaxYearInitialState extends BaseInitialState {
   searchResult: TaxYearSearchResult;

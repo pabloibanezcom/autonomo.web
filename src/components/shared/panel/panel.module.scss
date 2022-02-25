@@ -1,0 +1,32 @@
+@import 'assets/scss/variables';
+
+.panel {
+  overflow: hidden;
+  box-shadow: #32325d06 0px 2px 5px -1px, #0000000d 0px 1px 3px -1px;
+  border-radius: 6px;
+  background-color: $white-color;
+}
+
+.header {
+  display: flex;
+  padding: 16px;
+  align-items: center;
+
+  button {
+    // padding: 4px;
+    // width: 28px;
+    // height: 28px;
+  }
+}
+
+.headerLeft {
+  flex-grow: 1;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content--zeropadding {
+  padding: 0 !important;
+}

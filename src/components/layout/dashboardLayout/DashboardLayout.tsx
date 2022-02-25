@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Container from '@mui/material/Container';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import Container from '@mui/material/Container';
 import React from 'react';
 import styles from './dashboard-layout.module.scss';
 import Navbar from './navbar/Navbar';
@@ -22,6 +23,11 @@ const navbarMenuItems = [
     icon: DescriptionIcon,
     text: 'Invoices',
     href: '/invoices'
+  },
+  {
+    icon: CreditCardIcon,
+    text: 'Expenses',
+    href: '/expenses'
   },
   {
     icon: PeopleAltIcon,

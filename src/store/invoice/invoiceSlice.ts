@@ -1,45 +1,53 @@
 import {
   Invoice,
   InvoiceFilter,
-  InvoiceSearchResult,
-  RequestStatus
+  RequestStatus,
+  transformSearchResultToFilter
 } from '@autonomo/common';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   addInvoiceRequest,
   deleteInvoiceRequest,
   getInvoiceRequest,
   searchInvoicesRequest,
   updateInvoiceRequest
-} from '../../http';
+} from 'http/invoice';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface InvoiceInitialState extends BaseInitialState {
-  searchResult: InvoiceSearchResult;
+  searchFilter: InvoiceFilter;
+  invoices: Invoice[];
   invoice: Invoice;
 }
 
 const initialState: InvoiceInitialState = {
   ...getBaseInitialState(),
-  searchResult: {
-    items: []
-  },
+  searchFilter: null,
+  invoices: [],
   invoice: null
 };
 
 export const searchInvoices = createAsyncThunk(
   'invoice/searchInvoices',
-  async (params: { filter: InvoiceFilter }) => {
-    const response = await searchInvoicesRequest(params.filter);
+  async (params: { filter: InvoiceFilter }, { getState }) => {
+    const state = getState() as RootState;
+    const response = await searchInvoicesRequest(
+      state.business.business._id.toString(),
+      params.filter || state.invoice.searchFilter || {}
+    );
     return response.data;
   }
 );
 
 export const getInvoice = createAsyncThunk(
   'invoice/getInvoice',
-  async (params: { id: string }) => {
-    const response = await getInvoiceRequest(params.id);
+  async (params: { id: string }, { getState }) => {
+    const state = getState() as RootState;
+    const response = await getInvoiceRequest(
+      state.business.business._id.toString(),
+      params.id
+    );
     return response.data;
   }
 );
@@ -71,7 +79,11 @@ export const deleteInvoice = createAsyncThunk(
 export const invoiceSlice = createSlice({
   name: 'invoice',
   initialState,
-  reducers: {},
+  reducers: {
+    setNewSearchFilter(state, action: PayloadAction<InvoiceFilter>) {
+      state.searchFilter = action.payload;
+    }
+  },
   extraReducers(builder) {
     builder
       // Search Invoices
@@ -80,7 +92,13 @@ export const invoiceSlice = createSlice({
       })
       .addCase(searchInvoices.fulfilled, (state, action) => {
         state.status = RequestStatus.succeeded;
-        state.searchResult = action.payload;
+        state.invoices = action.payload.items;
+        const newSearchFilter = transformSearchResultToFilter(action.payload);
+        if (
+          JSON.stringify(state.searchFilter) !== JSON.stringify(newSearchFilter)
+        ) {
+          state.searchFilter = newSearchFilter;
+        }
       })
       .addCase(searchInvoices.rejected, (state, action) => {
         state.status = RequestStatus.failed;
@@ -134,8 +152,12 @@ export const invoiceSlice = createSlice({
   }
 });
 
-export const selectInvoices = (state: RootState) =>
-  state.invoice.searchResult.items;
+export const { setNewSearchFilter } = invoiceSlice.actions;
+
+export const selectInvoicesSearchFilter = (state: RootState) =>
+  state.invoice.searchFilter;
+
+export const selectInvoices = (state: RootState) => state.invoice.invoices;
 
 export const selectInvoice = (state: RootState) => state.invoice.invoice;
 

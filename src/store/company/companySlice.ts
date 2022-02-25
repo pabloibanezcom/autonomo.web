@@ -11,9 +11,9 @@ import {
   getCompanyRequest,
   searchCompaniesRequest,
   updateCompanyRequest
-} from '../../http';
+} from 'http/company';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface CompanyInitialState extends BaseInitialState {
   searchResult: CompanySearchResult;

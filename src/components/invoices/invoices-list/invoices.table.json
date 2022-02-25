@@ -1,0 +1,18 @@
+{
+  "columns": [
+    {
+      "title": "Issue Date",
+      "prop": "issuedDate",
+      "type": "date"
+    },
+    {
+      "title": "Payment date",
+      "prop": "paymentDate",
+      "type": "date"
+    },
+    {
+      "title": "Number",
+      "prop": "number"
+    }
+  ]
+}

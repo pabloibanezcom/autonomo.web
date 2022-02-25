@@ -10,9 +10,9 @@ import {
   deleteCategoryRequest,
   searchCategoriesRequest,
   updateCategoryRequest
-} from '../../http';
+} from 'http/category';
+import { RootState } from 'store';
 import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
-import { RootState } from '../store';
 
 interface CategoryInitialState extends BaseInitialState {
   searchResult: CategorySearchResult;

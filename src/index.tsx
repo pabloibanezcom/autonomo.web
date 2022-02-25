@@ -2,8 +2,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import UserProvider from './context/user';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
@@ -14,11 +14,11 @@ const theme = getCustomisedTheme();
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <UserProvider>
-        <Provider store={store}>
+      <Provider store={store}>
+        <BrowserRouter>
           <App />
-        </Provider>
-      </UserProvider>
+        </BrowserRouter>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
