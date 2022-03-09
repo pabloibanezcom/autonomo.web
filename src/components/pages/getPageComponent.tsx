@@ -1,4 +1,5 @@
 import {
+  AuthRootPage,
   ChangePasswordPage,
   CompaniesListPage,
   CompanyAddPage,
@@ -7,6 +8,7 @@ import {
   ExpenseDetailsPage,
   ExpensesListPage,
   HomePage,
+  InternalServerErrorPage,
   InvoiceAddPage,
   InvoiceDetailsPage,
   InvoicesListPage,
@@ -16,6 +18,7 @@ import {
   NationalInsurancePaymentAddPage,
   NationalInsurancePaymentDetailsPage,
   NationalInsurancePaymentsListPage,
+  PageNotFoundPage,
   PeopleListPage,
   PersonAddPage,
   PersonDetailsPage,
@@ -27,6 +30,9 @@ import {
 } from '.';
 
 const getPageComponent = (name: string) => {
+  if (name === 'AuthRootPage') {
+    return AuthRootPage;
+  }
   if (name === 'ChangePasswordPage') {
     return ChangePasswordPage;
   }
@@ -35,6 +41,12 @@ const getPageComponent = (name: string) => {
   }
   if (name === 'RegisterPage') {
     return RegisterPage;
+  }
+  if (name === 'InternalServerErrorPage') {
+    return InternalServerErrorPage;
+  }
+  if (name === 'PageNotFoundPage') {
+    return PageNotFoundPage;
   }
   if (name === 'CompaniesListPage') {
     return CompaniesListPage;

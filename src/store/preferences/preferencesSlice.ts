@@ -6,42 +6,30 @@ import {
   setPreferencesInStorage
 } from 'util/preferences';
 
-interface PreferencesInitialState {
-  preferences: Preferences;
-}
-
-const initialState: PreferencesInitialState = {
-  preferences: getPreferencesFromStorage()
-};
+const initialState: Preferences = getPreferencesFromStorage();
 
 export const preferencesSlice = createSlice({
   name: 'preferences',
   initialState,
   reducers: {
-    setPreferences(state, action: PayloadAction<Preferences>) {
-      state.preferences = action.payload;
-      setPreferencesInStorage(action.payload);
-    },
     setLanguage(state, action: PayloadAction<string>) {
-      state.preferences.language = action.payload;
+      state.language = action.payload;
       setPreferencesInStorage({
-        ...state.preferences,
+        ...state,
         language: action.payload
       });
     },
     setNavbarCollapsed(state, action: PayloadAction<boolean>) {
-      state.preferences.navbarCollapsed = action.payload;
+      state.navbarCollapsed = action.payload;
       setPreferencesInStorage({
-        ...state.preferences,
+        ...state,
         navbarCollapsed: action.payload
       });
     }
   }
 });
 
-export const selectPreferences = (state: RootState) =>
-  state.preferences.preferences;
-export const { setPreferences, setLanguage, setNavbarCollapsed } =
-  preferencesSlice.actions;
+export const selectPreferences = (state: RootState) => state.preferences;
+export const { setLanguage, setNavbarCollapsed } = preferencesSlice.actions;
 
 export default preferencesSlice.reducer;

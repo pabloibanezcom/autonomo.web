@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  > div {
+    margin-bottom: 24px;
+  }
+}
+
+.formVertical {
+  flex-direction: column;
+}
+
+.formHorizontal {
+  flex-direction: row;
+}

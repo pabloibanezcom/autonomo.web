@@ -1,9 +1,4 @@
-import {
-  RequestStatus,
-  TaxYear,
-  TaxYearFilter,
-  TaxYearSearchResult
-} from '@autonomo/common';
+import { TaxYear, TaxYearFilter, TaxYearSearchResult } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addTaxYearRequest,
@@ -13,15 +8,13 @@ import {
   updateTaxYearRequest
 } from 'http/taxYear';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface TaxYearInitialState extends BaseInitialState {
+interface TaxYearInitialState {
   searchResult: TaxYearSearchResult;
   taxYear: TaxYear;
 }
 
 const initialState: TaxYearInitialState = {
-  ...getBaseInitialState(),
   searchResult: {
     items: []
   },
@@ -74,62 +67,11 @@ export const taxYearslice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      // Search TaxYears
-      .addCase(searchTaxYears.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(searchTaxYears.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.searchResult = action.payload;
       })
-      .addCase(searchTaxYears.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Get TaxYear
-      .addCase(getTaxYear.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(getTaxYear.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.taxYear = action.payload;
-      })
-      .addCase(getTaxYear.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add TaxYear
-      .addCase(addTaxYear.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addTaxYear.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addTaxYear.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Update TaxYear
-      .addCase(updateTaxYear.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(updateTaxYear.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(updateTaxYear.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Delete TaxYear
-      .addCase(deleteTaxYear.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(deleteTaxYear.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(deleteTaxYear.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });

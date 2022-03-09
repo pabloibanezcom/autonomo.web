@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@autonomo/common';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import { LanguageSelector, MenuButton } from 'components/shared';
+import { AppBar, Toolbar } from 'material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -17,12 +16,12 @@ const Topbar = () => {
     {
       content: 'My profile',
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick: () => {}
+      onClick: () => navigate('/my-profile')
     },
     {
       content: 'My business',
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick: () => {}
+      onClick: () => navigate('/my-business')
     },
     {
       content: 'Logout',

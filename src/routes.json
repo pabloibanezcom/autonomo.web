@@ -199,22 +199,16 @@
         ]
       },
       {
-        "id": "user",
-        "path": "",
-        "children": [
-          {
-            "id": "myProfile",
-            "path": "my-profile",
-            "title": "My Profile",
-            "element": "MyProfilePage"
-          },
-          {
-            "id": "myBusiness",
-            "path": "my-business",
-            "title": "My Business",
-            "element": "MyBusinessPage"
-          }
-        ]
+        "id": "myProfile",
+        "path": "my-profile",
+        "title": "My Profile",
+        "element": "MyProfilePage"
+      },
+      {
+        "id": "myBusiness",
+        "path": "my-business",
+        "title": "My Business",
+        "element": "MyBusinessPage"
       },
       {
         "id": "rootEmpty",
@@ -224,7 +218,9 @@
     ]
   },
   {
+    "id": "auth",
     "path": "auth",
+    "element": "AuthRootPage",
     "children": [
       {
         "id": "login",
@@ -241,5 +237,20 @@
         "noBreadcrumbs": true
       }
     ]
+  },
+  {
+    "id": "pageNotFound",
+    "path": "404",
+    "element": "PageNotFoundPage"
+  },
+  {
+    "id": "internalServerError",
+    "path": "500",
+    "element": "InternalServerErrorPage"
+  },
+  {
+    "id": "notFound",
+    "path": "*",
+    "to": "404"
   }
 ]

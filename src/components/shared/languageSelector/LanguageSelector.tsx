@@ -1,9 +1,9 @@
 import FlagEN from 'assets/flags/en.png';
 import FlagES from 'assets/flags/es.png';
+import { MenuButton } from 'components/shared';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectLocale, setLanguage } from 'store';
-import MenuButton from '../menuButton/MenuButton';
 
 const LanguageSelector = () => {
   const dispatch = useDispatch();

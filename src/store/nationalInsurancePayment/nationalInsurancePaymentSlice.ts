@@ -1,8 +1,7 @@
 import {
   NationalInsurancePayment,
   NationalInsurancePaymentFilter,
-  NationalInsurancePaymentSearchResult,
-  RequestStatus
+  NationalInsurancePaymentSearchResult
 } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
@@ -13,15 +12,13 @@ import {
   updateNationalInsurancePaymentRequest
 } from 'http/nationalInsurancePayment';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface NationalInsurancePaymentInitialState extends BaseInitialState {
+interface NationalInsurancePaymentInitialState {
   searchResult: NationalInsurancePaymentSearchResult;
   nationalInsurancePayment: NationalInsurancePayment;
 }
 
 const initialState: NationalInsurancePaymentInitialState = {
-  ...getBaseInitialState(),
   searchResult: {
     items: []
   },
@@ -84,62 +81,11 @@ export const nationalInsurancePaymentslice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      // Search NationalInsurancePayments
-      .addCase(searchNationalInsurancePayments.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(searchNationalInsurancePayments.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.searchResult = action.payload;
       })
-      .addCase(searchNationalInsurancePayments.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Get NationalInsurancePayment
-      .addCase(getNationalInsurancePayment.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(getNationalInsurancePayment.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.nationalInsurancePayment = action.payload;
-      })
-      .addCase(getNationalInsurancePayment.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add NationalInsurancePayment
-      .addCase(addNationalInsurancePayment.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addNationalInsurancePayment.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addNationalInsurancePayment.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Update NationalInsurancePayment
-      .addCase(updateNationalInsurancePayment.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(updateNationalInsurancePayment.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(updateNationalInsurancePayment.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Delete NationalInsurancePayment
-      .addCase(deleteNationalInsurancePayment.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(deleteNationalInsurancePayment.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(deleteNationalInsurancePayment.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });

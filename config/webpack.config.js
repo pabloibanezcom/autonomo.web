@@ -337,6 +337,7 @@ module.exports = function (webpackEnv) {
         components: path.resolve(__dirname, '../src/components/'),
         http: path.resolve(__dirname, '../src/http/'),
         interfaces: path.resolve(__dirname, '../src/interfaces/'),
+        material: path.resolve(__dirname, '../src/material/'),
         store: path.resolve(__dirname, '../src/store/'),
         util: path.resolve(__dirname, '../src/util/')
       },

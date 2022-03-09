@@ -1,15 +1,14 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import Button from '@mui/material/Button';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grow from '@mui/material/Grow';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
 import MenuItemEl from 'interfaces/MenuItemEl';
+import {
+  Button,
+  ClickAwayListener,
+  Grow,
+  IconButton,
+  MenuItem,
+  MenuList,
+  Paper,
+  Popper
+} from 'material';
 import React, { useState } from 'react';
 import styles from './menuButton.module.scss';
 
@@ -17,7 +16,7 @@ type MenuButtonProps = {
   isIconButton?: boolean;
   rounded?: boolean;
   menuItems: MenuItemEl[];
-  children: any;
+  children: JSX.Element;
 };
 
 const MenuButton = ({
@@ -33,6 +32,7 @@ const MenuButton = ({
     setOpen((prevOpen) => !prevOpen);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClose = (event: any) => {
     if (
       anchorRef.current &&

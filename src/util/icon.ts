@@ -1,29 +1,29 @@
 import {
-  AccountBalance,
-  Business,
-  CreditCard,
-  Description,
-  Home,
-  PeopleAlt,
-  Percent
-} from '@mui/icons-material';
+  AccountBalanceIcon,
+  BusinessIcon,
+  CreditCardIcon,
+  DescriptionIcon,
+  HomeIcon,
+  PeopleAltIcon,
+  PercentIcon
+} from 'material/icons';
 
 export const getIcon = (iconName: string) => {
   switch (iconName) {
     case 'AccountBalance':
-      return AccountBalance;
+      return AccountBalanceIcon;
     case 'Business':
-      return Business;
+      return BusinessIcon;
     case 'CreditCard':
-      return CreditCard;
+      return CreditCardIcon;
     case 'Description':
-      return Description;
+      return DescriptionIcon;
     case 'Home':
-      return Home;
+      return HomeIcon;
     case 'PeopleAlt':
-      return PeopleAlt;
+      return PeopleAltIcon;
     case 'Percent':
-      return Percent;
+      return PercentIcon;
     default:
       return null;
   }

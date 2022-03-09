@@ -1,7 +1,6 @@
 import {
   Invoice,
   InvoiceFilter,
-  RequestStatus,
   transformSearchResultToFilter
 } from '@autonomo/common';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
@@ -13,16 +12,16 @@ import {
   updateInvoiceRequest
 } from 'http/invoice';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
+import { simplifyError } from 'util/error';
+import { setError, startLoading, stopLoading } from '../status/statusSlice';
 
-interface InvoiceInitialState extends BaseInitialState {
+interface InvoiceInitialState {
   searchFilter: InvoiceFilter;
   invoices: Invoice[];
   invoice: Invoice;
 }
 
 const initialState: InvoiceInitialState = {
-  ...getBaseInitialState(),
   searchFilter: null,
   invoices: [],
   invoice: null
@@ -30,13 +29,21 @@ const initialState: InvoiceInitialState = {
 
 export const searchInvoices = createAsyncThunk(
   'invoice/searchInvoices',
-  async (params: { filter: InvoiceFilter }, { getState }) => {
+  async (params: { filter: InvoiceFilter }, { dispatch, getState }) => {
     const state = getState() as RootState;
-    const response = await searchInvoicesRequest(
-      state.business.business._id.toString(),
-      params.filter || state.invoice.searchFilter || {}
-    );
-    return response.data;
+    dispatch(startLoading());
+    try {
+      const response = await searchInvoicesRequest(
+        state.business.business._id.toString(),
+        params.filter || state.invoice.searchFilter || {}
+      );
+      dispatch(stopLoading());
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
@@ -87,11 +94,7 @@ export const invoiceSlice = createSlice({
   extraReducers(builder) {
     builder
       // Search Invoices
-      .addCase(searchInvoices.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(searchInvoices.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.invoices = action.payload.items;
         const newSearchFilter = transformSearchResultToFilter(action.payload);
         if (
@@ -100,54 +103,9 @@ export const invoiceSlice = createSlice({
           state.searchFilter = newSearchFilter;
         }
       })
-      .addCase(searchInvoices.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
       // Get Invoice
-      .addCase(getInvoice.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(getInvoice.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.invoice = action.payload;
-      })
-      .addCase(getInvoice.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add Invoice
-      .addCase(addInvoice.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addInvoice.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addInvoice.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Update Invoice
-      .addCase(updateInvoice.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(updateInvoice.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(updateInvoice.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Delete Invoice
-      .addCase(deleteInvoice.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(deleteInvoice.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(deleteInvoice.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });

@@ -1,0 +1,25 @@
+@import 'assets/scss/variables';
+
+.authLayout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: $container-bgcolor;
+}
+
+.container {
+  width: 480px;
+  margin: 0px auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.authBox {
+  background-color: $white-color;
+  padding: 40px;
+  width: 100%;
+}

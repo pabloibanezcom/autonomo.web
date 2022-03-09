@@ -1,9 +1,15 @@
-import { ChangePasswordPage, LoginPage, RegisterPage } from './auth';
+import {
+  AuthRootPage,
+  ChangePasswordPage,
+  LoginPage,
+  RegisterPage
+} from './auth';
 import {
   CompaniesListPage,
   CompanyAddPage,
   CompanyDetailsPage
 } from './companies';
+import { InternalServerErrorPage, PageNotFoundPage } from './error';
 import {
   ExpenseAddPage,
   ExpenseDetailsPage,
@@ -31,9 +37,12 @@ import {
 import { MyBusinessPage, MyProfilePage } from './user';
 
 export {
+  AuthRootPage,
   ChangePasswordPage,
   LoginPage,
   RegisterPage,
+  InternalServerErrorPage,
+  PageNotFoundPage,
   CompaniesListPage,
   CompanyAddPage,
   CompanyDetailsPage,

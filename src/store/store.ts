@@ -7,6 +7,7 @@ import invoiceReducer from './invoice/invoiceSlice';
 import nationalInsurancePaymentReducer from './nationalInsurancePayment/nationalInsurancePaymentSlice';
 import personReducer from './person/personSlice';
 import preferencesReducer from './preferences/preferencesSlice';
+import statusReducer from './status/statusSlice';
 import taxPaymentReducer from './taxPayment/taxPaymentSlice';
 import taxYearReducer from './taxYear/taxYearSlice';
 import userReducer from './user/userSlice';
@@ -14,6 +15,7 @@ import yearReportReducer from './yearReport/yearReportSlice';
 
 const store = configureStore({
   reducer: {
+    status: statusReducer,
     intl: intlReducer,
     preferences: preferencesReducer,
     business: businessReducer,

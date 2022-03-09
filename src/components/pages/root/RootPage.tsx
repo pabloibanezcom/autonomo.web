@@ -1,5 +1,5 @@
 import { Business, User } from '@autonomo/common';
-import DashboardLayout from 'components/layout/dashboardLayout/DashboardLayout';
+import { DashboardLayout } from 'components/layout';
 import { getAuthToken } from 'http/authToken';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

@@ -2,7 +2,6 @@ import {
   ChangePasswordData,
   LoginData,
   RegisterData,
-  RequestStatus,
   User
 } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
@@ -14,24 +13,41 @@ import {
   registerRequest
 } from 'http/user';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
+import { simplifyError } from 'util/error';
+import {
+  clearError,
+  setError,
+  setRedirectUrl,
+  startLoading,
+  stopLoading
+} from '../status/statusSlice';
 
-interface UserInitialState extends BaseInitialState {
+interface UserInitialState {
   user: User;
-  tokenExists: boolean;
 }
 
 const initialState: UserInitialState = {
-  ...getBaseInitialState(),
-  user: null,
-  tokenExists: false
+  user: null
 };
 
 export const login = createAsyncThunk(
   'user/login',
-  async (params: { loginData: LoginData }) => {
-    const response = await loginRequest(params.loginData);
-    return response.data;
+  async (params: { loginData: LoginData }, { dispatch, getState }) => {
+    dispatch(startLoading());
+    try {
+      const response = await loginRequest(params.loginData);
+      dispatch(stopLoading());
+      const state = getState() as RootState;
+      if (state.status.error) {
+        dispatch(clearError());
+      }
+      dispatch(setRedirectUrl('/'));
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
@@ -62,33 +78,15 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(login.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(login.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         setAuthToken(action.payload.access_token);
-        state.tokenExists = true;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      .addCase(getUser.pending, (state) => {
-        state.status = RequestStatus.loading;
       })
       .addCase(getUser.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.user = action.payload;
-      })
-      .addCase(getUser.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });
 
 export const selectUser = (state: RootState) => state.user.user;
-export const selectTokenExists = (state: RootState) => state.user.tokenExists;
 
 export default userSlice.reducer;

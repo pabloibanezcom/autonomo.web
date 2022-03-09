@@ -1,9 +1,4 @@
-import {
-  Company,
-  CompanyFilter,
-  CompanySearchResult,
-  RequestStatus
-} from '@autonomo/common';
+import { Company, CompanyFilter, CompanySearchResult } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addCompanyRequest,
@@ -13,15 +8,13 @@ import {
   updateCompanyRequest
 } from 'http/company';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface CompanyInitialState extends BaseInitialState {
+interface CompanyInitialState {
   searchResult: CompanySearchResult;
   company: Company;
 }
 
 const initialState: CompanyInitialState = {
-  ...getBaseInitialState(),
   searchResult: {
     items: []
   },
@@ -74,62 +67,11 @@ export const companySlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      // Search Companies
-      .addCase(searchCompanies.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(searchCompanies.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.searchResult = action.payload;
       })
-      .addCase(searchCompanies.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Get Company
-      .addCase(getCompany.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(getCompany.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.company = action.payload;
-      })
-      .addCase(getCompany.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add Company
-      .addCase(addCompany.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addCompany.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addCompany.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Update Company
-      .addCase(updateCompany.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(updateCompany.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(updateCompany.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Delete Company
-      .addCase(deleteCompany.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(deleteCompany.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(deleteCompany.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });

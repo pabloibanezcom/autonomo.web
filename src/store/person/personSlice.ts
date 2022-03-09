@@ -1,9 +1,4 @@
-import {
-  Person,
-  PersonFilter,
-  PersonSearchResult,
-  RequestStatus
-} from '@autonomo/common';
+import { Person, PersonFilter, PersonSearchResult } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addPersonRequest,
@@ -13,15 +8,13 @@ import {
   updatePersonRequest
 } from 'http/person';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface PersonInitialState extends BaseInitialState {
+interface PersonInitialState {
   searchResult: PersonSearchResult;
   person: Person;
 }
 
 const initialState: PersonInitialState = {
-  ...getBaseInitialState(),
   searchResult: {
     items: []
   },
@@ -74,62 +67,11 @@ export const personSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      // Search People
-      .addCase(searchPeople.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(searchPeople.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.searchResult = action.payload;
       })
-      .addCase(searchPeople.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Get Person
-      .addCase(getPerson.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(getPerson.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.person = action.payload;
-      })
-      .addCase(getPerson.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add Person
-      .addCase(addPerson.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addPerson.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addPerson.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Update Person
-      .addCase(updatePerson.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(updatePerson.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(updatePerson.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Delete Person
-      .addCase(deletePerson.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(deletePerson.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(deletePerson.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });

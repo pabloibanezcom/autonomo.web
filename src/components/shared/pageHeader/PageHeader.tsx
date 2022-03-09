@@ -1,7 +1,4 @@
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
+import { Breadcrumbs, Divider, Link, Typography } from 'material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styles from './pageHeader.module.scss';

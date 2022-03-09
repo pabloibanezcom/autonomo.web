@@ -1,16 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseFilter } from '@autonomo/common';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import {
+  Box,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow
+} from 'material';
+import { VisibilityIcon } from 'material/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import formatter from 'util/formatter';

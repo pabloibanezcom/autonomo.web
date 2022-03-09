@@ -1,10 +1,8 @@
 import { Invoice, InvoiceFilter } from '@autonomo/common';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import { DataTable, PageHeader, Panel } from 'components/shared';
 import { PageProps } from 'interfaces';
+import { Tooltip } from 'material';
+import { AddCircleIcon, FilterListIcon, IconButton } from 'material/icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
