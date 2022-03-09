@@ -1,8 +1,7 @@
 import {
   Business,
   BusinessFilter,
-  BusinessSearchResult,
-  RequestStatus
+  BusinessSearchResult
 } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
@@ -11,15 +10,13 @@ import {
   searchBusinessesRequest
 } from 'http/business';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface BusinessInitialState extends BaseInitialState {
+interface BusinessInitialState {
   searchResult: BusinessSearchResult;
   business: Business;
 }
 
 const initialState: BusinessInitialState = {
-  ...getBaseInitialState(),
   searchResult: {
     items: []
   },
@@ -56,40 +53,11 @@ export const businessSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      // Search Businesses
-      .addCase(searchBusinesses.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(searchBusinesses.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.searchResult = action.payload;
       })
-      .addCase(searchBusinesses.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Get Business
-      .addCase(getBusiness.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
       .addCase(getBusiness.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
         state.business = action.payload;
-      })
-      .addCase(getBusiness.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add Business
-      .addCase(addBusiness.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addBusiness.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addBusiness.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
       });
   }
 });

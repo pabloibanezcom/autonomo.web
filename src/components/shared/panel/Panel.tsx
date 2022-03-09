@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Typography from '@mui/material/Typography';
 import { MenuButton } from 'components/shared';
 import MenuItemEl from 'interfaces/MenuItemEl';
+import { Typography } from 'material';
+import { MoreVertIcon } from 'material/icons';
 import React from 'react';
 import styles from './panel.module.scss';
 

@@ -1,55 +1,42 @@
-import { LoginData } from '@autonomo/common';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { SerializedError } from '@reduxjs/toolkit';
+import { Form } from 'components/shared';
 import { removeAuthToken } from 'http/authToken';
-import React, { useEffect, useState } from 'react';
+import { Box, Typography } from 'material';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { login, selectTokenExists } from 'store';
+import { login, selectError } from 'store';
+import formDefinition from './login.form.json';
+
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const [loginData, setLoginData] = useState<LoginData>(null);
-  const tokenExists: boolean = useSelector(selectTokenExists);
-  const navigate = useNavigate();
+  const error: SerializedError = useSelector(selectError);
 
   useEffect(() => {
     removeAuthToken();
   }, []);
 
-  useEffect(() => {
-    if (tokenExists) {
-      navigate('/');
-    }
-  }, [navigate, tokenExists]);
-
-  const submitLogin = () => {
-    dispatch(login({ loginData }));
-  };
-
-  const updateLoginData = (property: string, val: string) => {
-    setLoginData((prevState) => ({
-      ...prevState,
-      [property]: val
-    }));
+  const submitLogin = (data: Inputs) => {
+    dispatch(login({ loginData: data }));
   };
 
   return (
     <div>
-      <form>
-        <h3>Sign in</h3>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          onChange={(val) => updateLoginData('email', val.target.value)}
+      <Typography variant="h3" align="center" mb={4}>
+        Sign in
+      </Typography>
+      <Box>
+        <Form
+          formDefinition={formDefinition}
+          error={error?.code === '401' && 'Incorrect email and password'}
+          onSubmit={submitLogin}
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={(val) => updateLoginData('password', val.target.value)}
-        />
-        <input type="button" value="Login" onClick={submitLogin} />
-      </form>
+      </Box>
     </div>
   );
 };

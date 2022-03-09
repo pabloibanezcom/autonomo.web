@@ -1,0 +1,23 @@
+@import 'assets/scss/variables';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: $container-bgcolor;
+}
+
+.container {
+  margin: 0px auto;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  text-align: center;
+  > div {
+    margin-bottom: 16px;
+  }
+}

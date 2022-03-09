@@ -1,4 +1,4 @@
-@import '../../../../assets/scss/variables';
+@import 'assets/scss/variables';
 
 .navbar {
   display: flex;
@@ -6,7 +6,7 @@
   width: $navbar-width;
   height: 100vh;
   background-color: $navbar-bgcolor-primary;
-  color: $navbar-color-primary; 
+  color: $navbar-color-primary;
   -webkit-transition: width $transition-time ease-in-out;
   -moz-transition: width $transition-time ease-in-out;
   -o-transition: width $transition-time ease-in-out;
@@ -29,7 +29,7 @@
 .topSection {
   height: $topbar-height;
   background-color: $navbar-bgcolor-secondary;
-  color: $navbar-color-secondary
+  color: $navbar-color-secondary;
 }
 
 .title {

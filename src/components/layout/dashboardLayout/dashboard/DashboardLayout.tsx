@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import Container from '@mui/material/Container';
+import { Container } from 'material';
 import React from 'react';
 import { generateNavbarElements } from 'util/routes';
-import routeDefinitions from '../../../routes.json';
+import routeDefinitions from '../../../../routes.json';
 import styles from './dashboard-layout.module.scss';
 import Navbar from './navbar/Navbar';
 import Topbar from './topbar/Topbar';
 
 interface DashboardLayoutProps {
-  children: any;
+  children: JSX.Element;
 }
 
 const navbarMenuItems = generateNavbarElements(routeDefinitions);

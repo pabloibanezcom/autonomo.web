@@ -1,15 +1,13 @@
-import { RequestStatus, YearReport } from '@autonomo/common';
+import { YearReport } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getYearReportRequest } from 'http/yearReport';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface YearReportInitialState extends BaseInitialState {
+interface YearReportInitialState {
   yearReport: YearReport;
 }
 
 const initialState: YearReportInitialState = {
-  ...getBaseInitialState(),
   yearReport: null
 };
 
@@ -26,19 +24,9 @@ export const yearReportslice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder
-      // Get YearReport
-      .addCase(getYearReport.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(getYearReport.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
-        state.yearReport = action.payload;
-      })
-      .addCase(getYearReport.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      });
+    builder.addCase(getYearReport.fulfilled, (state, action) => {
+      state.yearReport = action.payload;
+    });
   }
 });
 

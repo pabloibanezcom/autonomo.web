@@ -1,4 +1,5 @@
 import BreadcrumbsEl from './BreadcrumbsEl';
+import FormDefinition from './FormDefinition';
 import MenuItemEl from './MenuItemEl';
 import NavbarEl from './NavbarEl';
 import PageProps from './PageProps';
@@ -8,6 +9,7 @@ import RouteDefinition from './RouteDefinition';
 
 export type {
   BreadcrumbsEl,
+  FormDefinition,
   MenuItemEl,
   NavbarEl,
   PageProps,

@@ -8,6 +8,7 @@ export * from './invoice/invoiceSlice';
 export * from './nationalInsurancePayment/nationalInsurancePaymentSlice';
 export * from './person/personSlice';
 export * from './preferences/preferencesSlice';
+export * from './status/statusSlice';
 export type { AppDispatch, RootState } from './store';
 export * from './taxPayment/taxPaymentSlice';
 export * from './taxYear/taxYearSlice';

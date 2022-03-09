@@ -28,6 +28,7 @@ module.exports = {
       }
     ],
     'react/jsx-curly-newline': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': [
       'error',

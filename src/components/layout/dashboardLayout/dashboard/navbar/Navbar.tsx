@@ -1,9 +1,6 @@
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 import { NavbarEl } from 'interfaces';
+import { Button, Tooltip, Typography } from 'material';
+import { ArrowBackIosIcon, DashboardIcon } from 'material/icons';
 import React, { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -34,6 +31,7 @@ const Navbar = ({ menuItems }: NavbarProps) => {
       return (
         <Button
           component={Link}
+          variant="text"
           fullWidth
           className={styles.menuItemButton}
           to={menuItem.href}
@@ -82,6 +80,7 @@ const Navbar = ({ menuItems }: NavbarProps) => {
       </div>
       <div className={styles.bottomSection}>
         <Button
+          variant="text"
           fullWidth
           className={styles.arrowBottomButton}
           onClick={handleToggle}

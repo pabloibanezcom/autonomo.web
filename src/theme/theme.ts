@@ -1,6 +1,5 @@
-/* eslint-disable no-param-reassign */
-import { Theme } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
+import { Theme } from 'material/interfaces';
+import { createTheme } from 'material/styles';
 
 export const getCustomisedTheme = (): Theme => {
   return createTheme({
@@ -20,6 +19,18 @@ export const getCustomisedTheme = (): Theme => {
       body1: {
         fontSize: '13px',
         letterSpacing: 'normal'
+      }
+    },
+    components: {
+      MuiButton: {
+        defaultProps: {
+          variant: 'contained'
+        },
+        styleOverrides: {
+          root: {
+            textTransform: 'none'
+          }
+        }
       }
     }
   });

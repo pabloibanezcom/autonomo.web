@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from 'material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';

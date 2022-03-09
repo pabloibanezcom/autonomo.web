@@ -1,8 +1,7 @@
 import {
   Category,
   CategoryFilter,
-  CategorySearchResult,
-  RequestStatus
+  CategorySearchResult
 } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
@@ -12,14 +11,12 @@ import {
   updateCategoryRequest
 } from 'http/category';
 import { RootState } from 'store';
-import BaseInitialState, { getBaseInitialState } from '../BaseInitialState';
 
-interface CategoryInitialState extends BaseInitialState {
+interface CategoryInitialState {
   searchResult: CategorySearchResult;
 }
 
 const initialState: CategoryInitialState = {
-  ...getBaseInitialState(),
   searchResult: {
     items: []
   }
@@ -62,52 +59,9 @@ export const categorySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder
-      // Search Categories
-      .addCase(searchCategories.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(searchCategories.fulfilled, (state, action) => {
-        state.status = RequestStatus.succeeded;
-        state.searchResult = action.payload;
-      })
-      .addCase(searchCategories.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Add Category
-      .addCase(addCategory.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(addCategory.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(addCategory.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Update Category
-      .addCase(updateCategory.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(updateCategory.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(updateCategory.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      })
-      // Delete Category
-      .addCase(deleteCategory.pending, (state) => {
-        state.status = RequestStatus.loading;
-      })
-      .addCase(deleteCategory.fulfilled, (state) => {
-        state.status = RequestStatus.succeeded;
-      })
-      .addCase(deleteCategory.rejected, (state, action) => {
-        state.status = RequestStatus.failed;
-        state.error = action.error.message;
-      });
+    builder.addCase(searchCategories.fulfilled, (state, action) => {
+      state.searchResult = action.payload;
+    });
   }
 });
 

@@ -66,7 +66,7 @@
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.13.0",
+    "react-hook-form": "^7.27.1",
     "react-intl": "^5.20.9",
     "react-intl-redux": "^2.2.0",
     "react-redux": "^7.2.6",

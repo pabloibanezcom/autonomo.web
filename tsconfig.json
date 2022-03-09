@@ -22,6 +22,7 @@
       "components/*": ["./components/*"],
       "http/*": ["./http/*"],
       "interfaces/*": ["./interfaces/*"],
+      "material/*": ["./material/*"],
       "store/*": ["./store/*"],
       "util/*": ["./util/*"]
     }
