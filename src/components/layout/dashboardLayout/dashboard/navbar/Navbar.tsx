@@ -62,16 +62,19 @@ const Navbar = ({ menuItems }: NavbarProps) => {
 
   return (
     <div
-      className={[
-        styles.navbar,
-        isCollapsed && styles['navbar--collapsed']
-      ].join(' ')}
+      className={[styles.navbar, isCollapsed && styles.navbarCollapsed].join(
+        ' '
+      )}
     >
-      <div className={[styles.topSection, styles.navBarElement].join(' ')}>
-        <DashboardIcon />
-        <Typography variant="h6" className={styles.title}>
-          Autonomo
-        </Typography>
+      <div className={styles.topSection}>
+        <div className={styles.navBarElement}>
+          <DashboardIcon />
+          {!isCollapsed && (
+            <Typography variant="h6" className={styles.title}>
+              Autonomo
+            </Typography>
+          )}
+        </div>
       </div>
       <div className={styles.mainSection}>
         {menuItems.map((mItem) => (
