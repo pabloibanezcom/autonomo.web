@@ -30,7 +30,7 @@ const Topbar = () => {
   ];
 
   return (
-    <AppBar position="static" className={styles.topbar}>
+    <AppBar position="sticky" className={styles.topbar}>
       <Toolbar variant="dense">
         <div className={styles.leftContent} />
         <div className={styles.rightContent}>

@@ -15,7 +15,9 @@ const navbarMenuItems = generateNavbarElements(routeDefinitions);
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className={styles.dashboard}>
-      <Navbar menuItems={navbarMenuItems} />
+      <div className={styles.leftContent}>
+        <Navbar menuItems={navbarMenuItems} />
+      </div>
       <div className={styles.rightContent}>
         <Topbar />
         <div className={styles.containerWrapper}>

@@ -22,6 +22,13 @@ export const getCustomisedTheme = (): Theme => {
       }
     },
     components: {
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            boxShadow: 'none'
+          }
+        }
+      },
       MuiButton: {
         defaultProps: {
           variant: 'contained'

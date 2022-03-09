@@ -1,4 +1,5 @@
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import AddIcon from '@mui/icons-material/Add';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import BusinessIcon from '@mui/icons-material/Business';
@@ -16,6 +17,7 @@ import IconButton from '@mui/material/IconButton';
 export {
   AccountBalanceIcon,
   AddCircleIcon,
+  AddIcon,
   ArrowBackIosIcon,
   BusinessIcon,
   CreditCardIcon,
