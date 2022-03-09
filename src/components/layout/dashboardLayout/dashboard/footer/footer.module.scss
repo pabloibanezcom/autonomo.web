@@ -1,0 +1,16 @@
+@import 'assets/scss/variables';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: $topbar-bgcolor !important;
+  color: $topbar-color !important;
+  padding: 0 42px;
+  height: 48px;
+}
+
+.container {
+  align-self: center;
+  opacity: 0.5;
+}
