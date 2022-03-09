@@ -3,6 +3,7 @@ import React from 'react';
 import { generateNavbarElements } from 'util/routes';
 import routeDefinitions from '../../../../routes.json';
 import styles from './dashboard-layout.module.scss';
+import Footer from './footer/Footer';
 import Navbar from './navbar/Navbar';
 import Topbar from './topbar/Topbar';
 
@@ -25,6 +26,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             {children}
           </Container>
         </div>
+        <Footer />
       </div>
     </div>
   );
