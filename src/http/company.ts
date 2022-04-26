@@ -9,9 +9,13 @@ import { AxiosPromise } from 'axios';
 import axios from './axios';
 
 export const searchCompaniesRequest = (
+  businessId: string,
   searchFilter: CompanyFilter
 ): AxiosPromise<CompanySearchResult> => {
-  return axios.post(Routes.SEARCH_COMPANIES, searchFilter);
+  return axios.post(
+    insertParamsInRoute(Routes.SEARCH_COMPANIES, { businessId }),
+    searchFilter
+  );
 };
 
 export const getCompanyRequest = (id: string): AxiosPromise<Company> => {

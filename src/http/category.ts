@@ -9,9 +9,13 @@ import { AxiosPromise } from 'axios';
 import axios from './axios';
 
 export const searchCategoriesRequest = (
+  businessId: string,
   searchFilter: CategoryFilter
 ): AxiosPromise<CategorySearchResult> => {
-  return axios.post(Routes.SEARCH_CATEGORIES, searchFilter);
+  return axios.post(
+    insertParamsInRoute(Routes.SEARCH_CATEGORIES, { businessId }),
+    searchFilter
+  );
 };
 
 export const addCategoryRequest = (

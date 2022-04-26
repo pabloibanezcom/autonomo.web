@@ -11,12 +11,16 @@ import {
   updateCategoryRequest
 } from 'http/category';
 import { RootState } from 'store';
+import { simplifyError } from 'util/error';
+import { setError, startLoading, stopLoading } from '../status/statusSlice';
 
 interface CategoryInitialState {
+  searchFilter: CategoryFilter;
   searchResult: CategorySearchResult;
 }
 
 const initialState: CategoryInitialState = {
+  searchFilter: null,
   searchResult: {
     items: []
   }
@@ -24,9 +28,21 @@ const initialState: CategoryInitialState = {
 
 export const searchCategories = createAsyncThunk(
   'category/searchCategoryes',
-  async (params: { filter: CategoryFilter }) => {
-    const response = await searchCategoriesRequest(params.filter);
-    return response.data;
+  async (params: { filter: CategoryFilter }, { dispatch, getState }) => {
+    const state = getState() as RootState;
+    dispatch(startLoading());
+    try {
+      const response = await searchCategoriesRequest(
+        state.business.business._id.toString(),
+        params.filter || state.category.searchFilter || {}
+      );
+      dispatch(stopLoading());
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 

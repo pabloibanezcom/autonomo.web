@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "number",
+      "label": "Invoice number",
+      "required": true
+    },
+    {
+      "name": "issuedDate",
+      "label": "Issued date",
+      "element": "date",
+      "elementProps": {
+        "todayAsDefaultValue": true
+      },
+      "required": true,
+      "gridSize": 4
+    },
+    {
+      "name": "baseCurrency",
+      "label": "Base currency",
+      "element": "currency",
+      "required": true,
+      "listenOnChange": true,
+      "gridSize": 4
+    },
+    {
+      "name": "categories",
+      "label": "Categories",
+      "element": "categories"
+    }
+  ],
+  "submitButton": {
+    "text": "Add info"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "name": "name",
+      "label": "Name",
+      "required": true
+    },
+    {
+      "name": "cifVat",
+      "label": "VAT number"
+    },
+    {
+      "name": "address.line1",
+      "label": "Address line 1"
+    },
+    {
+      "name": "address.line2",
+      "label": "Address line 2"
+    },
+    {
+      "name": "address.town",
+      "label": "Town"
+    },
+    {
+      "name": "address.postalCode",
+      "label": "Postal Code"
+    }
+  ],
+  "submitButton": {
+    "text": "Add client"
+  }
+}

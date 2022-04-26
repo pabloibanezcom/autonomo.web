@@ -1,19 +1,9 @@
-interface FormField {
-  name: string;
-  label: string;
-  type?: string;
-  required?: boolean;
-  fullWidth?: boolean;
-}
-
-interface FormButton {
-  text: string;
-  fullWidth?: boolean;
-  variant?: 'text' | 'outlined' | 'contained';
-}
+import FormButton from './FormButton';
+import FormField from './FormField';
 
 export default interface FormDefinition {
   fields: FormField[];
   submitButton?: FormButton;
+  cancelButton?: FormButton;
   direction?: string;
 }

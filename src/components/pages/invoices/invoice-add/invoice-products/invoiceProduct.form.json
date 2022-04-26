@@ -1,0 +1,46 @@
+{
+  "fields": [
+    {
+      "name": "descriptionLine1",
+      "label": "Description line 1",
+      "required": true
+    },
+    {
+      "name": "descriptionLine2",
+      "label": "Description line 2"
+    },
+    {
+      "name": "quantity",
+      "label": "Quantity",
+      "type": "number",
+      "required": true,
+      "gridSize": 4
+    },
+    {
+      "name": "unitPrice",
+      "label": "Unit Price",
+      "element": "currencyAmount",
+      "required": true,
+      "pattern": {
+        "regex": "amountTwoDigits",
+        "message": "Invalid amount"
+      },
+      "elementProps": {
+        "defaultCurrency": "GBP"
+      },
+      "gridSize": 4
+    },
+    {
+      "name": "taxPct",
+      "label": "Tax %",
+      "required": true,
+      "gridSize": 4
+    }
+  ],
+  "submitButton": {
+    "text": "Add product / service"
+  },
+  "cancelButton": {
+    "text": "Cancel"
+  }
+}
