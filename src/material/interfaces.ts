@@ -1,3 +1,3 @@
-import { Theme } from '@mui/material';
+import { GridSize, Theme } from '@mui/material';
 
-export type { Theme };
+export type { GridSize, Theme };

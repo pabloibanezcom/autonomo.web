@@ -23,8 +23,8 @@ type DataTableConfig = {
 
 type DataTableProps = {
   config: DataTableConfig;
-  searchFilter: BaseFilter;
   items: any[];
+  searchFilter?: BaseFilter;
   // eslint-disable-next-line @typescript-eslint/ban-types
   onSearchFilterChange?: Function;
 };

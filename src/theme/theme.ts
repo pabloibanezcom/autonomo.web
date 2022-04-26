@@ -1,8 +1,12 @@
+import teal from '@mui/material/colors/teal';
 import { Theme } from 'material/interfaces';
 import { createTheme } from 'material/styles';
 
 export const getCustomisedTheme = (): Theme => {
   return createTheme({
+    palette: {
+      primary: teal
+    },
     typography: {
       fontFamily: 'inter',
       h3: {

@@ -8,6 +8,8 @@ import {
   updateCompanyRequest
 } from 'http/company';
 import { RootState } from 'store';
+import { simplifyError } from 'util/error';
+import { setError, startLoading, stopLoading } from '../status/statusSlice';
 
 interface CompanyInitialState {
   searchResult: CompanySearchResult;
@@ -23,9 +25,21 @@ const initialState: CompanyInitialState = {
 
 export const searchCompanies = createAsyncThunk(
   'company/searchCompanies',
-  async (params: { filter: CompanyFilter }) => {
-    const response = await searchCompaniesRequest(params.filter);
-    return response.data;
+  async (params: { filter: CompanyFilter }, { dispatch, getState }) => {
+    dispatch(startLoading());
+    try {
+      const state = getState() as RootState;
+      const response = await searchCompaniesRequest(
+        state.business.business._id.toString(),
+        params.filter
+      );
+      dispatch(stopLoading());
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
