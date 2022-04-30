@@ -1,8 +1,5 @@
 name: Prod - Deploy to Heroku
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 
 jobs:
   deploy_dev:
@@ -26,4 +23,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: 'autonomo-web-prod'
           heroku_email: 'me@pabloibanez.com'
-          usedocker: true
