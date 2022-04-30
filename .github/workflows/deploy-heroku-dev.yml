@@ -26,3 +26,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: 'autonomo-web-dev'
           heroku_email: 'me@pabloibanez.com'
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
