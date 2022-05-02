@@ -2,7 +2,7 @@ name: Prod - Deploy to Heroku
 on: workflow_dispatch
 
 jobs:
-  deploy_dev:
+  deploy_prod:
     runs-on: ubuntu-latest
     environment: production
     steps:
