@@ -12,14 +12,6 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
-      - name: Create env file
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-
-      - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git*'
-
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
