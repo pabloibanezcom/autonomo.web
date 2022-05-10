@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addTaxYearRequest,
   deleteTaxYearRequest,
+  getBusinessTaxYearRequest,
   getTaxYearRequest,
   searchTaxYearsRequest,
   updateTaxYearRequest
@@ -33,6 +34,14 @@ export const getTaxYear = createAsyncThunk(
   'taxYear/getTaxYear',
   async (params: { id: string }) => {
     const response = await getTaxYearRequest(params.id);
+    return response.data;
+  }
+);
+
+export const getBusinessTaxYear = createAsyncThunk(
+  'taxYear/getBusinessTaxYear',
+  async (params: { businessId: string }) => {
+    const response = await getBusinessTaxYearRequest(params.businessId);
     return response.data;
   }
 );
@@ -71,6 +80,9 @@ export const taxYearslice = createSlice({
         state.searchResult = action.payload;
       })
       .addCase(getTaxYear.fulfilled, (state, action) => {
+        state.taxYear = action.payload;
+      })
+      .addCase(getBusinessTaxYear.fulfilled, (state, action) => {
         state.taxYear = action.payload;
       });
   }

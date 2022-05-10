@@ -14,13 +14,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchCompanies, selectCompanies } from 'store';
 import newClientFormDefinition from './newClient.form.json';
 
-type InvoiceClientSelectorProps = {
+type IncomeClientSelectorProps = {
   onClientSelected?: (client: Company) => void;
 };
 
-const InvoiceClientSelector = ({
+const IncomeClientSelector = ({
   onClientSelected
-}: InvoiceClientSelectorProps) => {
+}: IncomeClientSelectorProps) => {
   const dispatch = useDispatch();
   const [mode, setMode] = useState<string>('existingCompany');
   const [selectedClient, setSelectedClient] = useState<Company>(null);
@@ -151,4 +151,4 @@ const InvoiceClientSelector = ({
   );
 };
 
-export default InvoiceClientSelector;
+export default IncomeClientSelector;

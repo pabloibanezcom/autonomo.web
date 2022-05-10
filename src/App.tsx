@@ -1,3 +1,5 @@
+import { MessageToast } from 'components/shared';
+import { Backdrop, CircularProgress } from 'material';
 import React, { useEffect } from 'react';
 import { IntlProvider, updateIntl } from 'react-intl-redux';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +8,9 @@ import {
   clearError,
   clearRedirecttUrl,
   selectError,
+  selectLoading,
   selectLocaleAndMessages,
+  selectMessageTitle,
   selectPreferences,
   selectRedirectUrl
 } from 'store';
@@ -22,7 +26,9 @@ const App = () => {
   const intl = useSelector(selectLocaleAndMessages);
   const preferences = useSelector(selectPreferences);
   const redirectUrl: string = useSelector(selectRedirectUrl);
+  const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  const messageTitle = useSelector(selectMessageTitle);
   const location = useLocation();
   const routesChildren = useRoutes(routes);
   const navigate = useNavigate();
@@ -72,6 +78,15 @@ const App = () => {
   return (
     <IntlProvider locale="en">
       {isLanguageLoaded() && routesChildren}
+      {loading && (
+        <Backdrop
+          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
+      <MessageToast messageTitle={messageTitle} />
     </IntlProvider>
   );
 };

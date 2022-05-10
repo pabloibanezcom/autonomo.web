@@ -1,17 +1,17 @@
-import { Invoice } from '@autonomo/common';
+import { Income } from '@autonomo/common';
 import { PageHeader } from 'components/shared';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getInvoice, selectInvoice } from 'store';
+import { getIncome, selectIncome } from 'store';
 
-const InvoiceDetailsPage = () => {
+const IncomeDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const invoice: Invoice = useSelector(selectInvoice);
+  const income: Income = useSelector(selectIncome);
 
   useEffect(() => {
-    dispatch(getInvoice({ id }));
+    dispatch(getIncome({ id }));
   }, [dispatch, id]);
 
   const breadcrumbs = [
@@ -20,8 +20,8 @@ const InvoiceDetailsPage = () => {
       href: '/'
     },
     {
-      text: 'Invoices',
-      href: '/invoices'
+      text: 'Incomes',
+      href: '/incomes'
     },
     {
       text: 'Details'
@@ -31,12 +31,12 @@ const InvoiceDetailsPage = () => {
   return (
     <div>
       <PageHeader
-        title={`Invoice #${invoice?.number}`}
+        title={`Income #${income?.number}`}
         breadcrumbs={breadcrumbs}
       />
-      <div>Invoice number: {invoice?.number}</div>
+      <div>Income number: {income?.number}</div>
     </div>
   );
 };
 
-export default InvoiceDetailsPage;
+export default IncomeDetailsPage;

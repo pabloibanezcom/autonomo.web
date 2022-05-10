@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run start",
+    "dev": "node scripts/start.js",
     "start": "node server.ts",
     "build": "node scripts/build.js",
     "serve": "serve -s build",
@@ -12,7 +12,7 @@
     "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --quiet --fix"
   },
   "dependencies": {
-    "@autonomo/common": "^1.1.7",
+    "@autonomo/common": "^1.2.0",
     "@babel/core": "7.12.3",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",

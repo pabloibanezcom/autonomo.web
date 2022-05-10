@@ -74,7 +74,7 @@ const DataTable = ({
                   </TableCell>
                 ))}
                 <TableCell>
-                  <IconButton component={Link} to={`/invoices/${item._id}/`}>
+                  <IconButton component={Link} to={`/incomes/${item._id}/`}>
                     <VisibilityIcon />
                   </IconButton>
                 </TableCell>

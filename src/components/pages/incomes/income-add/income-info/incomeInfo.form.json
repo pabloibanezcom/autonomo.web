@@ -2,7 +2,7 @@
   "fields": [
     {
       "name": "number",
-      "label": "Invoice number",
+      "label": "Income number",
       "required": true
     },
     {

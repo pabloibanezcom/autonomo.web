@@ -1,23 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Business, Currency } from '@autonomo/common';
+import { Business, Currency, getExchangeRate } from '@autonomo/common';
 import { Form } from 'components/shared';
 import { FormField, InvoiceMainInfo } from 'interfaces';
 import React, { useState } from 'react';
-import { getExchangeRate } from 'util/currency';
-import invoiceInfoFormDefinition from './invoiceInfo.form.json';
+import incomeInfoFormDefinition from './incomeInfo.form.json';
 
-type InvoiceInfoProps = {
+type IncomeInfoProps = {
   defaultValues?: {
     number?: string;
     issuedDate?: string;
     baseCurrency?: Currency;
   };
   business?: Business;
-  onInvoiceInfoUpdated?: (data: InvoiceMainInfo) => void;
+  onIncomeInfoUpdated?: (data: InvoiceMainInfo) => void;
 };
 
 const currencyRateField: FormField = {
-  name: 'currencyRate',
+  name: 'exchangeRate',
   label: 'GBP/EUR',
   required: true,
   gridSize: 4,
@@ -28,18 +27,18 @@ const currencyRateField: FormField = {
   }
 };
 
-const InvoiceInfo = ({
+const IncomeInfo = ({
   defaultValues,
   business,
-  onInvoiceInfoUpdated
-}: InvoiceInfoProps) => {
+  onIncomeInfoUpdated
+}: IncomeInfoProps) => {
   const [extraFields, setExtraFields] = useState<FormField[]>([]);
   const [values, setValues] = useState<{
     [Key: string]: any;
   }>({});
 
   const handleSubmit = (data: InvoiceMainInfo) => {
-    onInvoiceInfoUpdated(data);
+    onIncomeInfoUpdated(data);
   };
 
   const handleFieldChange = (fieldName: string, value: any) => {
@@ -52,11 +51,11 @@ const InvoiceInfo = ({
           }
         ]);
         setValues({
-          currencyRate: getExchangeRate(
+          exchangeRate: getExchangeRate(
             business.exchangeRates,
             value,
             business.defaultCurrency
-          )
+          )?.rate
         });
       } else {
         setExtraFields([]);
@@ -68,7 +67,7 @@ const InvoiceInfo = ({
   return (
     <div>
       <Form
-        formDefinition={invoiceInfoFormDefinition}
+        formDefinition={incomeInfoFormDefinition}
         extraFields={extraFields}
         defaultValues={defaultValues}
         values={values}
@@ -79,4 +78,4 @@ const InvoiceInfo = ({
   );
 };
 
-export default InvoiceInfo;
+export default IncomeInfo;

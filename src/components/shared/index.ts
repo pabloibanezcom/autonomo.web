@@ -5,6 +5,7 @@ import IntlTypography from './intlTypography/IntlTypography';
 import InvoiceDocument from './invoiceDocument/InvoiceDocument';
 import LanguageSelector from './languageSelector/LanguageSelector';
 import MenuButton from './menuButton/MenuButton';
+import MessageToast from './messageToast/MessageToast';
 import PageHeader from './pageHeader/PageHeader';
 import Panel from './panel/Panel';
 
@@ -16,6 +17,7 @@ export {
   IntlTypography,
   LanguageSelector,
   MenuButton,
+  MessageToast,
   PageHeader,
   Panel
 };

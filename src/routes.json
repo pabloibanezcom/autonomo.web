@@ -20,31 +20,31 @@
         "useParentBreadcrumbs": true
       },
       {
-        "id": "invoices",
-        "path": "invoices",
-        "title": "Invoices",
+        "id": "incomes",
+        "path": "incomes",
+        "title": "Incomes",
         "navbar": {
           "icon": "Description",
           "order": 1
         },
         "children": [
           {
-            "id": "invoicesList",
+            "id": "incomesList",
             "index": true,
-            "title": "Invoices",
-            "element": "InvoicesListPage"
+            "title": "Incomes",
+            "element": "IncomesListPage"
           },
           {
-            "id": "invoiceAdd",
+            "id": "incomeAdd",
             "path": "new",
-            "title": "New Invoice",
-            "element": "InvoiceAddPage"
+            "title": "New Income",
+            "element": "IncomeAddPage"
           },
           {
-            "id": "invoicesDetail",
+            "id": "incomesDetail",
             "path": ":id",
-            "title": "Invoice #11111",
-            "element": "InvoiceDetailsPage"
+            "title": "Income #11111",
+            "element": "IncomeDetailsPage"
           }
         ]
       },

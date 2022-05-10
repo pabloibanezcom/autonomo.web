@@ -1,6 +1,6 @@
 import { Category, Currency } from '@autonomo/common';
 
-export default interface InvoiceMainInfo {
+export default interface IncomeMainInfo {
   number?: string;
   issuedDate?: Date;
   baseCurrency?: Currency;

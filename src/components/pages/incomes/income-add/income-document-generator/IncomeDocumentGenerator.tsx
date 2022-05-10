@@ -1,21 +1,19 @@
-import { Invoice } from '@autonomo/common';
+import { Income } from '@autonomo/common';
 import { InvoiceDocument } from 'components/shared';
 import { Dialog, IconButton, Tooltip } from 'material';
 import { DownloadIcon, FullscreenIcon, PrintIcon } from 'material/icons';
 import React, { useState } from 'react';
 
-type InvoiceDocumentGeneratorProps = {
-  invoice: Invoice;
+type IncomeDocumentGeneratorProps = {
+  income: Income;
 };
 
-const InvoiceDocumentGenerator = ({
-  invoice
-}: InvoiceDocumentGeneratorProps) => {
+const IncomeDocumentGenerator = ({ income }: IncomeDocumentGeneratorProps) => {
   const [showFullScreen, setShowFullScreen] = useState<boolean>(false);
 
   return (
     <div className="d-flex flex-column align-items-end">
-      <InvoiceDocument invoice={invoice} zoom={0.4} />
+      <InvoiceDocument invoice={income} zoom={0.4} />
       <div className="mt-2">
         <Tooltip title="Print" placement="bottom">
           <IconButton>
@@ -35,11 +33,11 @@ const InvoiceDocumentGenerator = ({
       </div>
       <Dialog open={showFullScreen} onClose={() => setShowFullScreen(false)}>
         <div>
-          <InvoiceDocument invoice={invoice} zoom={0.5} />
+          <InvoiceDocument invoice={income} zoom={0.5} />
         </div>
       </Dialog>
     </div>
   );
 };
 
-export default InvoiceDocumentGenerator;
+export default IncomeDocumentGenerator;
