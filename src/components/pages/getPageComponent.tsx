@@ -8,10 +8,10 @@ import {
   ExpenseDetailsPage,
   ExpensesListPage,
   HomePage,
+  IncomeAddPage,
+  IncomeDetailsPage,
+  IncomesListPage,
   InternalServerErrorPage,
-  InvoiceAddPage,
-  InvoiceDetailsPage,
-  InvoicesListPage,
   LoginPage,
   MyBusinessPage,
   MyProfilePage,
@@ -69,14 +69,14 @@ const getPageComponent = (name: string) => {
   if (name === 'HomePage') {
     return HomePage;
   }
-  if (name === 'InvoiceAddPage') {
-    return InvoiceAddPage;
+  if (name === 'IncomeAddPage') {
+    return IncomeAddPage;
   }
-  if (name === 'InvoiceDetailsPage') {
-    return InvoiceDetailsPage;
+  if (name === 'IncomeDetailsPage') {
+    return IncomeDetailsPage;
   }
-  if (name === 'InvoicesListPage') {
-    return InvoicesListPage;
+  if (name === 'IncomesListPage') {
+    return IncomesListPage;
   }
   if (name === 'NationalInsurancePaymentAddPage') {
     return NationalInsurancePaymentAddPage;

@@ -18,6 +18,14 @@ export const getTaxYearRequest = (id: string): AxiosPromise<TaxYear> => {
   return axios.get(insertParamsInRoute(Routes.GET_TAX_YEAR, { id }));
 };
 
+export const getBusinessTaxYearRequest = (
+  businessId: string
+): AxiosPromise<TaxYear> => {
+  return axios.get(
+    insertParamsInRoute(Routes.GET_BUSINESS_TAX_YEAR, { businessId })
+  );
+};
+
 export const addTaxYearRequest = (taxYear: TaxYear): AxiosPromise<TaxYear> => {
   return axios.post(Routes.ADD_TAX_YEAR, taxYear);
 };

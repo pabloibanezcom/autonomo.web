@@ -3,12 +3,15 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import AppBar from '@mui/material/AppBar';
 import Autocomplete from '@mui/material/Autocomplete';
+import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
+import CircularProgress from '@mui/material/CircularProgress';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Container from '@mui/material/Container';
 import Dialog from '@mui/material/Dialog';
@@ -31,6 +34,8 @@ import Popper from '@mui/material/Popper';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Slide from '@mui/material/Slide';
+import Snackbar from '@mui/material/Snackbar';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -48,12 +53,15 @@ export {
   AccordionDetails,
   AccordionSummary,
   Alert,
+  AlertTitle,
   AppBar,
   Autocomplete,
+  Backdrop,
   Box,
   Breadcrumbs,
   Button,
   Chip,
+  CircularProgress,
   ClickAwayListener,
   Container,
   DatePicker,
@@ -77,6 +85,8 @@ export {
   Radio,
   RadioGroup,
   Select,
+  Slide,
+  Snackbar,
   Table,
   TableBody,
   TableCell,

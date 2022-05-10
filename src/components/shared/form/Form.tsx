@@ -8,7 +8,8 @@ import {
   CategoriesSelector,
   CurrencyAmountTextField,
   CurrencySelector,
-  DateSelector
+  DateSelector,
+  VatSelector
 } from './customElements';
 import styles from './form.module.scss';
 
@@ -16,7 +17,8 @@ const controllerElements: string[] = [
   'categories',
   'currency',
   'currencyAmount',
-  'date'
+  'date',
+  'vat'
 ];
 
 type FormProps = {
@@ -115,6 +117,15 @@ const Form = ({
           label={field.label}
           error={!!errors[field.name]}
           helperText={errors[field.name] && `${field.label} is required`}
+          onChange={onChange}
+          {...field.elementProps}
+        />
+      );
+    }
+    if (field.element === 'vat') {
+      return (
+        <VatSelector
+          value={value}
           onChange={onChange}
           {...field.elementProps}
         />

@@ -8,7 +8,8 @@ module.exports = {
       jsx: true
     },
     ecmaVersion: 12, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module' // Allows for the use of imports
+    sourceType: 'module', // Allows for the use of imports,
+    warnOnUnsupportedTypeScriptVersion: false
   },
   extends: [
     'plugin:react/recommended',

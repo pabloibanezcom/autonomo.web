@@ -1,4 +1,4 @@
-import { Invoice, InvoiceFilter } from '@autonomo/common';
+import { Income, IncomeFilter } from '@autonomo/common';
 import { DataTable, PageHeader, Panel } from 'components/shared';
 import { PageProps } from 'interfaces';
 import { Button, IconButton, Tooltip } from 'material';
@@ -7,24 +7,29 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
-  searchInvoices,
-  selectInvoices,
-  selectInvoicesSearchFilter
+  clearIncomes,
+  searchIncomes,
+  selectIncomes,
+  selectIncomesSearchFilter
 } from 'store';
-import invoicesTableConfig from './invoices.table.json';
+import incomesTableConfig from './incomes.table.json';
 
 const IncomesPage = ({ title, breadcrumbs }: PageProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
-  const searchFilter: InvoiceFilter = useSelector(selectInvoicesSearchFilter);
-  const invoices: Invoice[] = useSelector(selectInvoices);
+  const searchFilter: IncomeFilter = useSelector(selectIncomesSearchFilter);
+  const incomes: Income[] = useSelector(selectIncomes);
 
   useEffect(() => {
-    dispatch(searchInvoices({ filter: null }));
+    dispatch(searchIncomes({ filter: null }));
+
+    return () => {
+      dispatch(clearIncomes());
+    };
   }, [dispatch]);
 
-  const handleSearchFilterChange = (newSearchFilter: InvoiceFilter) => {
-    dispatch(searchInvoices({ filter: newSearchFilter }));
+  const handleSearchFilterChange = (newSearchFilter: IncomeFilter) => {
+    dispatch(searchIncomes({ filter: newSearchFilter }));
   };
 
   const toolBox = (
@@ -37,14 +42,14 @@ const IncomesPage = ({ title, breadcrumbs }: PageProps) => {
     </div>
   );
 
-  const newInvoiceButton = (
+  const newIncomeButton = (
     <Button
       size="small"
       startIcon={<AddIcon />}
       component={Link}
-      to="/invoices/new"
+      to="/incomes/new"
     >
-      New invoice
+      New income
     </Button>
   );
 
@@ -53,12 +58,12 @@ const IncomesPage = ({ title, breadcrumbs }: PageProps) => {
       <PageHeader
         title={title}
         breadcrumbs={breadcrumbs}
-        rightContent={newInvoiceButton}
+        rightContent={newIncomeButton}
       />
-      <Panel title="Invoices" toolBox={toolBox} zeroPadding>
+      <Panel title="Incomes" toolBox={toolBox} zeroPadding>
         <DataTable
-          config={invoicesTableConfig}
-          items={invoices}
+          config={incomesTableConfig}
+          items={incomes}
           searchFilter={searchFilter}
           onSearchFilterChange={handleSearchFilterChange}
         />

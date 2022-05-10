@@ -1,14 +1,15 @@
 {
   "myMessage": "Hola, esto es un mensaje",
   "footer.text": "2022 - Diseño y desarrollo por Pablo Ibanez",
-  "invoice.add.client": "Cliente",
-  "invoice.add.invoiceInfo": "Info factura",
-  "invoice.add.invoiceProductsOrServices": "Productos / Servicios",
-  "invoice.add.noProductsMessage": "No hay productos.",
-  "invoice.add.addProduct": "Añadir producto / servicio",
-  "invoice.add.productsSingular": "{productsLength} producto",
-  "invoice.add.productsPlural": "{productsLength} productos",
-  "invoice.add.summary": "Resumen",
-  "invoice.add.base": "Base:",
-  "invoice.add.totalWithCurrency": "Total ({currency}):"
+  "income.add.client": "Cliente",
+  "income.add.incomeInfo": "Info factura",
+  "income.add.incomeProductsOrServices": "Productos / Servicios",
+  "income.add.noProductsMessage": "No hay productos.",
+  "income.add.addProduct": "Añadir producto / servicio",
+  "income.add.productsSingular": "{productsLength} producto",
+  "income.add.productsPlural": "{productsLength} productos",
+  "income.add.summary": "Resumen",
+  "income.add.subtotal": "Base:",
+  "income.add.tax": "IVA:",
+  "income.add.totalWithCurrency": "Total ({currency}):"
 }

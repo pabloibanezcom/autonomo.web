@@ -3,7 +3,8 @@ import { intlReducer } from 'react-intl-redux';
 import businessReducer from './business/businessSlice';
 import categoryReducer from './category/categorySlice';
 import companyReducer from './company/companySlice';
-import invoiceReducer from './invoice/invoiceSlice';
+import expenseReducer from './expense/expenseSlice';
+import incomeReducer from './income/incomeSlice';
 import nationalInsurancePaymentReducer from './nationalInsurancePayment/nationalInsurancePaymentSlice';
 import personReducer from './person/personSlice';
 import preferencesReducer from './preferences/preferencesSlice';
@@ -21,7 +22,8 @@ const store = configureStore({
     business: businessReducer,
     category: categoryReducer,
     company: companyReducer,
-    invoice: invoiceReducer,
+    expense: expenseReducer,
+    income: incomeReducer,
     nationalInsurancePayment: nationalInsurancePaymentReducer,
     person: personReducer,
     taxPayment: taxPaymentReducer,

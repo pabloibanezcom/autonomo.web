@@ -1,4 +1,4 @@
-import { CurrencyAmount } from '@autonomo/common';
+import { Currency, CurrencyAmount, getCurrencySymbol } from '@autonomo/common';
 import {
   FormControl,
   FormHelperText,
@@ -7,7 +7,6 @@ import {
   OutlinedInput
 } from 'material';
 import React from 'react';
-import { getCurrencySymbol } from 'util/currency';
 import BaseElementProps from '../BaseElementProps';
 
 interface CurrencyAmountSelectorProps extends BaseElementProps {
@@ -15,7 +14,7 @@ interface CurrencyAmountSelectorProps extends BaseElementProps {
   label?: string;
   error?: boolean;
   helperText?: string;
-  defaultCurrency?: string;
+  defaultCurrency?: Currency;
 }
 
 const CurrencyAmountTextField = ({
@@ -30,7 +29,7 @@ const CurrencyAmountTextField = ({
   const handleOnChange = (evt: any) => {
     onChange({
       ...value,
-      amount: evt.target.value,
+      amount: parseInt(evt.target.value, 10) * 100,
       currency: value?.currency || defaultCurrency
     });
   };

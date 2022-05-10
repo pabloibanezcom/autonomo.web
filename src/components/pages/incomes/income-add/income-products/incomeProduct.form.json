@@ -33,6 +33,7 @@
     {
       "name": "taxPct",
       "label": "Tax %",
+      "element": "vat",
       "required": true,
       "gridSize": 4
     }

@@ -1,17 +1,19 @@
-import { CurrencyAmount } from '@autonomo/common';
+import { CurrencyAmount, getLocaleFromCurrency } from '@autonomo/common';
 import React from 'react';
 
 type CurrencyTextProps = {
   value: CurrencyAmount;
+  locale?: string;
 };
 
-const CurrencyText = ({ value }: CurrencyTextProps) => {
-  const currencyFormatter = new Intl.NumberFormat('en-GB', {
+const CurrencyText = ({ value, locale }: CurrencyTextProps) => {
+  const _locale = locale || getLocaleFromCurrency(value.currency);
+  const currencyFormatter = new Intl.NumberFormat(_locale, {
     style: 'currency',
     currency: value.currency
   });
 
-  return <span>{currencyFormatter.format(value.amount)}</span>;
+  return <span>{currencyFormatter.format(value.amount / 100)}</span>;
 };
 
 export default CurrencyText;

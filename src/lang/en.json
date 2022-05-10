@@ -1,15 +1,16 @@
 {
   "myMessage": "Hi, this is a test message",
   "footer.text": "2022 - Designed and developed by Pablo Ibanez",
-  "invoice.add.client": "Client",
-  "invoice.add.invoiceInfo": "Invoice info",
-  "invoice.add.invoiceProductsOrServices": "Products / Services",
-  "invoice.add.selectCompany": "Select a company",
-  "invoice.add.noProductsMessage": "There are not products or services at the moment.",
-  "invoice.add.addProduct": "Add product / service",
-  "invoice.add.productsSingular": "{productsLength} product",
-  "invoice.add.productsPlural": "{productsLength} products",
-  "invoice.add.summary": "Summary",
-  "invoice.add.base": "Base:",
-  "invoice.add.totalWithCurrency": "Total ({currency}):"
+  "income.add.client": "Client",
+  "income.add.incomeInfo": "Income info",
+  "income.add.incomeProductsOrServices": "Products / Services",
+  "income.add.selectCompany": "Select a company",
+  "income.add.noProductsMessage": "There are not products or services at the moment.",
+  "income.add.addProduct": "Add product / service",
+  "income.add.productsSingular": "{productsLength} product",
+  "income.add.productsPlural": "{productsLength} products",
+  "income.add.summary": "Summary",
+  "income.add.subtotal": "Subtotal:",
+  "income.add.tax": "VAT:",
+  "income.add.totalWithCurrency": "Total ({currency}):"
 }

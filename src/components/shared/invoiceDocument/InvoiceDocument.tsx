@@ -11,7 +11,7 @@ type InvoiceDocumentProps = {
 const InvoiceDocument = ({ invoice, zoom }: InvoiceDocumentProps) => {
   return (
     <Paper sx={{ zoom }} className={styles.invoiceDocument}>
-      <Typography variant="h4">Invoice / Factura</Typography>
+      <Typography variant="h4">Income / Factura</Typography>
       <div>{invoice?.number}</div>
     </Paper>
   );

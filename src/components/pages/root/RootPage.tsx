@@ -4,7 +4,13 @@ import { getAuthToken } from 'http/authToken';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { getBusiness, getUser, selectBusiness, selectUser } from 'store';
+import {
+  getBusiness,
+  getBusinessTaxYear,
+  getUser,
+  selectBusiness,
+  selectUser
+} from 'store';
 
 const RootPage = () => {
   const user: User = useSelector(selectUser);
@@ -23,6 +29,9 @@ const RootPage = () => {
   useEffect(() => {
     if (user?.defaultBusiness && !business) {
       dispatch(getBusiness({ id: user.defaultBusiness.toString() }));
+    }
+    if (business) {
+      dispatch(getBusinessTaxYear({ businessId: business._id.toString() }));
     }
   }, [business, dispatch, user]);
 

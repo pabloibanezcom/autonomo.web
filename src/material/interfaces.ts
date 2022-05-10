@@ -1,3 +1,3 @@
-import { GridSize, Theme } from '@mui/material';
+import { GridSize, SlideProps, Theme } from '@mui/material';
 
-export type { GridSize, Theme };
+export type { GridSize, SlideProps, Theme };
