@@ -339,6 +339,7 @@ module.exports = function (webpackEnv) {
         interfaces: path.resolve(__dirname, '../src/interfaces/'),
         material: path.resolve(__dirname, '../src/material/'),
         store: path.resolve(__dirname, '../src/store/'),
+        types: path.resolve(__dirname, '../src/types/'),
         util: path.resolve(__dirname, '../src/util/')
       },
       plugins: [

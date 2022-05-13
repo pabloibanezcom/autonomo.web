@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseFilter } from '@autonomo/common';
+import { getComponent } from 'components/shared';
 import {
   Box,
   IconButton,
@@ -10,9 +11,10 @@ import {
   TableContainer,
   TableHead,
   TablePagination,
-  TableRow
+  TableRow,
+  Tooltip
 } from 'material';
-import { VisibilityIcon } from 'material/icons';
+import { PictureAsPdf, VisibilityIcon } from 'material/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import formatter from 'util/formatter';
@@ -53,6 +55,16 @@ const DataTable = ({
     });
   };
 
+  const renderCustomComponent = (item: any, col: any): JSX.Element => {
+    if (col.component) {
+      const CustomComponent = getComponent(col.component);
+      return (
+        <CustomComponent {...{ [col.componentPropName]: item[col.prop] }} />
+      );
+    }
+    return null;
+  };
+
   return (
     <Box sx={{ width: '100%' }}>
       <TableContainer component={Paper}>
@@ -60,23 +72,36 @@ const DataTable = ({
           <TableHead>
             <TableRow>
               {config.columns.map((col) => (
-                <TableCell key={col.title}>{col.title}</TableCell>
+                <TableCell key={col.title} align={col.align}>
+                  {col.title}
+                </TableCell>
               ))}
-              <TableCell>Actions</TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {items.map((item, i) => (
               <TableRow key={i}>
                 {config.columns.map((col) => (
-                  <TableCell key={col.title}>
-                    {formatter(item, col.prop, col.type)}
+                  <TableCell key={col.title} align={col.align}>
+                    {col.component
+                      ? renderCustomComponent(item, col)
+                      : formatter(item, col.prop, col.type)}
                   </TableCell>
                 ))}
                 <TableCell>
-                  <IconButton component={Link} to={`/incomes/${item._id}/`}>
-                    <VisibilityIcon />
-                  </IconButton>
+                  <div className="d-flex justify-content-end">
+                    <Tooltip title="Show invoice pdf">
+                      <IconButton>
+                        <PictureAsPdf />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="See invoice details">
+                      <IconButton component={Link} to={`/incomes/${item._id}/`}>
+                        <VisibilityIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

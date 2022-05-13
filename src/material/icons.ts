@@ -12,9 +12,12 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import HomeIcon from '@mui/icons-material/Home';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PercentIcon from '@mui/icons-material/Percent';
+import PictureAsPdf from '@mui/icons-material/PictureAsPdf';
 import PrintIcon from '@mui/icons-material/Print';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
@@ -33,8 +36,11 @@ export {
   FullscreenIcon,
   HighlightOffIcon,
   HomeIcon,
+  KeyboardArrowUpIcon,
+  KeyboardArrowDownIcon,
   MoreVertIcon,
   PercentIcon,
+  PictureAsPdf,
   PeopleAltIcon,
   PrintIcon,
   VisibilityIcon
