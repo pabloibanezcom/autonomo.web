@@ -6,6 +6,7 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import AppBar from '@mui/material/AppBar';
 import Autocomplete from '@mui/material/Autocomplete';
+import Avatar from '@mui/material/Avatar';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -13,6 +14,7 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Collapse from '@mui/material/Collapse';
 import Container from '@mui/material/Container';
 import Dialog from '@mui/material/Dialog';
 import Divider from '@mui/material/Divider';
@@ -56,6 +58,7 @@ export {
   AlertTitle,
   AppBar,
   Autocomplete,
+  Avatar,
   Backdrop,
   Box,
   Breadcrumbs,
@@ -63,6 +66,7 @@ export {
   Chip,
   CircularProgress,
   ClickAwayListener,
+  Collapse,
   Container,
   DatePicker,
   Dialog,

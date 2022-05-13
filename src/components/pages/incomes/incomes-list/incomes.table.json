@@ -1,18 +1,52 @@
 {
   "columns": [
     {
-      "title": "Issue Date",
+      "title": "Issued Date",
       "prop": "issuedDate",
-      "type": "date"
-    },
-    {
-      "title": "Payment date",
-      "prop": "paymentDate",
       "type": "date"
     },
     {
       "title": "Number",
       "prop": "number"
+    },
+    {
+      "title": "Status",
+      "prop": "paymentDate",
+      "component": "InvoicePaymentStatus",
+      "componentPropName": "date"
+    },
+    {
+      "title": "Client",
+      "prop": "client",
+      "component": "CompanyLabel",
+      "componentPropName": "company"
+    },
+    {
+      "title": "Categories",
+      "prop": "categories",
+      "component": "CategoriesLabelSet",
+      "componentPropName": "categories"
+    },
+    {
+      "title": "Subtotal",
+      "prop": "subtotal",
+      "component": "CurrencyText",
+      "componentPropName": "value",
+      "align": "right"
+    },
+    {
+      "title": "VAT",
+      "prop": "tax",
+      "component": "CurrencyText",
+      "componentPropName": "value",
+      "align": "right"
+    },
+    {
+      "title": "Total",
+      "prop": "total",
+      "component": "CurrencyText",
+      "componentPropName": "value",
+      "align": "right"
     }
   ]
 }

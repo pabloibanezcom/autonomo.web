@@ -37,6 +37,7 @@ const IncomeAddPage = ({ title, breadcrumbs }: PageProps) => {
   const dispatch = useDispatch();
   const [expanded, setExpanded] = useState<string | false>('client');
   const [income, setIncome] = useState<Income>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currencyRate, setCurrencyRate] = useState<number>(null);
   const business: Business = useSelector(selectBusiness);
 

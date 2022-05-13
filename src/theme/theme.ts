@@ -1,3 +1,4 @@
+import amber from '@mui/material/colors/amber';
 import teal from '@mui/material/colors/teal';
 import { Theme } from 'material/interfaces';
 import { createTheme } from 'material/styles';
@@ -5,7 +6,8 @@ import { createTheme } from 'material/styles';
 export const getCustomisedTheme = (): Theme => {
   return createTheme({
     palette: {
-      primary: teal
+      primary: teal,
+      warning: amber
     },
     typography: {
       fontFamily: 'inter',
@@ -33,6 +35,13 @@ export const getCustomisedTheme = (): Theme => {
           }
         }
       },
+      MuiTableCell: {
+        styleOverrides: {
+          head: {
+            fontWeight: 700
+          }
+        }
+      },
       MuiButton: {
         defaultProps: {
           variant: 'contained'
@@ -40,6 +49,28 @@ export const getCustomisedTheme = (): Theme => {
         styleOverrides: {
           root: {
             textTransform: 'none'
+          }
+        }
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            borderRadius: 6
+          },
+          sizeMedium: {
+            height: 24
+          },
+          sizeSmall: {
+            height: 20,
+            fontSize: 12
+          },
+          labelMedium: {
+            paddingLeft: 8,
+            paddingRight: 8
+          },
+          labelSmall: {
+            paddingLeft: 6,
+            paddingRight: 6
           }
         }
       }
