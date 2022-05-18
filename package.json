@@ -12,7 +12,7 @@
     "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --quiet --fix"
   },
   "dependencies": {
-    "@autonomo/common": "^1.2.2",
+    "@autonomo/common": "^1.2.3",
     "@babel/core": "7.12.3",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",

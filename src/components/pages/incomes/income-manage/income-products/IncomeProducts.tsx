@@ -149,7 +149,7 @@ const IncomeProducts = ({
         formShown && (
           <Form
             formDefinition={incomeProductFormDefinition}
-            defaultValues={{ taxPct: zeroVat ? 0 : undefined }}
+            values={{ taxPct: zeroVat ? 0 : undefined }}
             onSubmit={(p) => handleIncomeProductSubmitted(populateProduct(p))}
             onCancel={() => setFormShown(false)}
           />

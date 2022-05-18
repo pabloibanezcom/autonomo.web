@@ -15,16 +15,24 @@ import { searchCompanies, selectCompanies } from 'store';
 import newClientFormDefinition from './newClient.form.json';
 
 type IncomeClientSelectorProps = {
+  client?: Company;
   onClientSelected?: (client: Company) => void;
 };
 
 const IncomeClientSelector = ({
+  client,
   onClientSelected
 }: IncomeClientSelectorProps) => {
   const dispatch = useDispatch();
   const [mode, setMode] = useState<string>('existingCompany');
   const [selectedClient, setSelectedClient] = useState<Company>(null);
   const companies: Company[] = useSelector(selectCompanies);
+
+  useEffect(() => {
+    if (client) {
+      setSelectedClient(client);
+    }
+  }, [client]);
 
   useEffect(() => {
     if (!companies.length) {
@@ -38,9 +46,9 @@ const IncomeClientSelector = ({
     onClientSelected(null);
   };
 
-  const handleClientSelected = (client: Company) => {
-    setSelectedClient(client);
-    onClientSelected(client);
+  const handleClientSelected = (_selectedClient: Company) => {
+    setSelectedClient(_selectedClient);
+    onClientSelected(_selectedClient);
   };
 
   const clearClient = () => {

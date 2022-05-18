@@ -73,6 +73,22 @@ export const getCustomisedTheme = (): Theme => {
             paddingRight: 6
           }
         }
+      },
+      MuiDialogTitle: {
+        styleOverrides: {
+          root: {
+            fontSize: '1.25rem',
+            fontWeight: 700
+          }
+        }
+      },
+      MuiDialogActions: {
+        styleOverrides: {
+          root: {
+            padding: '20px 24px',
+            gap: 8
+          }
+        }
       }
     }
   });

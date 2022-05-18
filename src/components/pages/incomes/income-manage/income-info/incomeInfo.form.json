@@ -20,7 +20,6 @@
       "label": "Base currency",
       "element": "currency",
       "required": true,
-      "listenOnChange": true,
       "gridSize": 4
     },
     {

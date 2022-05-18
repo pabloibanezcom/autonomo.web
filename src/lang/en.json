@@ -12,5 +12,8 @@
   "income.add.summary": "Summary",
   "income.add.subtotal": "Subtotal:",
   "income.add.tax": "VAT:",
-  "income.add.totalWithCurrency": "Total ({currency}):"
+  "income.add.totalWithCurrency": "Total ({currency}):",
+  "income.delete.title": "Delete income",
+  "income.delete.question": "Deleting this income is irreversible. Enter the invoice number ({name}) below to confirm you want to permanently delete it.",
+  "income.delete.deleteButtonLabel": "Delete income"
 }

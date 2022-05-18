@@ -32,16 +32,26 @@ const IntlTypography = ({
   values,
   variant,
   className,
-  component = 'span'
+  component
 }: IntlTypographyProps) => {
+  const formattedMessage = (
+    <FormattedMessage id={id} defaultMessage={defaultMessage} values={values} />
+  );
+
   return (
-    <Typography variant={variant} component={component} className={className}>
-      <FormattedMessage
-        id={id}
-        defaultMessage={defaultMessage}
-        values={values}
-      />
-    </Typography>
+    <>
+      {component || variant ? (
+        <Typography
+          variant={variant}
+          component={component || 'span'}
+          className={className}
+        >
+          {formattedMessage}
+        </Typography>
+      ) : (
+        formattedMessage
+      )}
+    </>
   );
 };
 

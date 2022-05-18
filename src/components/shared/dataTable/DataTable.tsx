@@ -97,7 +97,7 @@ const DataTable = ({
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="See invoice details">
-                      <IconButton component={Link} to={`/incomes/${item._id}/`}>
+                      <IconButton component={Link} to={`/incomes/${item._id}`}>
                         <VisibilityIcon />
                       </IconButton>
                     </Tooltip>

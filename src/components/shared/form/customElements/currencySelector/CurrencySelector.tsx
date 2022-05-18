@@ -1,10 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { FormControl, InputLabel, MenuItem, Select } from 'material';
-import React, { useEffect } from 'react';
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent
+} from 'material';
+import React, { useEffect, useState } from 'react';
 import BaseElementProps from '../BaseElementProps';
 
 const currencies = ['EUR', 'GBP', 'USD'];
-const DEFAULT_CURRENCY = 'EUR';
 
 interface CurrencySelectorProps extends BaseElementProps {
   label?: string;
@@ -15,18 +20,22 @@ const CurrencySelector = ({
   value,
   onChange
 }: CurrencySelectorProps) => {
+  const [currentValue, setCurrentValue] = useState<string>(value || 'EUR');
+
   useEffect(() => {
-    onChange(value || DEFAULT_CURRENCY);
+    console.log('useEffect', value);
   }, [value]);
+
+  const handleChange = (e: SelectChangeEvent<string>) => {
+    console.log('handleChange', e.target.value);
+    setCurrentValue(e.target.value);
+    onChange(e.target.value);
+  };
 
   return (
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
-      <Select
-        value={value || DEFAULT_CURRENCY}
-        label={label}
-        onChange={onChange}
-      >
+      <Select value={currentValue} label={label} onChange={handleChange}>
         {currencies.map((currency) => (
           <MenuItem key={currency} value={currency}>
             {currency}
