@@ -78,7 +78,7 @@ const IncomeManagePage = ({ breadcrumbs }: PageProps) => {
     return () => {
       dispatch(clearIncome());
     };
-  }, [dispatch, id]);
+  }, [business.nextInvoiceNumber, dispatch, id]);
 
   useEffect(() => {
     if (existingIncome) {
@@ -114,7 +114,6 @@ const IncomeManagePage = ({ breadcrumbs }: PageProps) => {
   };
 
   const handleIncomeInfoUpdated = (data: InvoiceMainInfo) => {
-    console.log(data);
     setIncome((prevIncome) => {
       return {
         ...prevIncome,
