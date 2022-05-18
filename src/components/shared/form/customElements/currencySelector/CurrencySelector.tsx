@@ -6,7 +6,7 @@ import {
   Select,
   SelectChangeEvent
 } from 'material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import BaseElementProps from '../BaseElementProps';
 
 const currencies = ['EUR', 'GBP', 'USD'];
@@ -22,12 +22,7 @@ const CurrencySelector = ({
 }: CurrencySelectorProps) => {
   const [currentValue, setCurrentValue] = useState<string>(value || 'EUR');
 
-  useEffect(() => {
-    console.log('useEffect', value);
-  }, [value]);
-
   const handleChange = (e: SelectChangeEvent<string>) => {
-    console.log('handleChange', e.target.value);
     setCurrentValue(e.target.value);
     onChange(e.target.value);
   };
