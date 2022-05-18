@@ -8,8 +8,7 @@ import {
   ExpenseDetailsPage,
   ExpensesListPage,
   HomePage,
-  IncomeAddPage,
-  IncomeDetailsPage,
+  IncomeManagePage,
   IncomesListPage,
   InternalServerErrorPage,
   LoginPage,
@@ -69,11 +68,8 @@ const getPageComponent = (name: string) => {
   if (name === 'HomePage') {
     return HomePage;
   }
-  if (name === 'IncomeAddPage') {
-    return IncomeAddPage;
-  }
-  if (name === 'IncomeDetailsPage') {
-    return IncomeDetailsPage;
+  if (name === 'IncomeManagePage') {
+    return IncomeManagePage;
   }
   if (name === 'IncomesListPage') {
     return IncomesListPage;

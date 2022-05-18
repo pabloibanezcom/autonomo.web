@@ -55,13 +55,21 @@ export const searchIncomes = createAsyncThunk(
 
 export const getIncome = createAsyncThunk(
   'income/getIncome',
-  async (params: { id: string }, { getState }) => {
+  async (params: { id: string }, { dispatch, getState }) => {
     const state = getState() as RootState;
-    const response = await getIncomeRequest(
-      state.business.business._id.toString(),
-      params.id
-    );
-    return response.data;
+    dispatch(startLoading());
+    try {
+      const response = await getIncomeRequest(
+        state.business.business._id.toString(),
+        params.id
+      );
+      dispatch(stopLoading());
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
@@ -94,17 +102,55 @@ export const addIncome = createAsyncThunk(
 
 export const updateIncome = createAsyncThunk(
   'income/updateIncome',
-  async (params: { id: string; income: Income }) => {
-    const response = await updateIncomeRequest(params.id, params.income);
-    return response.data;
+  async (params: { income: Income }, { dispatch, getState }) => {
+    const state = getState() as RootState;
+    dispatch(startLoading());
+    try {
+      const response = await updateIncomeRequest(
+        state.business.business._id.toString(),
+        params.income
+      );
+      dispatch(stopLoading());
+      dispatch(
+        setMessageTitle({
+          title: 'Invoice updated',
+          message: `Invoice ${response.data.number} was updated succesfully`
+        })
+      );
+      dispatch(setRedirectUrl('/incomes'));
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
 export const deleteIncome = createAsyncThunk(
   'income/deleteIncome',
-  async (params: { id: string }) => {
-    const response = await deleteIncomeRequest(params.id);
-    return response.data;
+  async (params: { id: string }, { dispatch, getState }) => {
+    const state = getState() as RootState;
+    dispatch(startLoading());
+    try {
+      const response = await deleteIncomeRequest(
+        state.business.business._id.toString(),
+        params.id
+      );
+      dispatch(stopLoading());
+      dispatch(
+        setMessageTitle({
+          title: 'Invoice deleted',
+          message: `Invoice ${response.data.number} was deleted succesfully`
+        })
+      );
+      dispatch(setRedirectUrl('/incomes'));
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
@@ -141,7 +187,8 @@ export const incomeSlice = createSlice({
   }
 });
 
-export const { setNewSearchFilter, clearIncomes } = incomeSlice.actions;
+export const { setNewSearchFilter, clearIncomes, clearIncome } =
+  incomeSlice.actions;
 
 export const selectIncomesSearchFilter = (state: RootState) =>
   state.income.searchFilter;

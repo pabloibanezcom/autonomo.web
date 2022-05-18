@@ -11,5 +11,8 @@
   "income.add.summary": "Resumen",
   "income.add.subtotal": "Base:",
   "income.add.tax": "IVA:",
-  "income.add.totalWithCurrency": "Total ({currency}):"
+  "income.add.totalWithCurrency": "Total ({currency}):",
+  "income.delete.title": "Eliminar ingreso",
+  "income.delete.question": "Eliminar este ingreso es irreversible. Escribe el numero de factura ({name}) abajo para confirmar que quieres eliminarlo.",
+  "income.delete.deleteButtonLabel": "Eliminar ingreso"
 }

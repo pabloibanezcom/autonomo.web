@@ -2,6 +2,7 @@ import CategoriesSelector from './categoriesSelector/CategoriesSelector';
 import CurrencyAmountTextField from './currencyAmountTextField/CurrencyAmountTextField';
 import CurrencySelector from './currencySelector/CurrencySelector';
 import DateSelector from './dateSelector/DateSelector';
+import TextField from './textField/TextField';
 import VatSelector from './vatSelector/VatSelector';
 
 export {
@@ -9,5 +10,6 @@ export {
   CategoriesSelector,
   CurrencySelector,
   DateSelector,
-  VatSelector
+  VatSelector,
+  TextField
 };

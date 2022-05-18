@@ -16,8 +16,6 @@ export default interface FormField {
   required?: boolean;
   gridSize?: boolean | GridSize;
   offset?: GridSize;
-  listenOnChange?: boolean;
-  setAfter?: string;
   value?: any;
   pattern?: {
     regex: string;

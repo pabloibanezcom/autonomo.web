@@ -12,7 +12,7 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
   return income?.total ? (
     <div className="me-5">
       <div className="w-100 d-flex justify-content-between mb-2">
-        <IntlTypography id="income.add.subtotal" />
+        <IntlTypography component="span" id="income.add.subtotal" />
         <Typography component="span">
           <CurrencyText
             value={income.subtotalBaseCurrency || income.subtotal}
@@ -20,13 +20,14 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
         </Typography>
       </div>
       <div className="w-100 d-flex justify-content-between mb-2">
-        <IntlTypography id="income.add.tax" />
+        <IntlTypography component="span" id="income.add.tax" />
         <Typography component="span">
           <CurrencyText value={income.taxBaseCurrency || income.tax} />
         </Typography>
       </div>
       <div className="w-100 d-flex justify-content-between mb-2">
         <IntlTypography
+          component="span"
           id="income.add.totalWithCurrency"
           values={{ currency: income.baseCurrency }}
         />
@@ -37,6 +38,7 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
       {income.totalBaseCurrency && (
         <div className="w-100 d-flex justify-content-between mb-2">
           <IntlTypography
+            component="span"
             id="income.add.totalWithCurrency"
             values={{ currency: business.defaultCurrency }}
           />

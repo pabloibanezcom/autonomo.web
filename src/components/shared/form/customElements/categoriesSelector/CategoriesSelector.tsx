@@ -10,7 +10,8 @@ import {
   OutlinedInput,
   Select
 } from 'material';
-import React, { useEffect } from 'react';
+import { CancelIcon } from 'material/icons';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchCategories, selectCategories } from 'store';
 import BaseElementProps from '../BaseElementProps';
@@ -25,8 +26,11 @@ const CategoriesSelector = ({
   value,
   onChange
 }: CategoriesSelectorProps) => {
-  const categories: Category[] = useSelector(selectCategories);
   const dispatch = useDispatch();
+  const categories: Category[] = useSelector(selectCategories);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>(
+    value || []
+  );
 
   useEffect(() => {
     if (!categories?.length) {
@@ -34,8 +38,15 @@ const CategoriesSelector = ({
     }
   }, [categories, dispatch]);
 
-  const handleChange = (evt: any) => {
-    onChange(evt.target.value);
+  const toggleCategory = (category: Category) => {
+    const newSelectedCategories = selectedCategories.find(
+      (c) => c._id === category._id
+    )
+      ? selectedCategories.filter((c) => c._id !== category._id)
+      : [...selectedCategories, category];
+
+    setSelectedCategories(newSelectedCategories);
+    onChange(newSelectedCategories);
   };
 
   return (
@@ -44,8 +55,7 @@ const CategoriesSelector = ({
       <Select
         multiple
         label={label}
-        value={value || []}
-        onChange={handleChange}
+        value={selectedCategories}
         input={<OutlinedInput label={label} />}
         renderValue={(selected) => (
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -53,11 +63,17 @@ const CategoriesSelector = ({
               <Chip
                 key={val._id.toString()}
                 label={val.name}
+                clickable
+                deleteIcon={
+                  <CancelIcon onMouseDown={(e) => e.stopPropagation()} />
+                }
                 sx={{
                   backgroundColor: val.color,
                   color: '#ffffff'
                 }}
                 size="small"
+                onClick={() => toggleCategory(val)}
+                onDelete={() => toggleCategory(val)}
               />
             ))}
           </Box>
@@ -65,7 +81,11 @@ const CategoriesSelector = ({
       >
         {categories.map((cat) => (
           // @ts-ignore
-          <MenuItem key={cat.name} value={cat}>
+          <MenuItem
+            key={cat.name}
+            value={cat}
+            onClick={() => toggleCategory(cat)}
+          >
             {cat.name}
           </MenuItem>
         ))}

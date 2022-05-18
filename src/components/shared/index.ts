@@ -3,6 +3,7 @@ import CategoriesLabelSet from './categoriesLabelSet/CategoriesLabelSet';
 import CompanyLabel from './companyLabel/CompanyLabel';
 import CurrencyText from './currencyText/CurrencyText';
 import DataTable from './dataTable/DataTable';
+import DeleteDialog from './deleteDialog/DeleteDialog';
 import Form from './form/Form';
 import IntlTypography from './intlTypography/IntlTypography';
 import InvoiceDocument from './invoiceDocument/InvoiceDocument';
@@ -10,6 +11,7 @@ import InvoicePaymentStatus from './invoicePaymentStatus/InvoicePaymentStatus';
 import LanguageSelector from './languageSelector/LanguageSelector';
 import MenuButton from './menuButton/MenuButton';
 import MessageToast from './messageToast/MessageToast';
+import ObjectContentInfo from './objectContentInfo/ObjectContentInfo';
 import PageHeader from './pageHeader/PageHeader';
 import Panel from './panel/Panel';
 
@@ -29,6 +31,9 @@ const getComponent = (name: string): any => {
   }
   if (name === 'DataTable') {
     return DataTable;
+  }
+  if (name === 'DeleteDialog') {
+    return DeleteDialog;
   }
   if (name === 'Form') {
     return Form;
@@ -51,6 +56,9 @@ const getComponent = (name: string): any => {
   if (name === 'MessageToast') {
     return MessageToast;
   }
+  if (name === 'ObjectContentInfo') {
+    return ObjectContentInfo;
+  }
   if (name === 'PageHeader') {
     return PageHeader;
   }
@@ -66,12 +74,14 @@ export {
   CategoriesLabelSet,
   CurrencyText,
   DataTable,
+  DeleteDialog,
   Form,
   InvoiceDocument,
   IntlTypography,
   LanguageSelector,
   MenuButton,
   MessageToast,
+  ObjectContentInfo,
   PageHeader,
   Panel
 };

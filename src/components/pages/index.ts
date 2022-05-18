@@ -17,7 +17,7 @@ import {
 } from './expenses';
 import getPageComponent from './getPageComponent';
 import HomePage from './home/HomePage';
-import { IncomeAddPage, IncomeDetailsPage, IncomesListPage } from './incomes';
+import { IncomeManagePage, IncomesListPage } from './incomes';
 import {
   NationalInsurancePaymentAddPage,
   NationalInsurancePaymentDetailsPage,
@@ -46,8 +46,7 @@ export {
   ExpenseDetailsPage,
   ExpensesListPage,
   HomePage,
-  IncomeAddPage,
-  IncomeDetailsPage,
+  IncomeManagePage,
   IncomesListPage,
   NationalInsurancePaymentAddPage,
   NationalInsurancePaymentDetailsPage,

@@ -36,12 +36,20 @@ export const addIncomeRequest = (
 };
 
 export const updateIncomeRequest = (
-  id: string,
+  businessId: string,
   income: Income
 ): AxiosPromise<Income> => {
-  return axios.put(insertParamsInRoute(Routes.UPDATE_INCOME, { id }), income);
+  return axios.put(
+    insertParamsInRoute(Routes.UPDATE_INCOME, { businessId, id: income._id }),
+    income
+  );
 };
 
-export const deleteIncomeRequest = (id: string): AxiosPromise<Income> => {
-  return axios.delete(insertParamsInRoute(Routes.DELETE_INCOME, { id }));
+export const deleteIncomeRequest = (
+  businessId: string,
+  id: string
+): AxiosPromise<Income> => {
+  return axios.delete(
+    insertParamsInRoute(Routes.DELETE_INCOME, { businessId, id })
+  );
 };

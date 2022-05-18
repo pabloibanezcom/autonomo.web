@@ -1,5 +1,4 @@
-import IncomeAddPage from './income-add/IncomeAddPage';
-import IncomeDetailsPage from './income-details/IncomeDetailsPage';
+import IncomeManagePage from './income-manage/IncomeManagePage';
 import IncomesListPage from './incomes-list/IncomesListPage';
 
-export { IncomeAddPage, IncomeDetailsPage, IncomesListPage };
+export { IncomeManagePage, IncomesListPage };
