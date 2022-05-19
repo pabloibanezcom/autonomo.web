@@ -1,30 +1,24 @@
 import { NavbarEl } from 'interfaces';
 import { Button, Tooltip, Typography } from 'material';
 import { ArrowBackIosIcon, DashboardIcon } from 'material/icons';
-import React, { Fragment, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { selectPreferences, setNavbarCollapsed } from 'store';
 import { getIcon } from 'util/icon';
 import styles from './navbar.module.scss';
 
 type NavbarProps = {
   menuItems: NavbarEl[];
+  isMobile: boolean;
+  isCollapsed: boolean;
+  onToggleCollapsed: () => void;
 };
 
-const Navbar = ({ menuItems }: NavbarProps) => {
-  const dispatch = useDispatch();
-  const [isCollapsed, setCollapsed] = useState(
-    useSelector(selectPreferences).navbarCollapsed
-  );
-
-  const handleToggle = (): void => {
-    setCollapsed((prevCollapsed) => {
-      dispatch(setNavbarCollapsed(!prevCollapsed));
-      return !prevCollapsed;
-    });
-  };
-
+const Navbar = ({
+  menuItems,
+  isMobile,
+  isCollapsed,
+  onToggleCollapsed
+}: NavbarProps) => {
   const renderMenuItem = (menuItem: NavbarEl) => {
     const Icon = getIcon(menuItem.icon);
     const renderItemButton = () => {
@@ -60,12 +54,16 @@ const Navbar = ({ menuItems }: NavbarProps) => {
     );
   };
 
-  return (
-    <div
-      className={[styles.navbar, isCollapsed && styles.navbarCollapsed].join(
-        ' '
-      )}
-    >
+  const responsiveNavbar = isMobile
+    ? styles.navbarMobile
+    : styles.navbarDesktop;
+
+  const responsiveNavbarCollapsed = isMobile
+    ? styles.navbarCollapsedMobile
+    : styles.navbarCollapsedDesktop;
+
+  const renderContent = (
+    <>
       <div className={styles.topSection}>
         <div className={styles.navBarElement}>
           <DashboardIcon />
@@ -86,13 +84,38 @@ const Navbar = ({ menuItems }: NavbarProps) => {
           variant="text"
           fullWidth
           className={styles.arrowBottomButton}
-          onClick={handleToggle}
+          onClick={onToggleCollapsed}
         >
           <ArrowBackIosIcon />
         </Button>
       </div>
+    </>
+  );
+
+  const renderNavbar = (
+    <div
+      className={[
+        responsiveNavbar,
+        isCollapsed && responsiveNavbarCollapsed
+      ].join(' ')}
+    >
+      {isMobile ? (
+        <div
+          className={
+            isCollapsed
+              ? styles.navbarContentCollapsed
+              : styles.navbarContentExpanded
+          }
+        >
+          {renderContent}
+        </div>
+      ) : (
+        <>{renderContent}</>
+      )}
     </div>
   );
+
+  return <>{renderNavbar}</>;
 };
 
 export default Navbar;
