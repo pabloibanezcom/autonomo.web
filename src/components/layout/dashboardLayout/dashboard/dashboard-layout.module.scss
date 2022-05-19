@@ -22,3 +22,18 @@
   padding-top: $container-padding-top;
   padding-bottom: $container-padding-bottom;
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $black-color;
+  opacity: 0;
+  z-index: $overlay-z-index;
+}
+
+.overlayActive {
+  opacity: 0.3;
+}

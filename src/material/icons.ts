@@ -16,6 +16,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PercentIcon from '@mui/icons-material/Percent';
@@ -42,6 +43,7 @@ export {
   InfoIcon,
   KeyboardArrowUpIcon,
   KeyboardArrowDownIcon,
+  MenuIcon,
   MoreVertIcon,
   PercentIcon,
   PictureAsPdf,

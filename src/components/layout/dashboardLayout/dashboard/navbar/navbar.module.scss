@@ -1,7 +1,7 @@
 @import 'assets/scss/variables';
 
-.navbar {
-  position: sticky;
+.navbarMobile,
+.navbarDesktop {
   top: 0;
   display: flex;
   flex-direction: column;
@@ -9,13 +9,36 @@
   height: 100vh;
   background-color: $navbar-bgcolor-primary;
   color: $navbar-color-primary;
+  z-index: $navbar-z-index;
   -webkit-transition: width $transition-time ease-in-out;
   -moz-transition: width $transition-time ease-in-out;
   -o-transition: width $transition-time ease-in-out;
   transition: width $transition-time ease-in-out;
 }
 
-.navbarCollapsed {
+.navbarMobile {
+  position: fixed;
+}
+
+.navbarDesktop {
+  position: sticky;
+}
+
+.navbarContentCollapsed {
+  display: none;
+}
+
+.navbarContentExpanded {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navbarCollapsedMobile {
+  width: 0;
+}
+
+.navbarCollapsedDesktop {
   width: $navbar-width-collapsed;
 }
 
