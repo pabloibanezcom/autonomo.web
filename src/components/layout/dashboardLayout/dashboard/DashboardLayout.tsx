@@ -1,6 +1,6 @@
-import { Container, useMediaQuery } from 'material';
-import { Theme } from 'material/interfaces';
-import React, { useState } from 'react';
+import { useMobileSize } from 'hooks';
+import { Container } from 'material';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPreferences, setNavbarCollapsed } from 'store';
 import { generateNavbarElements } from 'util/routes';
@@ -18,13 +18,10 @@ const navbarMenuItems = generateNavbarElements(routeDefinitions);
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const dispatch = useDispatch();
+  const isMobile = useMobileSize();
 
   const [isCollapsed, setCollapsed] = useState<boolean>(
     useSelector(selectPreferences).navbarCollapsed
-  );
-
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('sm')
   );
 
   const handleToggleCollapsed = (): void => {
@@ -42,10 +39,16 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         isCollapsed={isCollapsed}
         onToggleCollapsed={handleToggleCollapsed}
       />
+
       <div className={styles.rightContent}>
         <Topbar isMobile={isMobile} onToggleCollapsed={handleToggleCollapsed} />
         <div className={styles.containerWrapper}>
-          <Container maxWidth="xl" className={styles.container}>
+          <Container
+            maxWidth="xl"
+            className={
+              !isMobile ? styles.containerDesktop : styles.containerMobile
+            }
+          >
             {children}
           </Container>
         </div>

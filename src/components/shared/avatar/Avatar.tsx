@@ -1,5 +1,4 @@
 import { Avatar as MaterialAvatar } from 'material';
-import React from 'react';
 
 type AvatarElement = {
   color?: string;

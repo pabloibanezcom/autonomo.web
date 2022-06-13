@@ -2,7 +2,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import esLocale from 'date-fns/locale/es';
 import { DatePicker, TextField } from 'material';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import BaseElementProps from '../BaseElementProps';
 
 interface DateSelectorProps extends BaseElementProps {

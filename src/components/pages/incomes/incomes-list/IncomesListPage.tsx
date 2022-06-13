@@ -1,11 +1,10 @@
 import { Income, IncomeFilter } from '@autonomo/common';
 import { DataTable, PageHeader, Panel } from 'components/shared';
 import { PageProps } from 'interfaces';
-import { Button, IconButton, Tooltip } from 'material';
-import { AddIcon, FilterListIcon } from 'material/icons';
-import React, { useEffect } from 'react';
+import { IconButton, Tooltip } from 'material';
+import { FilterListIcon } from 'material/icons';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import {
   clearIncomes,
   searchIncomes,
@@ -42,23 +41,15 @@ const IncomesPage = ({ title, breadcrumbs }: PageProps) => {
     </div>
   );
 
-  const newIncomeButton = (
-    <Button
-      size="small"
-      startIcon={<AddIcon />}
-      component={Link}
-      to="/incomes/new"
-    >
-      New income
-    </Button>
-  );
-
   return (
     <div>
       <PageHeader
         title={title}
         breadcrumbs={breadcrumbs}
-        rightContent={newIncomeButton}
+        newItemButton={{
+          labelId: 'incomes.list.newIncome',
+          href: '/incomes/new'
+        }}
       />
       <Panel title="Incomes" toolBox={toolBox} zeroPadding>
         <DataTable

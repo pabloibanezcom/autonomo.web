@@ -6,7 +6,6 @@ import {
   InputLabel,
   OutlinedInput
 } from 'material';
-import React from 'react';
 import BaseElementProps from '../BaseElementProps';
 
 interface CurrencyAmountSelectorProps extends BaseElementProps {

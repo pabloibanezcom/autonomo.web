@@ -22,7 +22,7 @@ interface CategoryInitialState {
 const initialState: CategoryInitialState = {
   searchFilter: null,
   searchResult: {
-    items: []
+    items: null
   }
 };
 
@@ -73,13 +73,17 @@ export const deleteCategory = createAsyncThunk(
 export const categorySlice = createSlice({
   name: 'category',
   initialState,
-  reducers: {},
+  reducers: {
+    resetCategoryState: () => initialState
+  },
   extraReducers(builder) {
     builder.addCase(searchCategories.fulfilled, (state, action) => {
       state.searchResult = action.payload;
     });
   }
 });
+
+export const { resetCategoryState } = categorySlice.actions;
 
 export const selectCategories = (state: RootState) =>
   state.category.searchResult.items;

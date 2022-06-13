@@ -1,5 +1,6 @@
 import {
   AuthRootPage,
+  BusinessDetailPage,
   ChangePasswordPage,
   CompaniesListPage,
   CompanyAddPage,
@@ -46,6 +47,9 @@ const getPageComponent = (name: string) => {
   }
   if (name === 'PageNotFoundPage') {
     return PageNotFoundPage;
+  }
+  if (name === 'BusinessDetailPage') {
+    return BusinessDetailPage;
   }
   if (name === 'CompaniesListPage') {
     return CompaniesListPage;

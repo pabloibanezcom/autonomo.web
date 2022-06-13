@@ -3,7 +3,7 @@ import { SerializedError } from '@reduxjs/toolkit';
 import { Form } from 'components/shared';
 import { removeAuthToken } from 'http/authToken';
 import { Box, Typography } from 'material';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, selectError } from 'store';
 import formDefinition from './login.form.json';

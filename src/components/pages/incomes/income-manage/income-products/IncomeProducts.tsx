@@ -15,7 +15,7 @@ import {
   TableRow
 } from 'material';
 import { AddCircleIcon, HighlightOffIcon } from 'material/icons';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { checkIfClientExemptOfVat } from 'util/tax';
 import incomeProductFormDefinition from './incomeProduct.form.json';
@@ -130,7 +130,7 @@ const IncomeProducts = ({
               <div className="text-center">
                 <IntlTypography
                   variant="subtitle2"
-                  id="income.add.noProductsMessage"
+                  id="income.manage.noProductsMessage"
                 />
               </div>
             )}
@@ -141,7 +141,7 @@ const IncomeProducts = ({
               onClick={() => setFormShown(true)}
               startIcon={<AddCircleIcon />}
             >
-              <FormattedMessage id="income.add.addProduct" />
+              <FormattedMessage id="income.manage.addProduct" />
             </Button>
           </div>
         </>

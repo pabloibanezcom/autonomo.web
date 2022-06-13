@@ -1,5 +1,4 @@
 import { CurrencyAmount, getLocaleFromCurrency } from '@autonomo/common';
-import React from 'react';
 
 type CurrencyTextProps = {
   value: CurrencyAmount;

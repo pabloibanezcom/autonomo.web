@@ -1,6 +1,5 @@
 import { Invoice } from '@autonomo/common';
 import { Paper, Typography } from 'material';
-import React from 'react';
 import styles from './invoiceDocument.module.scss';
 
 type InvoiceDocumentProps = {

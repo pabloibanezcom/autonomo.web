@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Income",
+    "navigateTo": "/incomes/new",
+    "icon": "DescriptionOutlined"
+  },
+  {
+    "content": "Expense",
+    "navigateTo": "/expenses/new",
+    "icon": "CreditCard"
+  },
+  {
+    "content": "Company",
+    "navigateTo": "/companies/new",
+    "icon": "Business"
+  },
+  {
+    "content": "Person",
+    "navigateTo": "/people/new",
+    "icon": "PeopleAltOutlined"
+  },
+  {
+    "content": "Tax payment",
+    "navigateTo": "/tax-payments/new",
+    "icon": "Percent"
+  }
+]

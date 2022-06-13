@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { IconButton } from 'material';
 import { InfoIcon } from 'material/icons';
-import React from 'react';
 
 type ObjectContentInfoProps = {
   obj: unknown;

@@ -1,6 +1,5 @@
 import { PageHeader } from 'components/shared';
 import { PageProps } from 'interfaces';
-import React from 'react';
 
 const ExpensesListPage = ({ title, breadcrumbs }: PageProps) => {
   return (

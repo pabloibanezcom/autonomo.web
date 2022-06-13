@@ -1,7 +1,6 @@
 import { MessageTitle } from 'interfaces';
 import { Alert, AlertTitle, Slide, Snackbar } from 'material';
 import { SlideProps } from 'material/interfaces';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setMessageTitle } from 'store';
 

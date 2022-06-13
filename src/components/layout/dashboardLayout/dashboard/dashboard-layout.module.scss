@@ -18,9 +18,14 @@
   background-color: $container-bgcolor;
 }
 
-.container {
-  padding-top: $container-padding-top;
-  padding-bottom: $container-padding-bottom;
+.containerDesktop {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.containerMobile {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .overlay {

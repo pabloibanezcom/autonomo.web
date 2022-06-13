@@ -9,7 +9,7 @@ import {
 } from '@autonomo/common';
 import { Form } from 'components/shared';
 import { FormField, InvoiceMainInfo } from 'interfaces';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addFieldToFormDefinition } from 'util/form';
 import incomeInfoFormDefinition from './incomeInfo.form.json';
 

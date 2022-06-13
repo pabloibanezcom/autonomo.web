@@ -99,6 +99,7 @@ export const expenseSlice = createSlice({
   name: 'expense',
   initialState,
   reducers: {
+    resetExpenseState: () => initialState,
     setNewSearchFilter(state, action: PayloadAction<ExpenseFilter>) {
       state.searchFilter = action.payload;
     }
@@ -122,7 +123,7 @@ export const expenseSlice = createSlice({
   }
 });
 
-export const { setNewSearchFilter } = expenseSlice.actions;
+export const { resetExpenseState, setNewSearchFilter } = expenseSlice.actions;
 
 export const selectExpensesSearchFilter = (state: RootState) =>
   state.expense.searchFilter;

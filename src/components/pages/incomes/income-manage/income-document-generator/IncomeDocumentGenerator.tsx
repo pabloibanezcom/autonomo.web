@@ -2,7 +2,7 @@ import { Income } from '@autonomo/common';
 import { InvoiceDocument } from 'components/shared';
 import { Dialog, IconButton, Tooltip } from 'material';
 import { DownloadIcon, FullscreenIcon, PrintIcon } from 'material/icons';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 type IncomeDocumentGeneratorProps = {
   income: Income;

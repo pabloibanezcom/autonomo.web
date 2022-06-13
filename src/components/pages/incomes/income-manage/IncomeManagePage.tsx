@@ -188,8 +188,8 @@ const IncomeManagePage = ({ breadcrumbs }: PageProps) => {
       className="fw-bold"
       id={
         income.productsOrServices.length > 1
-          ? 'income.add.productsPlural'
-          : 'income.add.productsSingular'
+          ? 'income.manage.productsPlural'
+          : 'income.manage.productsSingular'
       }
       values={{ productsLength: income.productsOrServices.length }}
     />
@@ -207,19 +207,19 @@ const IncomeManagePage = ({ breadcrumbs }: PageProps) => {
   const incomeSteps: IncomeStep[] = [
     {
       id: 'client',
-      name: 'income.add.client',
+      name: 'income.manage.client',
       summary: clientSummary,
       details: clientDetails
     },
     {
       id: 'incomeInfo',
-      name: 'income.add.incomeInfo',
+      name: 'income.manage.incomeInfo',
       summary: incomeInfoSummary,
       details: incomeInfoDetails
     },
     {
       id: 'incomeProducts',
-      name: 'income.add.incomeProductsOrServices',
+      name: 'income.manage.incomeProductsOrServices',
       summary: incomeProductsSummary,
       details: incomeProductsDetails
     }
@@ -253,7 +253,7 @@ const IncomeManagePage = ({ breadcrumbs }: PageProps) => {
             <Accordion expanded={isIncomeCompleted()}>
               <AccordionSummary>
                 <div className="w-100 d-flex justify-content-between me-4">
-                  <IntlTypography component="span" id="income.add.summary" />
+                  <IntlTypography component="span" id="income.manage.summary" />
                 </div>
               </AccordionSummary>
               <AccordionDetails>

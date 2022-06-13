@@ -1,3 +1,4 @@
+import { IntlTypography } from 'components/shared';
 import MenuItemEl from 'interfaces/MenuItemEl';
 import {
   Button,
@@ -10,11 +11,15 @@ import {
   Popper
 } from 'material';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getIcon } from 'util/icon';
 import styles from './menuButton.module.scss';
 
 type MenuButtonProps = {
   isIconButton?: boolean;
   rounded?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  menuMargin?: number;
   menuItems: MenuItemEl[];
   children: JSX.Element;
 };
@@ -22,11 +27,14 @@ type MenuButtonProps = {
 const MenuButton = ({
   isIconButton,
   rounded,
+  size,
+  menuMargin,
   menuItems,
   children
 }: MenuButtonProps) => {
   const [isOpen, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   const handleToggle = (): void => {
     setOpen((prevOpen) => !prevOpen);
@@ -55,22 +63,27 @@ const MenuButton = ({
     event: React.MouseEvent<EventTarget>,
     menuItem: MenuItemEl
   ) => {
-    menuItem.onClick();
+    if (menuItem.onClick) {
+      menuItem.onClick();
+    }
+    if (menuItem.navigateTo) {
+      navigate(menuItem.navigateTo);
+    }
     handleClose(event);
   };
 
-  const renderButton = () => {
+  const renderButton = (): JSX.Element => {
     return isIconButton ? (
       <IconButton
         ref={anchorRef}
         aria-controls={isOpen ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
+        size={size}
         className={[
           styles.button,
           rounded ? styles['button--rounded'] : ''
         ].join(' ')}
         onClick={handleToggle}
-        size="large"
       >
         {children}
       </IconButton>
@@ -87,6 +100,22 @@ const MenuButton = ({
     );
   };
 
+  const renderMenuElement = (mItem: MenuItemEl, index: number): JSX.Element => {
+    const Icon = getIcon(mItem.icon);
+    return (
+      <MenuItem key={index} onClick={(e) => handleClickAndClose(e, mItem)}>
+        {Icon && (
+          <Icon color="primary" sx={{ fontSize: 14 }} className="me-2" />
+        )}
+        {mItem.id ? (
+          <IntlTypography component="span" id={mItem.id} />
+        ) : (
+          mItem.content
+        )}
+      </MenuItem>
+    );
+  };
+
   return (
     <div>
       {renderButton()}
@@ -95,6 +124,9 @@ const MenuButton = ({
         anchorEl={anchorRef.current}
         role={undefined}
         placement="bottom-end"
+        sx={{
+          marginTop: menuMargin ? `${menuMargin}px !important` : undefined
+        }}
         className={styles.popper}
         transition
         disablePortal
@@ -114,14 +146,7 @@ const MenuButton = ({
                   id="menu-list-grow"
                   onKeyDown={handleListKeyDown}
                 >
-                  {menuItems.map((mItem, i) => (
-                    <MenuItem
-                      key={i}
-                      onClick={(e) => handleClickAndClose(e, mItem)}
-                    >
-                      {mItem.content}
-                    </MenuItem>
-                  ))}
+                  {menuItems.map((mItem, i) => renderMenuElement(mItem, i))}
                 </MenuList>
               </ClickAwayListener>
             </Paper>

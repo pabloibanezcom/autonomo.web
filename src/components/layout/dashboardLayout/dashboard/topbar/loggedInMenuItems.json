@@ -1,0 +1,14 @@
+[
+  {
+    "content": "My profile",
+    "navigateTo": "/my-profile"
+  },
+  {
+    "content": "My business",
+    "navigateTo": "/my-business"
+  },
+  {
+    "content": "Logout",
+    "navigateTo": "/auth/login"
+  }
+]

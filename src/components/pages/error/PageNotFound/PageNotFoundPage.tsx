@@ -1,4 +1,3 @@
-import React from 'react';
 import BaseErrorPage from '../BaseError/BaseErrorPage';
 
 const PageNotFoundPage = () => {

@@ -15,7 +15,6 @@ import {
   Tooltip
 } from 'material';
 import { PictureAsPdf, VisibilityIcon } from 'material/icons';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import formatter from 'util/formatter';
 

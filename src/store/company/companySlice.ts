@@ -78,7 +78,9 @@ export const deleteCompany = createAsyncThunk(
 export const companySlice = createSlice({
   name: 'company',
   initialState,
-  reducers: {},
+  reducers: {
+    resetCompanyState: () => initialState
+  },
   extraReducers(builder) {
     builder
       .addCase(searchCompanies.fulfilled, (state, action) => {
@@ -89,6 +91,8 @@ export const companySlice = createSlice({
       });
   }
 });
+
+export const { resetCompanyState } = companySlice.actions;
 
 export const selectCompanies = (state: RootState) =>
   state.company.searchResult.items;

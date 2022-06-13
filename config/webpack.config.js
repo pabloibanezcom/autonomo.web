@@ -335,6 +335,7 @@ module.exports = function (webpackEnv) {
         ...(modules.webpackAliases || {}),
         assets: path.resolve(__dirname, '../src/assets/'),
         components: path.resolve(__dirname, '../src/components/'),
+        hooks: path.resolve(__dirname, '../src/hooks/'),
         http: path.resolve(__dirname, '../src/http/'),
         interfaces: path.resolve(__dirname, '../src/interfaces/'),
         material: path.resolve(__dirname, '../src/material/'),

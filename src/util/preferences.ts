@@ -1,6 +1,8 @@
 import Preferences from '../interfaces/Preferences';
+import { getLocaleFromLang } from './language';
 
 const PREFERENCES_KEY = 'preferences';
+const LOCALE_KEY = 'locale';
 
 const defaultPreferences: Preferences = {
   language: 'en',
@@ -13,6 +15,10 @@ export const getPreferencesFromStorage = (): Preferences => {
     return JSON.parse(preferencesStr);
   }
   localStorage.setItem(PREFERENCES_KEY, JSON.stringify(defaultPreferences));
+  localStorage.setItem(
+    LOCALE_KEY,
+    getLocaleFromLang(defaultPreferences.language)
+  );
   return defaultPreferences;
 };
 

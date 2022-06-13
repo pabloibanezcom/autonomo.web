@@ -22,13 +22,17 @@ export const getYearReport = createAsyncThunk(
 export const yearReportslice = createSlice({
   name: 'yearReport',
   initialState,
-  reducers: {},
+  reducers: {
+    resetYearReportState: () => initialState
+  },
   extraReducers(builder) {
     builder.addCase(getYearReport.fulfilled, (state, action) => {
       state.yearReport = action.payload;
     });
   }
 });
+
+export const { resetYearReportState } = yearReportslice.actions;
 
 export const selectYearReport = (state: RootState) =>
   state.yearReport.yearReport;
