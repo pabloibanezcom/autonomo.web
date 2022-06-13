@@ -23,6 +23,7 @@ type IntlTypographyProps = {
   values?: Record<string, unknown>;
   variant?: Variant;
   className?: string;
+  style?: React.CSSProperties;
   component?: ElementType;
 };
 
@@ -32,6 +33,7 @@ const IntlTypography = ({
   values,
   variant,
   className,
+  style,
   component
 }: IntlTypographyProps) => {
   const formattedMessage = (
@@ -45,6 +47,7 @@ const IntlTypography = ({
           variant={variant}
           component={component || 'span'}
           className={className}
+          style={style}
         >
           {formattedMessage}
         </Typography>

@@ -1,6 +1,8 @@
 import Avatar from './avatar/Avatar';
+import BusinessCard from './businessCard/BusinessCard';
 import CategoriesLabelSet from './categoriesLabelSet/CategoriesLabelSet';
 import CompanyLabel from './companyLabel/CompanyLabel';
+import CountryLabel from './countryLabel/CountryLabel';
 import CurrencyText from './currencyText/CurrencyText';
 import DataTable from './dataTable/DataTable';
 import DeleteDialog from './deleteDialog/DeleteDialog';
@@ -14,17 +16,24 @@ import MessageToast from './messageToast/MessageToast';
 import ObjectContentInfo from './objectContentInfo/ObjectContentInfo';
 import PageHeader from './pageHeader/PageHeader';
 import Panel from './panel/Panel';
+import SearchBar from './searchBar/SearchBar';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getComponent = (name: string): any => {
   if (name === 'Avatar') {
     return Avatar;
   }
+  if (name === 'BusinessCard') {
+    return BusinessCard;
+  }
   if (name === 'CategoriesLabelSet') {
     return CategoriesLabelSet;
   }
   if (name === 'CompanyLabel') {
     return CompanyLabel;
+  }
+  if (name === 'CountryLabel') {
+    return CountryLabel;
   }
   if (name === 'CurrencyText') {
     return CurrencyText;
@@ -65,13 +74,19 @@ const getComponent = (name: string): any => {
   if (name === 'Panel') {
     return Panel;
   }
+  if (name === 'Searchbar') {
+    return SearchBar;
+  }
   return null;
 };
 
 export {
   getComponent,
   Avatar,
+  BusinessCard,
   CategoriesLabelSet,
+  CompanyLabel,
+  CountryLabel,
   CurrencyText,
   DataTable,
   DeleteDialog,
@@ -83,5 +98,6 @@ export {
   MessageToast,
   ObjectContentInfo,
   PageHeader,
-  Panel
+  Panel,
+  SearchBar
 };

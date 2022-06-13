@@ -158,13 +158,14 @@ export const incomeSlice = createSlice({
   name: 'income',
   initialState,
   reducers: {
-    setNewSearchFilter(state, action: PayloadAction<IncomeFilter>) {
+    resetIncomeState: () => initialState,
+    setNewSearchFilter: (state, action: PayloadAction<IncomeFilter>) => {
       state.searchFilter = action.payload;
     },
-    clearIncomes(state) {
+    clearIncomes: (state) => {
       state.incomes = [];
     },
-    clearIncome(state) {
+    clearIncome: (state) => {
       state.income = null;
     }
   },
@@ -187,8 +188,12 @@ export const incomeSlice = createSlice({
   }
 });
 
-export const { setNewSearchFilter, clearIncomes, clearIncome } =
-  incomeSlice.actions;
+export const {
+  resetIncomeState,
+  setNewSearchFilter,
+  clearIncomes,
+  clearIncome
+} = incomeSlice.actions;
 
 export const selectIncomesSearchFilter = (state: RootState) =>
   state.income.searchFilter;

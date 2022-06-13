@@ -1,6 +1,5 @@
 import { Category } from '@autonomo/common';
 import { Chip } from 'material';
-import React from 'react';
 
 type CategoriesLabelSetProps = {
   categories: Category[];

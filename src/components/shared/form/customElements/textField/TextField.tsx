@@ -2,12 +2,15 @@ import { TextField as MaterialTextField } from 'material';
 import React, { useState } from 'react';
 import BaseElementProps from '../BaseElementProps';
 
-type TextFieldProps = BaseElementProps;
+interface TextFieldProps extends BaseElementProps {
+  type?: string;
+}
 
 const TextField = ({
   value,
   onChange,
   label,
+  type,
   name,
   error,
   helperText
@@ -26,6 +29,7 @@ const TextField = ({
     <MaterialTextField
       label={label}
       name={name}
+      type={type}
       value={currentValue}
       onChange={handleChange}
       onBlur={handleFocusLost}

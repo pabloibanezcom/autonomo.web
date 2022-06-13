@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { TaxYear } from '@autonomo/common';
 import { FormControl, InputLabel, MenuItem, Select } from 'material';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTaxYear } from 'store';
 import BaseElementProps from '../BaseElementProps';

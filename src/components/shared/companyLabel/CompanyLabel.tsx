@@ -1,6 +1,5 @@
 import { Company } from '@autonomo/common';
 import { Typography } from 'material';
-import React from 'react';
 import Avatar from '../avatar/Avatar';
 
 type CompanyLabelProps = {

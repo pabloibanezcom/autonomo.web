@@ -1,7 +1,6 @@
 import { Business, Income } from '@autonomo/common';
 import { CurrencyText, IntlTypography } from 'components/shared';
 import { Typography } from 'material';
-import React from 'react';
 
 type IncomeSummaryProps = {
   income?: Income;
@@ -12,7 +11,7 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
   return income?.total ? (
     <div className="me-5">
       <div className="w-100 d-flex justify-content-between mb-2">
-        <IntlTypography component="span" id="income.add.subtotal" />
+        <IntlTypography component="span" id="income.manage.subtotal" />
         <Typography component="span">
           <CurrencyText
             value={income.subtotalBaseCurrency || income.subtotal}
@@ -20,7 +19,7 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
         </Typography>
       </div>
       <div className="w-100 d-flex justify-content-between mb-2">
-        <IntlTypography component="span" id="income.add.tax" />
+        <IntlTypography component="span" id="income.manage.tax" />
         <Typography component="span">
           <CurrencyText value={income.taxBaseCurrency || income.tax} />
         </Typography>
@@ -28,7 +27,7 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
       <div className="w-100 d-flex justify-content-between mb-2">
         <IntlTypography
           component="span"
-          id="income.add.totalWithCurrency"
+          id="income.manage.totalWithCurrency"
           values={{ currency: income.baseCurrency }}
         />
         <Typography component="span" className="fw-bold">
@@ -39,7 +38,7 @@ const IncomeSummary = ({ income, business }: IncomeSummaryProps) => {
         <div className="w-100 d-flex justify-content-between mb-2">
           <IntlTypography
             component="span"
-            id="income.add.totalWithCurrency"
+            id="income.manage.totalWithCurrency"
             values={{ currency: business.defaultCurrency }}
           />
           <Typography component="span" className="fw-bold">

@@ -11,6 +11,9 @@
 # production
 /build
 
+# i18n
+/src/i18n
+
 # misc
 .DS_Store
 .env

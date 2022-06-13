@@ -3,6 +3,8 @@ import teal from '@mui/material/colors/teal';
 import { Theme } from 'material/interfaces';
 import { createTheme } from 'material/styles';
 
+const FONT_FAMILY = 'inter';
+
 export const getCustomisedTheme = (): Theme => {
   return createTheme({
     palette: {
@@ -10,7 +12,7 @@ export const getCustomisedTheme = (): Theme => {
       warning: amber
     },
     typography: {
-      fontFamily: 'inter',
+      fontFamily: FONT_FAMILY,
       h3: {
         fontSize: '1.5rem',
         fontWeight: 600,
@@ -28,13 +30,6 @@ export const getCustomisedTheme = (): Theme => {
       }
     },
     components: {
-      MuiAppBar: {
-        styleOverrides: {
-          root: {
-            boxShadow: 'none'
-          }
-        }
-      },
       MuiTableCell: {
         styleOverrides: {
           head: {
@@ -49,6 +44,13 @@ export const getCustomisedTheme = (): Theme => {
         styleOverrides: {
           root: {
             textTransform: 'none'
+          }
+        }
+      },
+      MuiCardActions: {
+        styleOverrides: {
+          root: {
+            padding: 16
           }
         }
       },
@@ -87,6 +89,28 @@ export const getCustomisedTheme = (): Theme => {
           root: {
             padding: '20px 24px',
             gap: 8
+          }
+        }
+      },
+      MuiLink: {
+        styleOverrides: {
+          root: {
+            textDecoration: 'none',
+            fontSize: 13,
+            letterSpacing: 'normal',
+            fontFamily: FONT_FAMILY,
+            lineHeight: 1.5,
+            ':hover': {
+              textDecoration: 'underline'
+            }
+          }
+        }
+      },
+      MuiToolbar: {
+        styleOverrides: {
+          root: {
+            paddingLeft: '0 !important',
+            paddingRight: '0 !important'
           }
         }
       }

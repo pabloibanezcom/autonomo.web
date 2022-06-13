@@ -1,7 +1,7 @@
 import { Business, User } from '@autonomo/common';
 import { DashboardLayout } from 'components/layout';
 import { getAuthToken } from 'http/authToken';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
@@ -28,7 +28,12 @@ const RootPage = () => {
 
   useEffect(() => {
     if (user?.defaultBusiness && !business) {
-      dispatch(getBusiness({ id: user.defaultBusiness.toString() }));
+      const localStorageBusiness = localStorage.getItem('business');
+      dispatch(
+        getBusiness({
+          id: localStorageBusiness || user.defaultBusiness.toString()
+        })
+      );
     }
     if (business) {
       dispatch(getBusinessTaxYear({ businessId: business._id.toString() }));

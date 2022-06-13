@@ -1,0 +1,17 @@
+{
+  "client": "Cliente",
+  "incomeInfo": "Info factura",
+  "incomeProductsOrServices": "Productos / Servicios",
+  "selectCompany": "Seleccion una empresa",
+  "noProductsMessage": "No hay productos.",
+  "addProduct": "Añadir producto / servicio",
+  "productsSingular": "{productsLength} producto",
+  "productsPlural": "{productsLength} productos",
+  "summary": "Resumen",
+  "subtotal": "Base:",
+  "tax": "IVA:",
+  "totalWithCurrency": "Total ({currency}):",
+  "deleteTitle": "Eliminar ingreso",
+  "deleteQuestion": "Eliminar este ingreso es irreversible. Escribe el numero de factura ({name}) abajo para confirmar que quieres eliminarlo.",
+  "deleteButtonLabel": "Eliminar ingreso"
+}

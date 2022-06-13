@@ -211,6 +211,12 @@
         "element": "MyBusinessPage"
       },
       {
+        "id": "businessDetail",
+        "path": "business/:id",
+        "title": "Business detail",
+        "element": "BusinessDetailPage"
+      },
+      {
         "id": "rootEmpty",
         "path": "/",
         "to": "home"

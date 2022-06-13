@@ -1,6 +1,6 @@
 import { MessageToast } from 'components/shared';
 import { Backdrop, CircularProgress } from 'material';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { IntlProvider, updateIntl } from 'react-intl-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom';

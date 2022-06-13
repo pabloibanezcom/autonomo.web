@@ -2,7 +2,7 @@
 import { ObjectContentInfo } from 'components/shared';
 import { FormDefinition, FormField } from 'interfaces';
 import { Alert, Button, Grid } from 'material';
-import React, { Fragment, useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import regex from 'util/regex';
 import {
@@ -20,6 +20,7 @@ type FormProps = {
   values?: any;
   error?: string;
   submitOnChange?: boolean;
+  objectInfo?: boolean;
   onSubmit?: (data: any) => void;
   onCancel?: () => void;
 };
@@ -29,6 +30,7 @@ const Form = ({
   values = {},
   error,
   submitOnChange,
+  objectInfo,
   onSubmit,
   onCancel
 }: FormProps) => {
@@ -98,6 +100,7 @@ const Form = ({
         value={val || values[field.name]}
         onChange={onChange}
         label={field.label}
+        type={field.type}
         name={field.name}
         error={!!errors[field.name]}
         helperText={errors[field.name] && `${field.label} is required`}
@@ -180,7 +183,7 @@ const Form = ({
           </Grid>
         )}
       </Grid>
-      <ObjectContentInfo obj={watch()} />
+      {objectInfo && <ObjectContentInfo obj={watch()} />}
     </form>
   );
 };

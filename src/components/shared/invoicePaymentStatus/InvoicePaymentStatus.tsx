@@ -1,5 +1,4 @@
 import { Chip } from 'material';
-import React from 'react';
 
 type InvoicePaymentStatusProps = {
   paymentDate?: Date;

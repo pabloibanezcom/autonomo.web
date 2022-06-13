@@ -71,7 +71,7 @@ export const deleteTaxPayment = createAsyncThunk(
 export const taxPaymentslice = createSlice({
   name: 'taxPayment',
   initialState,
-  reducers: {},
+  reducers: { resetTaxPaymentState: () => initialState },
   extraReducers(builder) {
     builder
       .addCase(searchTaxPayments.fulfilled, (state, action) => {
@@ -82,6 +82,8 @@ export const taxPaymentslice = createSlice({
       });
   }
 });
+
+export const { resetTaxPaymentState } = taxPaymentslice.actions;
 
 export const selectTaxPayments = (state: RootState) =>
   state.taxPayment.searchResult.items;

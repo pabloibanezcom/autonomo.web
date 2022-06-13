@@ -1,6 +1,8 @@
-import { Breadcrumbs, Divider, Link, Typography } from 'material';
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { IntlTypography } from 'components/shared';
+import { useMobileSize } from 'hooks';
+import { Breadcrumbs, Button, Divider, Fab, Link, Typography } from 'material';
+import { AddIcon } from 'material/icons';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import styles from './pageHeader.module.scss';
 
 type BreadcrumbsEl = {
@@ -8,13 +10,36 @@ type BreadcrumbsEl = {
   href?: string;
 };
 
+type NewItemButton = {
+  labelId: string;
+  href: string;
+};
+
 type PageHeaderProps = {
   title: string;
   breadcrumbs?: BreadcrumbsEl[];
-  rightContent?: JSX.Element;
+  newItemButton?: NewItemButton;
 };
 
-const PageHeader = ({ title, breadcrumbs, rightContent }: PageHeaderProps) => {
+const renderNewItemButton = (newItem: NewItemButton) => (
+  <Button
+    size="small"
+    startIcon={<AddIcon />}
+    component={RouterLink}
+    to={newItem.href}
+  >
+    <IntlTypography id={newItem.labelId} />
+  </Button>
+);
+
+const PageHeader = ({ title, breadcrumbs, newItemButton }: PageHeaderProps) => {
+  const isMobile = useMobileSize();
+  const navigate = useNavigate();
+
+  const handleFabClick = () => {
+    navigate(newItemButton.href);
+  };
+
   const renderBreadcrumbEl = (bEl: BreadcrumbsEl, i: number) => {
     return bEl.href ? (
       <Link key={i} component={RouterLink} color="inherit" to={bEl.href}>
@@ -40,7 +65,21 @@ const PageHeader = ({ title, breadcrumbs, rightContent }: PageHeaderProps) => {
             </Breadcrumbs>
           )}
         </div>
-        {rightContent && <div>{rightContent}</div>}
+        {newItemButton && (
+          <div>
+            {!isMobile ? (
+              renderNewItemButton(newItemButton)
+            ) : (
+              <Fab
+                color="primary"
+                className={styles.fabButton}
+                onClick={handleFabClick}
+              >
+                <AddIcon />
+              </Fab>
+            )}
+          </div>
+        )}
       </div>
       <Divider className={styles.divider} />
     </div>

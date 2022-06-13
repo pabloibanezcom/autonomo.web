@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export default interface MenuItemEl {
-  content: any;
+  id?: string;
+  content?: any;
+  icon?: string;
+  navigateTo?: string;
   onClick?: any;
 }

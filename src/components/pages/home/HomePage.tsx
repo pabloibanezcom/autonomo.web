@@ -1,7 +1,5 @@
 import { PageHeader, Panel } from 'components/shared';
 import { PageProps } from 'interfaces';
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 const menuItems = [
   {
@@ -32,9 +30,7 @@ const HomePage = ({ title, breadcrumbs }: PageProps) => {
       <PageHeader title={title} breadcrumbs={breadcrumbs} />
       <Panel title="Mobile / Desktop" menuItems={menuItems}>
         Home Container
-        <p>
-          <FormattedMessage id="myMessage" />
-        </p>
+        <p>New message</p>
       </Panel>
     </div>
   );

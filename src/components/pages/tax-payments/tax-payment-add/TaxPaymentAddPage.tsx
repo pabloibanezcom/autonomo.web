@@ -1,6 +1,5 @@
 import { PageHeader } from 'components/shared';
 import { PageProps } from 'interfaces';
-import React from 'react';
 
 const TaxPaymentAddPage = ({ title, breadcrumbs }: PageProps) => {
   return (

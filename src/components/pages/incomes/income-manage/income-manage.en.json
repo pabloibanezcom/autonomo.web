@@ -1,0 +1,17 @@
+{
+  "client": "Client",
+  "incomeInfo": "Income info",
+  "incomeProductsOrServices": "Products / Services",
+  "selectCompany": "Select a company",
+  "noProductsMessage": "There are not products or services at the moment.",
+  "addProduct": "Add product / service",
+  "productsSingular": "{productsLength} product",
+  "productsPlural": "{productsLength} products",
+  "summary": "Summary",
+  "subtotal": "Subtotal:",
+  "tax": "VAT:",
+  "totalWithCurrency": "Total ({currency}):",
+  "deleteTitle": "Delete income",
+  "deleteQuestion": "Deleting this income is irreversible. Enter the invoice number ({name}) below to confirm you want to permanently delete it.",
+  "deleteButtonLabel": "Delete income"
+}

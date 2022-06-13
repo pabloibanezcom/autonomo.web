@@ -11,7 +11,7 @@ import {
   Select
 } from 'material';
 import { CancelIcon } from 'material/icons';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchCategories, selectCategories } from 'store';
 import BaseElementProps from '../BaseElementProps';
@@ -33,7 +33,7 @@ const CategoriesSelector = ({
   );
 
   useEffect(() => {
-    if (!categories?.length) {
+    if (!categories) {
       dispatch(searchCategories({ filter: null }));
     }
   }, [categories, dispatch]);
@@ -79,16 +79,17 @@ const CategoriesSelector = ({
           </Box>
         )}
       >
-        {categories.map((cat) => (
-          // @ts-ignore
-          <MenuItem
-            key={cat.name}
-            value={cat}
-            onClick={() => toggleCategory(cat)}
-          >
-            {cat.name}
-          </MenuItem>
-        ))}
+        {categories &&
+          categories.map((cat) => (
+            // @ts-ignore
+            <MenuItem
+              key={cat.name}
+              value={cat}
+              onClick={() => toggleCategory(cat)}
+            >
+              {cat.name}
+            </MenuItem>
+          ))}
       </Select>
     </FormControl>
   );

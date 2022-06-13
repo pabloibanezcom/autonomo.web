@@ -61,6 +61,12 @@
   width: 100%;
 }
 
+.topSectionInner {
+  width: 100%;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
 .title {
   margin-left: 18px !important;
   opacity: 1;
@@ -101,4 +107,12 @@
 .icon {
   padding: 1px 0;
   opacity: 0.5;
+}
+
+.arrowIconLeft {
+  transform: rotate(180deg);
+}
+
+.arrowIconRight {
+  transform: rotate(0deg);
 }

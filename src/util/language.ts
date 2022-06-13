@@ -1,5 +1,12 @@
-import English from '../lang/en.json';
-import Spanish from '../lang/es.json';
+import English from '../i18n/en.json';
+import Spanish from '../i18n/es.json';
+
+export const getLocaleFromLang = (lang: string): string => {
+  if (lang === 'es') {
+    return 'es-ES';
+  }
+  return 'en-GB';
+};
 
 export const getMessagesFromLocale = (
   locale: string

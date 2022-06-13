@@ -4,6 +4,7 @@ import {
   LoginPage,
   RegisterPage
 } from './auth';
+import { BusinessDetailPage } from './business';
 import {
   CompaniesListPage,
   CompanyAddPage,
@@ -39,6 +40,7 @@ export {
   RegisterPage,
   InternalServerErrorPage,
   PageNotFoundPage,
+  BusinessDetailPage,
   CompaniesListPage,
   CompanyAddPage,
   CompanyDetailsPage,

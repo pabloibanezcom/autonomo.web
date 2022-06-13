@@ -78,7 +78,9 @@ export const deleteNationalInsurancePayment = createAsyncThunk(
 export const nationalInsurancePaymentslice = createSlice({
   name: 'nationalInsurancePayment',
   initialState,
-  reducers: {},
+  reducers: {
+    resetNationalInsurancePaymentState: () => initialState
+  },
   extraReducers(builder) {
     builder
       .addCase(searchNationalInsurancePayments.fulfilled, (state, action) => {
@@ -89,6 +91,9 @@ export const nationalInsurancePaymentslice = createSlice({
       });
   }
 });
+
+export const { resetNationalInsurancePaymentState } =
+  nationalInsurancePaymentslice.actions;
 
 export const selectNationalInsurancePayments = (state: RootState) =>
   state.nationalInsurancePayment.searchResult.items;

@@ -1,0 +1,13 @@
+@import 'assets/scss/variables';
+
+.inputBar {
+  width: 140px;
+  -webkit-transition: width $transition-time ease-in-out;
+  -moz-transition: width $transition-time ease-in-out;
+  -o-transition: width $transition-time ease-in-out;
+  transition: width $transition-time ease-in-out;
+}
+
+.inputBarCollapsed {
+  width: 0;
+}

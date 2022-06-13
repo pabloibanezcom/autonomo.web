@@ -64,7 +64,9 @@ export const deletePerson = createAsyncThunk(
 export const personSlice = createSlice({
   name: 'person',
   initialState,
-  reducers: {},
+  reducers: {
+    resetPersonState: () => initialState
+  },
   extraReducers(builder) {
     builder
       .addCase(searchPeople.fulfilled, (state, action) => {
@@ -75,6 +77,8 @@ export const personSlice = createSlice({
       });
   }
 });
+
+export const { resetPersonState } = personSlice.actions;
 
 export const selectPeople = (state: RootState) =>
   state.person.searchResult.items;

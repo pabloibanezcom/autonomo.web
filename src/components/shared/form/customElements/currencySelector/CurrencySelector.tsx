@@ -6,7 +6,7 @@ import {
   Select,
   SelectChangeEvent
 } from 'material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import BaseElementProps from '../BaseElementProps';
 
 const currencies = ['EUR', 'GBP', 'USD'];

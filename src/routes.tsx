@@ -1,6 +1,5 @@
 import { getPageComponent } from 'components/pages';
 import { BreadcrumbsEl, Route, RouteDefinition } from 'interfaces';
-import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { generateBreadcrumbs, getBreadcrumbById } from 'util/routes';
 import routeDefinitions from './routes.json';
