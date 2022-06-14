@@ -12,6 +12,7 @@ const TextField = ({
   label,
   type,
   name,
+  className,
   error,
   helperText
 }: TextFieldProps) => {
@@ -27,6 +28,7 @@ const TextField = ({
 
   return (
     <MaterialTextField
+      className={className}
       label={label}
       name={name}
       type={type}

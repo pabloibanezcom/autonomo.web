@@ -1,0 +1,46 @@
+@import './variables';
+
+$grid-modes: (
+  'fill': auto-fill,
+  'fit': auto-fit
+);
+
+@mixin grid($mode, $grid-item-size) {
+  display: grid;
+  gap: $grid-gap;
+  grid-template-columns: repeat($mode, minmax(min(100%, $grid-item-size), 1fr));
+}
+
+@each $mode, $mode-value in $grid-modes {
+  @each $size, $size-value in $grid-sizes {
+    .grid-#{$mode}-#{$size} {
+      @include grid($mode-value, $size-value);
+    }
+
+    @if $size == 'md' {
+      .grid-#{$mode} {
+        @include grid($mode-value, $size-value);
+      }
+    }
+  }
+}
+
+.grid-column-2 {
+  grid-column: 2 span;
+}
+
+.grid-column-3 {
+  grid-column: 3 span;
+}
+
+.grid-column-4 {
+  grid-column: 4 span;
+}
+
+.grid-mb {
+  margin-bottom: $grid-gap;
+}
+
+.grid-mt {
+  margin-top: $grid-gap;
+}

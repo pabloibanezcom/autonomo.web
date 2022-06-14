@@ -4,20 +4,13 @@ import {
   Income,
   InvoiceProductOrService
 } from '@autonomo/common';
-import {
-  DeleteDialog,
-  IntlTypography,
-  ObjectContentInfo,
-  PageHeader
-} from 'components/shared';
+import { DeleteDialog, IntlTypography, PageHeader } from 'components/shared';
 import { InvoiceMainInfo, PageProps } from 'interfaces';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box,
   Button,
-  Grid,
   Typography
 } from 'material';
 import { ExpandMoreIcon } from 'material/icons';
@@ -231,70 +224,63 @@ const IncomeManagePage = ({ breadcrumbs }: PageProps) => {
         title={isEditMode ? `Invoice ${title}` : 'New Income'}
         breadcrumbs={breadcrumbs}
       />
-      <Box>
-        <Grid container spacing={6}>
-          <Grid item xs={6}>
-            {income &&
-              incomeSteps.map((step) => (
-                <Accordion
-                  key={step.id}
-                  expanded={expanded === step.id}
-                  onChange={handleAccordionChange(step.id)}
+      <div className="grid-fit-xl">
+        <div>
+          {income &&
+            incomeSteps.map((step) => (
+              <Accordion
+                key={step.id}
+                expanded={expanded === step.id}
+                onChange={handleAccordionChange(step.id)}
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <div className="w-100 d-flex justify-content-between me-4">
+                    <IntlTypography component="span" id={step.name} />
+                    {step.summary}
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails>{step.details}</AccordionDetails>
+              </Accordion>
+            ))}
+          <Accordion expanded={isIncomeCompleted()}>
+            <AccordionSummary>
+              <div className="w-100 d-flex justify-content-between me-4">
+                <IntlTypography component="span" id="income.manage.summary" />
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <IncomeSummary income={income} business={business} />
+            </AccordionDetails>
+          </Accordion>
+          <div className="d-flex flex-row-reverse mt-4 gap-3">
+            {!isEditMode ? (
+              <>
+                {' '}
+                <Button
+                  disabled={!isIncomeCompleted()}
+                  onClick={handleAddIncome}
                 >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <div className="w-100 d-flex justify-content-between me-4">
-                      <IntlTypography component="span" id={step.name} />
-                      {step.summary}
-                    </div>
-                  </AccordionSummary>
-                  <AccordionDetails>{step.details}</AccordionDetails>
-                </Accordion>
-              ))}
-            <Accordion expanded={isIncomeCompleted()}>
-              <AccordionSummary>
-                <div className="w-100 d-flex justify-content-between me-4">
-                  <IntlTypography component="span" id="income.manage.summary" />
-                </div>
-              </AccordionSummary>
-              <AccordionDetails>
-                <IncomeSummary income={income} business={business} />
-              </AccordionDetails>
-            </Accordion>
-            <div className="d-flex flex-row-reverse mt-4 gap-3">
-              {!isEditMode ? (
-                <>
-                  {' '}
-                  <Button
-                    disabled={!isIncomeCompleted()}
-                    onClick={handleAddIncome}
-                  >
-                    Add income
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button disabled={!isEdited} onClick={handleUpdateIncome}>
-                    Save changes
-                  </Button>
-                  <Button
-                    color="error"
-                    variant="outlined"
-                    onClick={() => setShowDeleteDialog(true)}
-                  >
-                    Delete income
-                  </Button>
-                </>
-              )}
-            </div>
-            <div>
-              <ObjectContentInfo obj={income} />
-            </div>
-          </Grid>
-          <Grid item xs={6}>
-            <IncomeDocumentGenerator income={income} />
-          </Grid>
-        </Grid>
-      </Box>
+                  Add income
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button disabled={!isEdited} onClick={handleUpdateIncome}>
+                  Save changes
+                </Button>
+                <Button
+                  color="error"
+                  variant="outlined"
+                  onClick={() => setShowDeleteDialog(true)}
+                >
+                  Delete income
+                </Button>
+              </>
+            )}
+          </div>
+        </div>
+        <IncomeDocumentGenerator income={income} />
+      </div>
       {income && (
         <DeleteDialog
           title="income.delete.title"

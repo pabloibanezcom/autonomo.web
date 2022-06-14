@@ -20,6 +20,7 @@ const CurrencyAmountTextField = ({
   value,
   label,
   error,
+  className,
   helperText,
   defaultCurrency = 'EUR',
   onChange
@@ -34,7 +35,7 @@ const CurrencyAmountTextField = ({
   };
 
   return (
-    <FormControl fullWidth>
+    <FormControl className={className} fullWidth>
       {label && (
         <InputLabel htmlFor="outlined-adornment-amount">{label}</InputLabel>
       )}

@@ -3,11 +3,13 @@
     {
       "name": "descriptionLine1",
       "label": "Description line 1",
-      "required": true
+      "required": true,
+      "gridColumn": 3
     },
     {
       "name": "descriptionLine2",
-      "label": "Description line 2"
+      "label": "Description line 2",
+      "gridColumn": 3
     },
     {
       "name": "quantity",

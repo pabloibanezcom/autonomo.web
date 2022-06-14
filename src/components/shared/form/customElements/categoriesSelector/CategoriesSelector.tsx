@@ -24,6 +24,7 @@ interface CategoriesSelectorProps extends BaseElementProps {
 const CategoriesSelector = ({
   label = 'Categories',
   value,
+  className,
   onChange
 }: CategoriesSelectorProps) => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const CategoriesSelector = ({
   };
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth className={className}>
       <InputLabel>{label}</InputLabel>
       <Select
         multiple

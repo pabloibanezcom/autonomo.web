@@ -26,3 +26,13 @@ $container-bgcolor: #f7f9fc;
 // z-index
 $navbar-z-index: 1200;
 $overlay-z-index: 1190;
+
+// grid
+$grid-gap: 1.5rem;
+$grid-sizes: (
+  'xs': 12rem,
+  'sm': 18rem,
+  'md': 22rem,
+  'lg': 26rem,
+  'xl': 30rem
+);

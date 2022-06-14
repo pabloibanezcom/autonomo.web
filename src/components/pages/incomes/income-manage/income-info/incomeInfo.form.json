@@ -3,7 +3,8 @@
     {
       "name": "number",
       "label": "Income number",
-      "required": true
+      "required": true,
+      "gridColumn": 3
     },
     {
       "name": "issuedDate",
@@ -13,19 +14,20 @@
         "todayAsDefaultValue": true
       },
       "required": true,
-      "gridSize": 4
+      "gridColumn": 1
     },
     {
       "name": "baseCurrency",
       "label": "Base currency",
       "element": "currency",
       "required": true,
-      "gridSize": 4
+      "gridColumn": 1
     },
     {
       "name": "categories",
       "label": "Categories",
-      "element": "categories"
+      "element": "categories",
+      "gridColumn": 3
     }
   ],
   "submitButton": {

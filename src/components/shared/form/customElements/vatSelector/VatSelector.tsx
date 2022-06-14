@@ -10,7 +10,12 @@ interface VatSelectorProps extends BaseElementProps {
   label?: string;
 }
 
-const VatSelector = ({ label = 'VAT', value, onChange }: VatSelectorProps) => {
+const VatSelector = ({
+  label = 'VAT',
+  value,
+  className,
+  onChange
+}: VatSelectorProps) => {
   const taxYear: TaxYear = useSelector(selectTaxYear);
 
   const getDefaultVatBand = taxYear.vatBands[taxYear.vatBands.length - 1];
@@ -24,7 +29,7 @@ const VatSelector = ({ label = 'VAT', value, onChange }: VatSelectorProps) => {
   }, [value]);
 
   return (
-    <FormControl fullWidth>
+    <FormControl className={className} fullWidth>
       <InputLabel>{label}</InputLabel>
       <Select value={buildValue()} label={label} onChange={onChange}>
         {taxYear.vatBands.map((vatBand) => (
