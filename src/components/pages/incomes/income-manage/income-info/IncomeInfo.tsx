@@ -31,7 +31,6 @@ const currencyRateField: FormField = {
   name: 'exchangeRate',
   label: '',
   required: true,
-  gridSize: 4,
   pattern: {
     regex: 'amountTwoDigits',
     message: 'Invalid currency format'

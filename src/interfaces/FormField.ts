@@ -14,7 +14,7 @@ export default interface FormField {
   label: string;
   type?: string;
   required?: boolean;
-  gridSize?: boolean | GridSize;
+  gridColumn?: number;
   offset?: GridSize;
   value?: any;
   pattern?: {

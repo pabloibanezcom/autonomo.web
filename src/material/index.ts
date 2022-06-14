@@ -31,7 +31,6 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
-import Grid from '@mui/material/Grid';
 import Grow from '@mui/material/Grow';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -95,7 +94,6 @@ export {
   FormControlLabel,
   FormHelperText,
   FormLabel,
-  Grid,
   Grow,
   IconButton,
   InputAdornment,

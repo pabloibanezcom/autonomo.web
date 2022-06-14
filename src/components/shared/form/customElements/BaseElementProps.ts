@@ -2,6 +2,7 @@
 export default interface BaseElementProps {
   label?: string;
   name?: string;
+  className?: string;
   value?: any;
   onChange?: any;
   error?: boolean;

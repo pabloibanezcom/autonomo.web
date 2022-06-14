@@ -15,6 +15,7 @@ interface DateSelectorProps extends BaseElementProps {
 const DateSelector = ({
   label,
   error,
+  className,
   helperText,
   todayAsDefaultValue,
   value,
@@ -32,7 +33,11 @@ const DateSelector = ({
   }, [todayAsDefaultValue]);
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns} locale={esLocale}>
+    <LocalizationProvider
+      dateAdapter={AdapterDateFns}
+      locale={esLocale}
+      className={className}
+    >
       <DatePicker
         label={label}
         value={value || (todayAsDefaultValue ? new Date() : null)}

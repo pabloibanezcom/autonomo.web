@@ -13,7 +13,7 @@ const IncomeDocumentGenerator = ({ income }: IncomeDocumentGeneratorProps) => {
 
   return (
     <div className="d-flex flex-column align-items-end">
-      <InvoiceDocument invoice={income} zoom={0.4} />
+      {/* <InvoiceDocument invoice={income} zoom={0.4} /> */}
       <div className="mt-2">
         <Tooltip title="Print" placement="bottom">
           <IconButton>
