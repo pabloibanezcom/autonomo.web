@@ -15,11 +15,11 @@
   display: flex;
   min-height: 100%;
   flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 20px;
 }
 
-.authBox {
-  background-color: $white-color;
-  display: flex;
-  flex-direction: row;
-  padding: 0 30px;
+.containerInner {
+  width: 100%;
 }

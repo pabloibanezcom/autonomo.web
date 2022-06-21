@@ -1,4 +1,4 @@
-import { Person, PersonFilter, PersonSearchResult } from '@autonomo/common';
+import { Person, PersonFilter } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addPersonRequest,
@@ -8,24 +8,46 @@ import {
   updatePersonRequest
 } from 'http/person';
 import { RootState } from 'store';
+import { simplifyError } from 'util/error';
+import { setError, startLoading, stopLoading } from '../status/statusSlice';
 
 interface PersonInitialState {
-  searchResult: PersonSearchResult;
+  searchFilter: PersonFilter;
+  items: Person[];
   person: Person;
 }
 
 const initialState: PersonInitialState = {
-  searchResult: {
-    items: []
+  searchFilter: {
+    pagination: {
+      page: 0,
+      items: 12
+    },
+    sorting: {
+      sortBy: 'firstName'
+    }
   },
+  items: [],
   person: null
 };
 
 export const searchPeople = createAsyncThunk(
   'person/searchPeople',
-  async (params: { filter: PersonFilter }) => {
-    const response = await searchPeopleRequest(params.filter);
-    return response.data;
+  async (params: { filter: PersonFilter }, { dispatch, getState }) => {
+    dispatch(startLoading());
+    try {
+      const state = getState() as RootState;
+      const response = await searchPeopleRequest(
+        state.business.business._id.toString(),
+        params.filter || state.person.searchFilter
+      );
+      dispatch(stopLoading());
+      return response.data;
+    } catch (err: unknown) {
+      dispatch(stopLoading());
+      dispatch(setError(simplifyError(err)));
+      throw err;
+    }
   }
 );
 
@@ -70,7 +92,9 @@ export const personSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(searchPeople.fulfilled, (state, action) => {
-        state.searchResult = action.payload;
+        const { items, ...searchFilter } = action.payload;
+        state.items = items;
+        state.searchFilter = searchFilter;
       })
       .addCase(getPerson.fulfilled, (state, action) => {
         state.person = action.payload;
@@ -80,8 +104,10 @@ export const personSlice = createSlice({
 
 export const { resetPersonState } = personSlice.actions;
 
-export const selectPeople = (state: RootState) =>
-  state.person.searchResult.items;
+export const selectPersonFilter = (state: RootState) =>
+  state.person.searchFilter;
+
+export const selectPeople = (state: RootState) => state.person.items;
 
 export const selectPerson = (state: RootState) => state.person.person;
 

@@ -33,6 +33,7 @@ const LoginPage = () => {
       <Box>
         <Form
           formDefinition={formDefinition}
+          gridSize="md"
           error={error?.code === '401' && 'Incorrect email and password'}
           onSubmit={submitLogin}
         />

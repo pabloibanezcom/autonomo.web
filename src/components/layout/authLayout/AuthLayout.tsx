@@ -8,7 +8,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className={styles.authLayout}>
       <div className={styles.container}>
-        <div className={styles.authBox}>{children}</div>
+        <div className={styles.containerInner}>{children}</div>
       </div>
     </div>
   );

@@ -59,6 +59,11 @@ export const getCustomisedTheme = (): Theme => {
           root: {
             borderRadius: 6
           },
+          deleteIcon: {
+            width: '0.8em',
+            height: '0.8em',
+            marginLeft: 0
+          },
           sizeMedium: {
             height: 24
           },

@@ -12,7 +12,7 @@ import {
   DateSelector,
   TextField,
   VatSelector
-} from './customElements';
+} from '../inputs';
 
 type FormProps = {
   formDefinition: FormDefinition;
@@ -20,6 +20,7 @@ type FormProps = {
   error?: string;
   submitOnChange?: boolean;
   objectInfo?: boolean;
+  gridSize?: string;
   onSubmit?: (data: any) => void;
   onCancel?: () => void;
 };
@@ -30,6 +31,7 @@ const Form = ({
   error,
   submitOnChange,
   objectInfo,
+  gridSize = 'xs',
   onSubmit,
   onCancel
 }: FormProps) => {
@@ -147,7 +149,7 @@ const Form = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       {error && <Alert severity="error">{error}</Alert>}
-      <div className="grid-fill-xs grid-mb">
+      <div className={`grid-fill-${gridSize} grid-mb`}>
         {fields.map((field) => (
           <Fragment key={field.name}>{renderFormField(field)}</Fragment>
         ))}

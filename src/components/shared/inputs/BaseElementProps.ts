@@ -7,4 +7,5 @@ export default interface BaseElementProps {
   onChange?: any;
   error?: boolean;
   helperText?: string;
+  fullWidth?: boolean;
 }

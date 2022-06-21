@@ -9,9 +9,13 @@ import { AxiosPromise } from 'axios';
 import axios from './axios';
 
 export const searchPeopleRequest = (
+  businessId: string,
   searchFilter: PersonFilter
 ): AxiosPromise<PersonSearchResult> => {
-  return axios.post(Routes.SEARCH_PEOPLE, searchFilter);
+  return axios.post(
+    insertParamsInRoute(Routes.SEARCH_PEOPLE, { businessId }),
+    searchFilter
+  );
 };
 
 export const getPersonRequest = (id: string): AxiosPromise<Person> => {
