@@ -1,0 +1,31 @@
+{
+  "sortByItems": [
+    { "label": "people.list.nameAsc", "value": "firstName" },
+    { "label": "people.list.nameDesc", "value": "-firstName" },
+    { "label": "people.list.country", "value": "country" }
+  ],
+  "fields": [
+    {
+      "type": "selector",
+      "label": "people.list.country",
+      "prop": "country",
+      "items": [
+        {
+          "label": "people.list.any",
+          "value": "any"
+        },
+        {
+          "countryCode": "GB"
+        },
+        {
+          "countryCode": "ES"
+        }
+      ]
+    },
+    {
+      "type": "search",
+      "label": "people.list.name",
+      "prop": "firstName"
+    }
+  ]
+}

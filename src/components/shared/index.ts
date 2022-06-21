@@ -1,12 +1,22 @@
 import Avatar from './avatar/Avatar';
-import BusinessCard from './businessCard/BusinessCard';
+import { BusinessCard, CompanyCard, PersonCard } from './cards';
 import CategoriesLabelSet from './categoriesLabelSet/CategoriesLabelSet';
 import CompanyLabel from './companyLabel/CompanyLabel';
 import CountryLabel from './countryLabel/CountryLabel';
 import CurrencyText from './currencyText/CurrencyText';
 import DataTable from './dataTable/DataTable';
 import DeleteDialog from './deleteDialog/DeleteDialog';
+import FilterBar from './filterBar/FilterBar';
 import Form from './form/Form';
+import {
+  CategoriesSelector,
+  CurrencyAmountTextField,
+  CurrencySelector,
+  DateSelector,
+  Selector,
+  TextField,
+  VatSelector
+} from './inputs';
 import IntlTypography from './intlTypography/IntlTypography';
 import InvoiceDocument from './invoiceDocument/InvoiceDocument';
 import InvoicePaymentStatus from './invoicePaymentStatus/InvoicePaymentStatus';
@@ -26,6 +36,12 @@ const getComponent = (name: string): any => {
   if (name === 'BusinessCard') {
     return BusinessCard;
   }
+  if (name === 'CompanyCard') {
+    return CompanyCard;
+  }
+  if (name === 'PersonCard') {
+    return PersonCard;
+  }
   if (name === 'CategoriesLabelSet') {
     return CategoriesLabelSet;
   }
@@ -43,6 +59,9 @@ const getComponent = (name: string): any => {
   }
   if (name === 'DeleteDialog') {
     return DeleteDialog;
+  }
+  if (name === 'FilterBar') {
+    return FilterBar;
   }
   if (name === 'Form') {
     return Form;
@@ -84,12 +103,15 @@ export {
   getComponent,
   Avatar,
   BusinessCard,
+  CompanyCard,
+  PersonCard,
   CategoriesLabelSet,
   CompanyLabel,
   CountryLabel,
   CurrencyText,
   DataTable,
   DeleteDialog,
+  FilterBar,
   Form,
   InvoiceDocument,
   IntlTypography,
@@ -99,5 +121,12 @@ export {
   ObjectContentInfo,
   PageHeader,
   Panel,
-  SearchBar
+  SearchBar,
+  CategoriesSelector,
+  CurrencyAmountTextField,
+  CurrencySelector,
+  DateSelector,
+  Selector,
+  TextField,
+  VatSelector
 };

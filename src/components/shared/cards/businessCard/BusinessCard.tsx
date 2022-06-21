@@ -1,23 +1,15 @@
 import { Business, BusinessRole, BusinessType, Person } from '@autonomo/common';
-import { CountryLabel, IntlTypography, MenuButton } from 'components/shared';
+import { CountryLabel, IntlTypography } from 'components/shared';
 import MenuItemEl from 'interfaces/MenuItemEl';
-import {
-  Avatar,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Link,
-  Typography
-} from 'material';
-import { BusinessIcon, MoreVertIcon, PersonIcon } from 'material/icons';
+import { Button, Link, Typography } from 'material';
+import { BusinessIcon, PersonIcon } from 'material/icons';
 import { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { getBusiness } from 'store';
 import { formatDate } from 'util/date';
 import { getFullName } from 'util/person';
+import BaseCard from '../baseCard/BaseCard';
 
 type BusinessCardProps = {
   business: Business;
@@ -82,10 +74,6 @@ const BusinessCard = ({ business }: BusinessCardProps) => {
     dispatch(getBusiness({ id: business._id.toString(), freshBusiness: true }));
   };
 
-  const avatar = <Avatar>{business.name.slice(0, 2).toUpperCase()}</Avatar>;
-
-  const title = <span className="fw-bold">{business.name}</span>;
-
   const TypeIcon = business.type === 'company' ? BusinessIcon : PersonIcon;
 
   const subheader = (
@@ -120,30 +108,26 @@ const BusinessCard = ({ business }: BusinessCardProps) => {
     }
   ];
 
+  const actions = (
+    <Button
+      variant="outlined"
+      fullWidth
+      size="large"
+      onClick={handleManageBusiness}
+    >
+      <IntlTypography component="span" id="businessCard.manageBusiness" />
+    </Button>
+  );
+
   return (
-    <Card>
-      <CardHeader
-        avatar={avatar}
-        action={
-          <MenuButton isIconButton menuItems={menuItems}>
-            <MoreVertIcon />
-          </MenuButton>
-        }
-        title={title}
-        subheader={subheader}
-      />
-      <CardContent>{content}</CardContent>
-      <CardActions className="d-flex flex-row-reverse">
-        <Button
-          variant="outlined"
-          fullWidth
-          size="large"
-          onClick={handleManageBusiness}
-        >
-          <IntlTypography component="span" id="businessCard.manageBusiness" />
-        </Button>
-      </CardActions>
-    </Card>
+    <BaseCard
+      avatar={business.name}
+      title={business.name}
+      subheader={subheader}
+      content={content}
+      menuItems={menuItems}
+      actions={actions}
+    />
   );
 };
 

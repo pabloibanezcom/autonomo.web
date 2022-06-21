@@ -1,4 +1,4 @@
-import { Company, CompanyFilter, CompanySearchResult } from '@autonomo/common';
+import { Company, CompanyFilter } from '@autonomo/common';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addCompanyRequest,
@@ -12,14 +12,22 @@ import { simplifyError } from 'util/error';
 import { setError, startLoading, stopLoading } from '../status/statusSlice';
 
 interface CompanyInitialState {
-  searchResult: CompanySearchResult;
+  searchFilter: CompanyFilter;
+  items: Company[];
   company: Company;
 }
 
 const initialState: CompanyInitialState = {
-  searchResult: {
-    items: []
+  searchFilter: {
+    pagination: {
+      page: 0,
+      items: 12
+    },
+    sorting: {
+      sortBy: 'name'
+    }
   },
+  items: [],
   company: null
 };
 
@@ -31,7 +39,7 @@ export const searchCompanies = createAsyncThunk(
       const state = getState() as RootState;
       const response = await searchCompaniesRequest(
         state.business.business._id.toString(),
-        params.filter
+        params.filter || state.company.searchFilter
       );
       dispatch(stopLoading());
       return response.data;
@@ -84,7 +92,9 @@ export const companySlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(searchCompanies.fulfilled, (state, action) => {
-        state.searchResult = action.payload;
+        const { items, ...searchFilter } = action.payload;
+        state.items = items;
+        state.searchFilter = searchFilter;
       })
       .addCase(getCompany.fulfilled, (state, action) => {
         state.company = action.payload;
@@ -94,8 +104,10 @@ export const companySlice = createSlice({
 
 export const { resetCompanyState } = companySlice.actions;
 
-export const selectCompanies = (state: RootState) =>
-  state.company.searchResult.items;
+export const selectCompanyFilter = (state: RootState) =>
+  state.company.searchFilter;
+
+export const selectCompanies = (state: RootState) => state.company.items;
 
 export const selectCompany = (state: RootState) => state.company.company;
 
