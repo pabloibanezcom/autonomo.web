@@ -1,4 +1,10 @@
-import { Business, BusinessRole, BusinessType, Person } from '@autonomo/common';
+import {
+  Business,
+  BusinessRole,
+  BusinessType,
+  Company,
+  Person
+} from '@autonomo/common';
 import { CountryLabel, IntlTypography } from 'components/shared';
 import MenuItemEl from 'interfaces/MenuItemEl';
 import { Button, Link, Typography } from 'material';
@@ -45,14 +51,19 @@ const generateBusinessContentItems = (business: Business): ContentItem[] => {
 
   const items: ContentItem[] = [];
   if (business.type === 'company') {
-    items.push(personLink('businessCard.director', business.company.director));
+    items.push(
+      personLink(
+        'businessCard.director',
+        (business.company as Company).director
+      )
+    );
     items.push({
       id: 'businessCard.incorporationDate',
-      value: formatDate(business.company.creationDate)
+      value: formatDate((business.company as Company).creationDate)
     });
   }
   if (business.type === BusinessType.SoleTrader) {
-    items.push(personLink('businessCard.soleTrader', business.soleTrader));
+    // items.push(personLink('businessCard.soleTrader', business.soleTrader));
     items.push({
       id: 'businessCard.tradingStartDate',
       value: formatDate(business.tradingStartDate)

@@ -1,12 +1,13 @@
 import { getPageComponent } from 'components/pages';
-import { BreadcrumbsEl, Route, RouteDefinition } from 'interfaces';
+import { BreadcrumbsEl, RouteDefinition } from 'interfaces';
 import { Navigate } from 'react-router-dom';
 import { generateBreadcrumbs, getBreadcrumbById } from 'util/routes';
 import routeDefinitions from './routes.json';
 
 const breadCrumbs: BreadcrumbsEl[][] = generateBreadcrumbs(routeDefinitions);
 
-const generateRoute = (route: RouteDefinition): Route => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const generateRoute = (route: RouteDefinition): any => {
   let ElComponent: JSX.Element;
   if (route.to) {
     ElComponent = <Navigate to={route.to} />;

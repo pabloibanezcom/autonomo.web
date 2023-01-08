@@ -130,6 +130,8 @@ const MenuButton = ({
         className={styles.popper}
         transition
         disablePortal
+        onResize={undefined}
+        onResizeCapture={undefined}
       >
         {({ TransitionProps, placement }) => (
           <Grow

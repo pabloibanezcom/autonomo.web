@@ -59,7 +59,7 @@ const Form = ({
           helperText={errors[field.name] && `${field.label} is required`}
           value={val || values[field.name]}
           onChange={onChange}
-          {...field.elementProps}
+          // {...field.elementProps}
         />
       );
     }
@@ -78,7 +78,7 @@ const Form = ({
           value={val || values[field.name]}
           onChange={onChange}
           className={field.gridColumn ? `grid-column-${field.gridColumn}` : ''}
-          {...field.elementProps}
+          // {...field.elementProps}
         />
       );
     }
@@ -91,7 +91,7 @@ const Form = ({
           error={!!errors[field.name]}
           helperText={errors[field.name] && `${field.label} is required`}
           onChange={onChange}
-          {...field.elementProps}
+          // {...field.elementProps}
         />
       );
     }
@@ -101,7 +101,7 @@ const Form = ({
           value={val}
           onChange={onChange}
           className={field.gridColumn ? `grid-column-${field.gridColumn}` : ''}
-          {...field.elementProps}
+          // {...field.elementProps}
         />
       );
     }
@@ -115,7 +115,7 @@ const Form = ({
         name={field.name}
         error={!!errors[field.name]}
         helperText={errors[field.name] && `${field.label} is required`}
-        {...field.elementProps}
+        // {...field.elementProps}
       />
     );
   };

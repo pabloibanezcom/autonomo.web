@@ -25,7 +25,7 @@ const PersonCard = ({ person }: PersonCardProps) => {
       avatar={person.fullName}
       title={person.fullName}
       color={person.color}
-      picture={person.picture}
+      picture={person.picture.location}
       subheader={subheader}
       actions={actions}
     />

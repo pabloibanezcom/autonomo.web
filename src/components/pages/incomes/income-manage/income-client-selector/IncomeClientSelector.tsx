@@ -65,7 +65,9 @@ const IncomeClientSelector = ({
           getOptionLabel={(option: string | Company) =>
             typeof option === 'string' ? option : option.name
           }
-          onChange={(event, value) => handleClientSelected(value as Company)}
+          onChange={(event, value) =>
+            handleClientSelected(value as unknown as Company)
+          }
           renderInput={(params) => (
             <TextField {...params} autoFocus placeholder="Select a company" />
           )}

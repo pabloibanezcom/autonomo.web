@@ -20,7 +20,7 @@ const RootPage = () => {
 
   useEffect(() => {
     if (!getAuthToken()) {
-      navigate('/auth/login');
+      // navigate('/auth/login');
     } else if (!user) {
       dispatch(getUser());
     }

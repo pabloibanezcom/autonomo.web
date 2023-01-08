@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Person, User } from '@autonomo/common';
+import { User } from '@autonomo/common';
 import { LanguageSelector, MenuButton, SearchBar } from 'components/shared';
 import { useScroll } from 'hooks';
 import { AppBar, Container, IconButton, Toolbar } from 'material';
@@ -20,6 +20,8 @@ const Topbar = ({ isMobile, onToggleCollapsed }: TopbarProps) => {
   const isScroll = useScroll({
     target: 0
   });
+
+  console.log(user.person);
 
   return (
     <AppBar
@@ -70,11 +72,7 @@ const Topbar = ({ isMobile, onToggleCollapsed }: TopbarProps) => {
               menuMargin={20}
               menuItems={loggedInMenuItems}
             >
-              <img
-                src={(user.person as Person).picture}
-                alt={(user.person as Person).firstName}
-                className={styles.userIconImg}
-              />
+              <div>PI</div>
             </MenuButton>
           </div>
         </Toolbar>
